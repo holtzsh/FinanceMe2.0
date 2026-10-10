@@ -15,9 +15,13 @@ AchTransferHandler.prototype = Object.extendsObject(global.AbstractAjaxProcessor
 
     getAccounts: function() {
         var accounts = [];
+        var isAdmin = gs.hasRole('x_274351_finance_0.administrator') || gs.hasRole('admin');
         var gr = new GlideRecord('x_274351_finance_0_accounts');
-        gr.addQuery('holder', gs.getUserID());
+        if (!isAdmin) {
+            gr.addQuery('holder', gs.getUserID());
+        }
         gr.addQuery('active', true);
+        gr.orderBy('number');
         gr.query();
         while (gr.next()) {
             accounts.push({
