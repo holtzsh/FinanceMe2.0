@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description>My Accounts page - view and manage bank accounts</description>
+        <direct>true</direct>
+        <endpoint>x_274351_finance_0_my_accounts.do</endpoint>
+        <html><![CDATA[
+<!-- @fluent-import-html WARNING: This file was imported from the output of a static build. Modifications of any kind are likely to result in unintended behavior. In most cases, you should edit the source file of the HTML imported below. If you are absolutely certain you want to take control of this HTML, you can remove this comment to prevent the SDK from regenerating it. However, you will then be responsible for the management of this HTML in your Fluent file. -->
+<html class="-polaris">
+  <head>
+    <title>My Accounts</title>
+    <!-- @sdk:now-ux-globals -->
+    <!-- Resolved from sdk:now-ux-globals tag at NowSDK build time to support earlier Glide releases -->
+    <script>window.NOW = {};
+window.NOW.user = {};
+window.NOW.batch_glide_ajax_requests = false;
+window.NOW.isUsingPolaris = true;
+window.NOW.exclude_dark_theme = "false";
+window.g_ck = "$[gs.getSession().getSessionToken() || gs.getSessionToken()]";</script>
+    <!-- Include ServiceNow's required scripts -->
+    <g:requires name="scripts/doctype/functions_bootstrap14.js"></g:requires>
+    <g:requires name="scripts/lib/prototype.js"></g:requires>
+    <g:requires name="scripts/classes/ajax/GlideURL.js"></g:requires>
+    <g:requires name="scripts/doctype/CustomEventManager.js"></g:requires>
+    <g:requires name="scripts/classes/ajax/GlideAjax.js"></g:requires>
+    <g:requires name="scripts/classes/GlideUser.js"></g:requires>
+    <g2:client_script type="user"></g2:client_script>
+    <link rel="preload" href="/uxasset/set-cache-buster/$[UxFrameworkScriptables.getFlushTimestamp()].js" as="script"></link>
+    <g:requires name="scripts/polaris_theme_refresh_observer.js"></g:requires>
+    <link data-source-id="glide-theme" id="polarisberg_theme_variables" rel="stylesheet" href="/$uxappimmutables.do?sysparm_request_type=ux_theme$[AMP]sysparm_app_sys_id=c86a62e2c7022010099a308dc7c26022$[AMP]uxpcb=$[sn_ui.PolarisUI.getThemeVariableCssCacheKey()]"></link>
+    <script type="module" src="/uxasset/externals/@devsnc/library-uxf/index.jsdbx"></script>
+    <script type="text/javascript">
+    (function () {
+    var testWorks = (function () {
+        try {
+        var result = Array.from(new Set([1, 2]));
+        return (
+            Array.isArray(result) $[AMP]$[AMP] result.length === 2 $[AMP]$[AMP] result[0] === 1
+        );
+        } catch (e) {
+        return false;
+        }
+    })();
+    if (testWorks) return;
+    var originalArrayFrom = Array.from;
+    function specArrayFrom(arrayLike, mapFn, thisArg) {
+        if (arrayLike == null)
+        throw new TypeError(
+            "Array.from requires an array-like or iterable object"
+        );
+        var C = this;
+        if (typeof C !== "function" || C === Window || C === Object) {
+        C = Array;
+        }
+        var mapping = typeof mapFn === "function";
+        var iterFn = arrayLike[Symbol.iterator];
+        if (typeof iterFn === "function") {
+        var result = [];
+        var i = 0;
+        var iterator = iterFn.call(arrayLike);
+        var step;
+        while (!(step = iterator.next()).done) {
+            result[i] = mapping
+            ? mapFn.call(thisArg, step.value, i)
+            : step.value;
+            i++;
+        }
+        result.length = i;
+        return result;
+        }
+        var items = Object(arrayLike);
+        var len = Math.min(
+        Math.max(Number(items.length) || 0, 0),
+        Number.MAX_SAFE_INTEGER
+        );
+        var result = new C(len);
+        for (var k = 0; k < len; k++) {
+        result[k] = mapping ? mapFn.call(thisArg, items[k], k) : items[k];
+        }
+        result.length = len;
+        return result;
+    }
+    Array.from = function (arrayLike, mapFn, thisArg) {
+        if (
+        arrayLike != null $[AMP]$[AMP]
+        typeof arrayLike[Symbol.iterator] === "function"
+        ) {
+        try {
+            return specArrayFrom.call(this, arrayLike, mapFn, thisArg);
+        } catch (e) {
+            console.error("Array.from failed with error:", e);
+            return originalArrayFrom.call(this, arrayLike, mapFn, thisArg);
+        }
+        }
+        return originalArrayFrom.call(this, arrayLike, mapFn, thisArg);
+    };
+    })();
+    if (window.Element $[AMP]$[AMP] Element.Methods) {
+    Element.Methods.remove = function (element) {
+        element = $(element);
+        if (element.parentNode) {
+        element.parentNode.removeChild(element);
+        }
+        return element;
+    };
+    Element.addMethods();
+    }</script>
+    <!-- @sdk:now-ux-globals -->
+    <script src="/uxasset/externals/x_274351_finance_0/my-accounts/main.jsdbx?uxpcb=$[UxFrameworkScriptables.getFlushTimestamp()]" type="module"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>]]></html>
+        <name>my_accounts</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:46</sys_created_on>
+        <sys_id>e2c01df8327b443eb8c9a3025c21688a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>my_accounts</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_ui_page_e2c01df8327b443eb8c9a3025c21688a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:46</sys_updated_on>
+    </sys_ui_page>
+    <sn_glider_source_artifact_m2m action="INSERT_OR_UPDATE">
+        <application_file display_value="my_accounts">e2c01df8327b443eb8c9a3025c21688a</application_file>
+        <source_artifact display_value="x_274351_finance_0_my_accounts.do - BYOUI Files">59a5f5be4ec24b2b90e28d706ded47ed</source_artifact>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:46</sys_created_on>
+        <sys_id>0bc8db34d98043a9a6c0a19fd89747df</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:46</sys_updated_on>
+    </sn_glider_source_artifact_m2m>
+    <sn_glider_source_artifact action="INSERT_OR_UPDATE">
+        <name>x_274351_finance_0_my_accounts.do - BYOUI Files</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:46</sys_created_on>
+        <sys_id>59a5f5be4ec24b2b90e28d706ded47ed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:46</sys_updated_on>
+    </sn_glider_source_artifact>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color/>
+        <chunk_size_bytes>933336</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>application/zip</content_type>
+        <file_name>x_274351_finance_0_my_accounts.do - BYOUI Files.zip</file_name>
+        <hash>bca82972d61df50ea866167a943ad1921422e697b33f3439c2e6feb403b8c859</hash>
+        <image_height/>
+        <image_width/>
+        <size_bytes>3369</size_bytes>
+        <size_compressed>1868</size_compressed>
+        <state/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:46</sys_created_on>
+        <sys_id>47d98402b08568cfbd7cd9d56440bf3c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:46</sys_updated_on>
+        <table_name>sn_glider_source_artifact</table_name>
+        <table_sys_id>59a5f5be4ec24b2b90e28d706ded47ed</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <length/>
+        <position>0</position>
+        <sys_attachment display_value="x_274351_finance_0_my_accounts.do - BYOUI Files.zip" sys_id="47d98402b08568cfbd7cd9d56440bf3c">47d98402b08568cfbd7cd9d56440bf3c</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:46</sys_created_on>
+        <sys_id>e3bdfc00b9cd4653ba5ca14a4d2d882e</sys_id>
+    </sys_attachment_doc>
+</record_update>

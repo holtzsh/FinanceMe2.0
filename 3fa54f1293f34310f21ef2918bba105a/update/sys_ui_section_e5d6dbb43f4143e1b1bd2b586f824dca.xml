@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Amount" section_id="e5d6dbb43f4143e1b1bd2b586f824dca" sys_domain="global" table="x_274351_finance_0_txn" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>amount</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:49</sys_created_on>
+            <sys_id>f8a21677a09b4f3fae0e13f654102fce</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Amount" display_value="Amount" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">e5d6dbb43f4143e1b1bd2b586f824dca</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Amount</caption>
+            <header>false</header>
+            <name>x_274351_finance_0_txn</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e5d6dbb43f4143e1b1bd2b586f824dca</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_274351_finance_0_txn</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+            <sys_update_name>sys_ui_section_e5d6dbb43f4143e1b1bd2b586f824dca</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:49</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

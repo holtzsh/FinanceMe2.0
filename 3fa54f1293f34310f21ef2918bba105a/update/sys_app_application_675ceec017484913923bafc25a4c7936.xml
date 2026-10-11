@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application">
+    <sys_app_application action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category/>
+        <description/>
+        <device_type>browser</device_type>
+        <hint>FinanceMe2.0 Banking System navigation</hint>
+        <name/>
+        <order>100</order>
+        <roles>x_274351_finance_0.customer,x_274351_finance_0.manager,x_274351_finance_0.administrator</roles>
+        <sys_class_name>sys_app_application</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:40</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>675ceec017484913923bafc25a4c7936</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Banking System Services (FinanceMe2.0)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_app_application_675ceec017484913923bafc25a4c7936</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:40</sys_updated_on>
+        <title>Banking System Services (FinanceMe2.0)</title>
+        <view_name/>
+    </sys_app_application>
+</record_update>

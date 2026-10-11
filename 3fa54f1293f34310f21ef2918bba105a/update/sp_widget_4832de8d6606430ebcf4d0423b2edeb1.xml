@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+    var c = this;
+
+    c.view = 'form';
+    c.submitting = false;
+    c.serverErrors = [];
+
+    c.form = {
+        subject: '',
+        message: ''
+    };
+
+    c.submit = function() {
+        c.serverErrors = [];
+        if (!c.form.subject || !c.form.message) { return; }
+
+        c.submitting = true;
+        c.data.action = 'submit_question';
+        c.data.subject = c.form.subject;
+        c.data.message = c.form.message;
+
+        c.server.update().then(function() {
+            c.submitting = false;
+            var result = c.data.submitResult;
+            if (result && result.success) {
+                c.view = 'success';
+                c.data.action = null;
+            } else if (result && result.errors) {
+                c.serverErrors = result.errors;
+                c.data.action = null;
+            }
+        });
+    };
+
+    c.reset = function() {
+        c.form = { subject: '', message: '' };
+        c.serverErrors = [];
+        c.view = 'form';
+    };
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.ask-manager-container .panel-heading {
+    background-color: #1a3a5c;
+    color: #ffffff;
+}
+
+.ask-manager-container .panel-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ask-manager-container .form-group {
+    margin-bottom: 16px;
+}
+
+.ask-manager-container .form-control {
+    border-radius: 4px;
+}
+
+.ask-manager-container .form-control:focus {
+    border-color: #1a3a5c;
+    box-shadow: 0 0 0 2px rgba(26, 58, 92, 0.15);
+}
+
+.ask-manager-container .btn-primary {
+    background-color: #1a3a5c;
+    border-color: #1a3a5c;
+}
+
+.ask-manager-container .btn-primary:hover {
+    background-color: #15304d;
+    border-color: #15304d;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_274351_finance_0_ask_mgr</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Ask Manager</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    data.ticketNumber = '';
+
+    if (input && input.action === 'submit_question') {
+        var errors = [];
+        if (!input.subject || (input.subject + '').trim() === '') {
+            errors.push('Subject is required.');
+        }
+        if (!input.message || (input.message + '').trim() === '') {
+            errors.push('Message is required.');
+        }
+        if (errors.length > 0) {
+            data.submitResult = { success: false, errors: errors };
+            return;
+        }
+
+        var gr = new GlideRecord('incident');
+        gr.initialize();
+        gr.setValue('short_description', (input.subject + '').trim());
+        gr.setValue('description', (input.message + '').trim());
+        gr.setValue('caller_id', gs.getUserID());
+        gr.setValue('contact_type', 'self-service');
+        gr.setValue('category', 'inquiry');
+        var sysId = gr.insert();
+        if (sysId) {
+            data.submitResult = {
+                success: true,
+                ticketNumber: gr.getValue('number')
+            };
+            data.ticketNumber = gr.getValue('number');
+        } else {
+            data.submitResult = { success: false, errors: ['Failed to create ticket. Please try again.'] };
+        }
+        return;
+    }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:39</sys_created_on>
+        <sys_id>4832de8d6606430ebcf4d0423b2edeb1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Ask Manager</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sp_widget_4832de8d6606430ebcf4d0423b2edeb1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:39</sys_updated_on>
+        <template><![CDATA[<div class="ask-manager-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-comments"></i> Ask Manager a Question</h3>
+    </div>
+    <div class="panel-body">
+
+      <!-- Success view -->
+      <div ng-if="c.view === 'success'" class="text-center">
+        <i class="fa fa-check-circle fa-3x text-success"></i>
+        <h4 class="m-t-sm">Your question has been submitted!</h4>
+        <p class="text-muted">Ticket: <strong>{{c.data.ticketNumber}}</strong></p>
+        <button type="button" class="btn btn-default m-t-sm" ng-click="c.reset()">
+          <i class="fa fa-plus"></i> Ask Another Question
+        </button>
+      </div>
+
+      <!-- Form view -->
+      <div ng-if="c.view === 'form'">
+        <div class="alert alert-danger" ng-if="c.serverErrors.length">
+          <ul class="list-unstyled m-b-none">
+            <li ng-repeat="err in c.serverErrors track by $index">{{err}}</li>
+          </ul>
+        </div>
+
+        <form name="askForm" ng-submit="c.submit()" novalidate>
+          <div class="form-group" ng-class="{'has-error': askForm.subject.$touched && askForm.subject.$invalid}">
+            <label for="subject">Subject <span class="text-danger">*</span></label>
+            <input type="text" id="subject" name="subject" class="form-control"
+                   ng-model="c.form.subject" required
+                   placeholder="Enter a brief subject" />
+            <span class="help-block" ng-if="askForm.subject.$touched && askForm.subject.$error.required">
+              Subject is required.
+            </span>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error': askForm.message.$touched && askForm.message.$invalid}">
+            <label for="message">Message <span class="text-danger">*</span></label>
+            <textarea id="message" name="message" class="form-control" rows="5"
+                      ng-model="c.form.message" required
+                      placeholder="Type your question here..."></textarea>
+            <span class="help-block" ng-if="askForm.message.$touched && askForm.message.$error.required">
+              Message is required.
+            </span>
+          </div>
+
+          <button type="submit" class="btn btn-primary"
+                  ng-disabled="c.submitting || askForm.$invalid">
+            <span ng-if="c.submitting"><i class="fa fa-spinner fa-spin"></i> Sending...</span>
+            <span ng-if="!c.submitting"><i class="fa fa-paper-plane"></i> Submit</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

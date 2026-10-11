@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_274351_finance_0_txn</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Log Transaction</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+    var status = current.getValue('status');
+    if (status === 'completed') {
+        var txnType = current.getValue('type');
+        var amount = parseFloat(current.getValue('amount'));
+        var accountId = current.getValue('account');
+
+        var account = new GlideRecord('x_274351_finance_0_accounts');
+        if (account.get(accountId)) {
+            var currentBalance = parseFloat(account.getValue('balance'));
+            var newBalance = currentBalance;
+
+            if (txnType === 'deposit') {
+                newBalance = currentBalance + amount;
+            } else if (txnType === 'withdrawal' || txnType === 'ach_transfer') {
+                newBalance = currentBalance - amount;
+            }
+
+            account.setValue('balance', newBalance);
+            account.update();
+        }
+    }
+})(current, previous);
+]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:45</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5f3e4b9e731240dd8e044c3b3c66bf29</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Log Transaction</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_script_5f3e4b9e731240dd8e044c3b3c66bf29</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:45</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=5f3e4b9e731240dd8e044c3b3c66bf29"/>
+</record_update>

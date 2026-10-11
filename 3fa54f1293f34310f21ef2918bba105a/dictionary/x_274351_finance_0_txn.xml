@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="e7f654b4e979461daf518a2ec830eb71" label="Transactions" name="x_274351_finance_0_txn" type="collection">
+        <element default="pending" label="Status" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Completed" sequence="4" value="completed"/>
+                <element inactive_on_update="false" label="Rejected" sequence="3" value="rejected"/>
+                <element inactive_on_update="false" label="Pending" sequence="1" value="pending"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
+            </choice>
+        </element>
+        <element label="Amount" mandatory="true" name="amount" type="decimal"/>
+        <element label="Account" mandatory="true" name="account" reference="x_274351_finance_0_accounts" type="reference"/>
+        <element label="Transaction Type" mandatory="true" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Withdrawal" sequence="2" value="withdrawal"/>
+                <element inactive_on_update="false" label="Deposit" sequence="1" value="deposit"/>
+                <element inactive_on_update="false" label="ACH Transfer" sequence="3" value="ach_transfer"/>
+            </choice>
+        </element>
+        <element default="javascript:getNextObjNumberPadded();" display="true" label="Transaction Number" name="number" read_only="true" read_only_option="instance_configured" type="string"/>
+        <index name="index">
+            <element name="account"/>
+        </index>
+    </element>
+</database>

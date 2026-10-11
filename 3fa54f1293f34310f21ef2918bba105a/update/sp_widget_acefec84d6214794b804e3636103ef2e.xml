@@ -1,71 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller = function() {
+        <client_script><![CDATA[api.controller = function($scope) {
     var c = this;
-
     c.view = 'form';
-    c.submitting = false;
-    c.serverErrors = [];
     c.selectedAccount = null;
-    c.pickerOpen = false;
     c.accountSearch = '';
+    c.filteredAccounts = [];
+    c.form = { amount: '', description: '', webhookKey: '' };
+    c.serverErrors = [];
+    c.submitting = false;
 
-    c.form = {
-        amount: null,
-        description: '',
-        webhookKey: ''
-    };
+    // Initialize filtered accounts from server data
+    function initAccounts() {
+        if (c.data && c.data.accounts) {
+            c.filteredAccounts = angular.copy(c.data.accounts);
+        }
+    }
 
-    c.getFilteredAccounts = function() {
-        if (!c.accountSearch) return c.data.accounts;
-        var lower = c.accountSearch.toLowerCase();
-        return c.data.accounts.filter(function(acct) {
-            return (acct.number + ' ' + acct.account_type).toLowerCase().indexOf(lower) > -1;
+    // Keep filtered accounts updated if data changes
+    $scope.$watch('c.data.accounts', function(newVal) {
+        initAccounts();
+    }, true);
+
+    // Filter accounts based on search input
+    c.filterAccounts = function() {
+        var search = (c.accountSearch || '').toLowerCase();
+        if (!search) {
+            c.filteredAccounts = angular.copy(c.data.accounts);
+            return;
+        }
+        c.filteredAccounts = c.data.accounts.filter(function(acct) {
+            var num = (acct.number || '').toLowerCase();
+            var type = (acct.account_type || '').toLowerCase();
+            return num.indexOf(search) !== -1 || type.indexOf(search) !== -1;
         });
     };
 
+    // Pick an account from dropdown
     c.pickAccount = function(acct) {
         c.selectedAccount = acct;
-        c.pickerOpen = false;
-        c.accountSearch = '';
+        c.pickerOpen = false; 
     };
 
+    // Submit form to server
     c.submit = function() {
         c.serverErrors = [];
-        if (!c.selectedAccount || !c.form.amount) { return; }
-
         c.submitting = true;
-        c.data.action = 'submit_ach';
-        c.data.account = c.selectedAccount.sys_id;
-        c.data.amount = c.form.amount;
-        c.data.description = c.form.description;
-        c.data.webhookKey = c.form.webhookKey;
 
-        c.server.update().then(function() {
+        var payload = {
+            action: 'submit_ach',
+            account: c.selectedAccount ? c.selectedAccount.sys_id : '',
+            amount: c.form.amount,
+            description: c.form.description,
+            webhookKey: c.form.webhookKey
+        };
+
+        c.server.update(payload).then(function(response) {
             c.submitting = false;
-            var result = c.data.submitResult;
-            if (result && result.success) {
+            if (response.submitResult && response.submitResult.success) {
                 c.view = 'success';
-                c.data.action = null;
-            } else if (result && result.errors) {
-                c.serverErrors = result.errors;
-                c.data.action = null;
+            } else if (response.submitResult && response.submitResult.errors) {
+                c.serverErrors = response.submitResult.errors;
             }
+        }, function(error) {
+            c.submitting = false;
+            c.serverErrors = ['An unexpected error occurred. Please try again.'];
         });
     };
 
+    // Reset form for a new transfer
     c.reset = function() {
-        c.selectedAccount = null;
-        c.pickerOpen = false;
-        c.accountSearch = '';
-        c.form = { amount: null, description: '', webhookKey: '' };
-        c.serverErrors = [];
         c.view = 'form';
-        c.server.refresh();
+        c.selectedAccount = null;
+        c.form = { amount: '', description: '', webhookKey: '' };
+        c.serverErrors = [];
+        c.accountSearch = '';
+        initAccounts();
     };
-};
-]]></client_script>
+
+    initAccounts();
+};]]></client_script>
         <controller_as>c</controller_as>
         <css>.ach-transfer-container .panel-heading {
     background-color: #1a3a5c;
@@ -189,6 +204,23 @@
     data.txnAmount = '';
     data.webhookStatus = '';
 
+    // Always fetch user's active accounts
+    var userId = gs.getUserID();
+    var gr = new GlideRecord('x_274351_finance_0_accounts');
+    gr.addQuery('holder', userId);
+    gr.addQuery('active', true);
+    gr.orderBy('number');
+    gr.setLimit(50);
+    gr.query();
+    while (gr.next()) {
+        data.accounts.push({
+            sys_id: gr.getUniqueValue(),
+            number: gr.getValue('number'),
+            account_type: gr.getDisplayValue('account_type'),
+            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2)
+        });
+    }
+
     // Handle form submission
     if (input && input.action === 'submit_ach') {
         var errors = [];
@@ -248,38 +280,20 @@
         data.submitResult = { success: true };
         return;
     }
-
-    // Initial load - get user's accounts
-    var userId = gs.getUserID();
-    var gr = new GlideRecord('x_274351_finance_0_accounts');
-    gr.addQuery('holder', userId);
-    gr.addQuery('active', true);
-    gr.orderBy('number');
-    gr.setLimit(50);
-    gr.query();
-    while (gr.next()) {
-        data.accounts.push({
-            sys_id: gr.getUniqueValue(),
-            number: gr.getValue('number'),
-            account_type: gr.getDisplayValue('account_type'),
-            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2)
-        });
-    }
-})();
-]]></script>
+})();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-10 13:44:40</sys_created_on>
         <sys_id>acefec84d6214794b804e3636103ef2e</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>ACH Transfer</sys_name>
         <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
         <sys_policy/>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
         <sys_update_name>sp_widget_acefec84d6214794b804e3636103ef2e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-10 13:44:40</sys_updated_on>
+        <sys_updated_on>2026-10-11 02:25:42</sys_updated_on>
         <template><![CDATA[<div class="ach-transfer-container">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -332,17 +346,18 @@
                 <li class="account-picker-search" ng-click="$event.stopPropagation()">
                   <input type="text" class="form-control input-sm"
                          ng-model="c.accountSearch"
+                         ng-change="c.filterAccounts()"
                          placeholder="Filter by account number..." />
                 </li>
                 <li class="divider"></li>
-                <li ng-repeat="acct in c.getFilteredAccounts()"
+                <li ng-repeat="acct in c.filteredAccounts track by acct.sys_id"
                     ng-class="{'active': c.selectedAccount.sys_id === acct.sys_id}">
                   <a href="javascript:void(0)" ng-click="c.pickAccount(acct)">
                     <strong>{{acct.number}}</strong> &mdash; {{acct.account_type}}
                     <span class="pull-right">${{acct.balance}}</span>
                   </a>
                 </li>
-                <li ng-if="c.getFilteredAccounts().length === 0" class="disabled">
+                <li ng-if="c.filteredAccounts.length === 0" class="disabled">
                   <a>No matching accounts</a>
                 </li>
               </ul>
