@@ -4,16 +4,16 @@
     <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
     <sys_update_name>sys_security_acl_57e6ddd91d764738a70381d1920e5264</sys_update_name>
     <active>true</active>
-    <admin_overrides>true</admin_overrides>
-    <advanced>false</advanced>
+    <admin_overrides>false</admin_overrides>
+    <advanced>true</advanced>
     <applies_to/>
     <condition/>
     <decision_type>allow</decision_type>
-    <description>Only managers can create new bank accounts.</description>
+    <description>Only managers can create new bank accounts. Administrators are denied.</description>
     <local_or_existing>Local</local_or_existing>
     <name>x_274351_finance_0_accounts</name>
     <operation>create</operation>
-    <script/>
+    <script><![CDATA[answer = !gs.hasRole('x_274351_finance_0.administrator');]]></script>
     <security_attribute/>
     <type>record</type>
   </sys_security_acl>

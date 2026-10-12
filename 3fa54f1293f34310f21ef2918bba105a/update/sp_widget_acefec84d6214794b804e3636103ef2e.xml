@@ -139,8 +139,7 @@
         &.inactive { color: #a94442; font-weight: 600; }
     }
     .empty-state { padding: 30px 0; }
-}
-]]></css>
+}]]></css>
     <data_table>sp_instance</data_table>
     <demo_data/>
     <description/>
@@ -155,106 +154,7 @@
     <option_schema/>
     <public>false</public>
     <roles/>
-    <script><![CDATA[(function() {
-    data.accounts = [];
-    data.isManager = gs.hasRole('x_274351_finance_0.manager');
-    
-    var gr = new GlideRecord('x_274351_finance_0_accounts');
-    if (!data.isManager) {
-        gr.addQuery('holder', gs.getUserID());
-    }
-    gr.orderBy('number');
-    gr.query();
-    while (gr.next()) {
-        data.accounts.push({
-            sys_id: gr.getUniqueValue(),
-            number: gr.getValue('number'),
-            account_type: gr.getDisplayValue('account_type'),
-            holder_name: gr.getDisplayValue('holder'),
-            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),
-            active: gr.getValue('active') == '1' || gr.getValue('active') == 'true'
-        });
-    }
-
-    if (input && input.action) {
-        if (input.action === 'deposit' || input.action === 'withdraw') {
-            var errors = [];
-            if (!input.account) errors.push('Please select an account.');
-            if (!input.amount || parseFloat(input.amount) <= 0) errors.push('Please enter a valid amount.');
-            
-            if (errors.length > 0) {
-                data.submitResult = { success: false, errors: errors };
-                return;
-            }
-
-            var acctGr = new GlideRecord('x_274351_finance_0_accounts');
-            if (!acctGr.get(input.account)) {
-                data.submitResult = { success: false, errors: ['Account not found.'] };
-                return;
-            }
-            if (acctGr.getValue('active') != '1' && acctGr.getValue('active') != 'true') {
-                data.submitResult = { success: false, errors: ['Account is not active.'] };
-                return;
-            }
-            
-            var amount = parseFloat(input.amount);
-            if (input.action === 'withdraw') {
-                var currentBalance = parseFloat(acctGr.getValue('balance'));
-                if (currentBalance < amount) {
-                    data.submitResult = { success: false, errors: ['Insufficient funds. Balance: $' + currentBalance.toFixed(2)] };
-                    return;
-                }
-            }
-            
-            var txnGr = new GlideRecord('x_274351_finance_0_txn');
-            txnGr.initialize();
-            txnGr.setValue('account', input.account);
-            txnGr.setValue('type', input.action === 'deposit' ? 'deposit' : 'withdrawal');
-            txnGr.setValue('amount', amount);
-            txnGr.setValue('status', 'completed');
-            txnGr.setValue('description', input.description || '');
-            var txnId = txnGr.insert();
-            
-            if (!txnId) {
-                data.submitResult = { success: false, errors: ['Failed to create transaction.'] };
-                return;
-            }
-            
-            data.submitResult = { success: true, type: input.action, amount: amount.toFixed(2) };
-        }
-        
-        if (input.action === 'deactivate') {
-            var deactGr = new GlideRecord('x_274351_finance_0_accounts');
-            if (!deactGr.get(input.account)) {
-                data.submitResult = { success: false, errors: ['Account not found.'] };
-                return;
-            }
-            deactGr.setValue('active', false);
-            deactGr.update();
-            data.submitResult = { success: true, type: 'deactivate' };
-        }
-        
-        // Re-fetch accounts after action
-        data.accounts = [];
-        var gr2 = new GlideRecord('x_274351_finance_0_accounts');
-        if (!data.isManager) {
-            gr2.addQuery('holder', gs.getUserID());
-        }
-        gr2.orderBy('number');
-        gr2.query();
-        while (gr2.next()) {
-            data.accounts.push({
-                sys_id: gr2.getUniqueValue(),
-                number: gr2.getValue('number'),
-                account_type: gr2.getDisplayValue('account_type'),
-                holder_name: gr2.getDisplayValue('holder'),
-                balance: parseFloat(gr2.getValue('balance') || 0).toFixed(2),
-                active: gr2.getValue('active') == '1' || gr2.getValue('active') == 'true'
-            });
-        }
-    }
-})();
-]]></script>
+    <script><![CDATA["(function() {\n    data.accounts = [];\n    data.isManager = gs.hasRole('x_274351_finance_0.manager') && !gs.hasRole('x_274351_finance_0.administrator');\n    \n    var gr = new GlideRecord('x_274351_finance_0_accounts');\n    if (!data.isManager) {\n        gr.addQuery('holder', gs.getUserID());\n    }\n    gr.orderBy('number');\n    gr.query();\n    while (gr.next()) {\n        data.accounts.push({\n            sys_id: gr.getUniqueValue(),\n            number: gr.getValue('number'),\n            account_type: gr.getDisplayValue('account_type'),\n            holder_name: gr.getDisplayValue('holder'),\n            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),\n            active: gr.getValue('active') == '1' || gr.getValue('active') == 'true'\n        });\n    }\n\n    if (input && input.action) {\n        if (input.action === 'deposit' || input.action === 'withdraw') {\n            if (gs.hasRole('x_274351_finance_0.administrator')) {\n                data.submitResult = { success: false, errors: ['Administrators cannot perform this action.'] };\n                return;\n            }\n            if (!gs.hasRole('x_274351_finance_0.manager')) {\n                data.submitResult = { success: false, errors: ['Only managers can perform this action.'] };\n                return;\n            }\n\n            var errors = [];\n            if (!input.account) errors.push('Please select an account.');\n            if (!input.amount || parseFloat(input.amount) <= 0) errors.push('Please enter a valid amount.');\n            \n            if (errors.length > 0) {\n                data.submitResult = { success: false, errors: errors };\n                return;\n            }\n\n            var acctGr = new GlideRecord('x_274351_finance_0_accounts');\n            if (!acctGr.get(input.account)) {\n                data.submitResult = { success: false, errors: ['Account not found.'] };\n                return;\n            }\n            if (acctGr.getValue('active') != '1' && acctGr.getValue('active') != 'true') {\n                data.submitResult = { success: false, errors: ['Account is not active.'] };\n                return;\n            }\n            \n            var amount = parseFloat(input.amount);\n            if (input.action === 'withdraw') {\n                var currentBalance = parseFloat(acctGr.getValue('balance'));\n                if (currentBalance < amount) {\n                    data.submitResult = { success: false, errors: ['Insufficient funds. Balance: $' + currentBalance.toFixed(2)] };\n                    return;\n                }\n            }\n            \n            var txnGr = new GlideRecord('x_274351_finance_0_txn');\n            txnGr.initialize();\n            txnGr.setValue('account', input.account);\n            txnGr.setValue('type', input.action === 'deposit' ? 'deposit' : 'withdrawal');\n            txnGr.setValue('amount', amount);\n            txnGr.setValue('status', 'completed');\n            txnGr.setValue('description', input.description || '');\n            var txnId = txnGr.insert();\n            \n            if (!txnId) {\n                data.submitResult = { success: false, errors: ['Failed to create transaction.'] };\n                return;\n            }\n            \n            data.submitResult = { success: true, type: input.action, amount: amount.toFixed(2) };\n        }\n        \n        if (input.action === 'deactivate') {\n            if (gs.hasRole('x_274351_finance_0.administrator')) {\n                data.submitResult = { success: false, errors: ['Administrators cannot perform this action.'] };\n                return;\n            }\n            if (!gs.hasRole('x_274351_finance_0.manager')) {\n                data.submitResult = { success: false, errors: ['Only managers can perform this action.'] };\n                return;\n            }\n\n            var deactGr = new GlideRecord('x_274351_finance_0_accounts');\n            if (!deactGr.get(input.account)) {\n                data.submitResult = { success: false, errors: ['Account not found.'] };\n                return;\n            }\n            deactGr.setValue('active', false);\n            deactGr.update();\n            data.submitResult = { success: true, type: 'deactivate' };\n        }\n        \n        // Re-fetch accounts after action\n        data.accounts = [];\n        var gr2 = new GlideRecord('x_274351_finance_0_accounts');\n        if (!data.isManager) {\n            gr2.addQuery('holder', gs.getUserID());\n        }\n        gr2.orderBy('number');\n        gr2.query();\n        while (gr2.next()) {\n            data.accounts.push({\n                sys_id: gr2.getUniqueValue(),\n                number: gr2.getValue('number'),\n                account_type: gr2.getDisplayValue('account_type'),\n                holder_name: gr2.getDisplayValue('holder'),\n                balance: parseFloat(gr2.getValue('balance') || 0).toFixed(2),\n                active: gr2.getValue('active') == '1' || gr2.getValue('active') == 'true'\n            });\n        }\n    }\n})();\n"]]></script>
     <servicenow>false</servicenow>
     <template><![CDATA[<div class="ach-transfer-container">
   <div class="panel panel-default">

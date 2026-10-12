@@ -4,8 +4,8 @@
     <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
     <sys_update_name>sys_script_fix_ce2b14306b1d4fd6ba8d25f7452b7520</sys_update_name>
     <before>false</before>
-    <description>Creates Baby Bear (customer), Papa Bear (manager), and Mama Bear (administrator) users with their respective roles and bank accounts. Runs once on application install.</description>
-    <name>Provision FinanceMe2.0 Users and Accounts</name>
+    <description>Creates Baby Bear (customer), Papa Bear (manager), and Mama Bear (administrator) users with their respective roles and bank accounts. Runs on first application install.</description>
+    <name>Provision FinanceMe2.0 Users and Account</name>
     <record_for_rollback>false</record_for_rollback>
     <script><![CDATA[// Fix Script: Provision FinanceMe2.0 Users, Roles, and Accounts
 // Runs once when the application is installed on a new instance.
@@ -32,7 +32,7 @@
             user_name: 'papa.bear',
             first_name: 'Papa',
             last_name: 'Bear',
-            email: 'papbear@gmail.com',
+            email: 'papabear@gmail.com',
             role: SCOPE + '.manager',
             accounts: []
         },
@@ -128,5 +128,6 @@
     gs.info(SCOPE + ' Fix Script: User provisioning complete.');
 })();
 ]]></script>
+    <unloadable>false</unloadable>
   </sys_script_fix>
 </record_update>

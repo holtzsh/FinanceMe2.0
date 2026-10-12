@@ -68,8 +68,7 @@
         &.inactive { color: #a94442; font-weight: 600; }
     }
     .empty-state { padding: 30px 0; }
-}
-]]></css>
+}]]></css>
     <data_table>sp_instance</data_table>
     <demo_data/>
     <description/>
@@ -84,28 +83,7 @@
     <option_schema/>
     <public>false</public>
     <roles/>
-    <script><![CDATA[(function() {
-    data.accounts = [];
-    data.isManager = gs.hasRole('x_274351_finance_0.manager');
-    
-    var gr = new GlideRecord('x_274351_finance_0_accounts');
-    if (!data.isManager) {
-        gr.addQuery('holder', gs.getUserID());
-    }
-    gr.orderBy('number');
-    gr.query();
-    while (gr.next()) {
-        data.accounts.push({
-            sys_id: gr.getUniqueValue(),
-            number: gr.getValue('number'),
-            account_type: gr.getDisplayValue('account_type'),
-            holder_name: gr.getDisplayValue('holder'),
-            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),
-            active: gr.getValue('active') == '1' || gr.getValue('active') == 'true'
-        });
-    }
-})();
-]]></script>
+    <script><![CDATA["(function() {\n    data.accounts = [];\n    data.isManager = gs.hasRole('x_274351_finance_0.manager') && !gs.hasRole('x_274351_finance_0.administrator');\n    \n    var gr = new GlideRecord('x_274351_finance_0_accounts');\n    // My Accounts ALWAYS shows only the logged-in user's accounts\n    gr.addQuery('holder', gs.getUserID());\n    gr.orderBy('number');\n    gr.query();\n    while (gr.next()) {\n        data.accounts.push({\n            sys_id: gr.getUniqueValue(),\n            number: gr.getValue('number'),\n            account_type: gr.getDisplayValue('account_type'),\n            holder_name: gr.getDisplayValue('holder'),\n            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),\n            active: gr.getValue('active') == '1' || gr.getValue('active') == 'true'\n        });\n    }\n})();\n"]]></script>
     <servicenow>false</servicenow>
     <template><![CDATA[<div class="my-accounts-container">
   <div class="panel panel-default">

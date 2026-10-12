@@ -9,7 +9,7 @@
     <applies_to/>
     <condition/>
     <decision_type>allow</decision_type>
-    <description>Allow customers to read only their own accounts. Managers can read all accounts.</description>
+    <description>Allow customers to read only their own accounts. Managers and administrators can read all accounts.</description>
     <local_or_existing>Local</local_or_existing>
     <name>x_274351_finance_0_accounts</name>
     <operation>read</operation>
