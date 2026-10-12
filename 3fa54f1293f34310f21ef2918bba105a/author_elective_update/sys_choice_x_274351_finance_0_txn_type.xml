@@ -6,7 +6,6 @@
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2026-10-10 13:44:43</sys_created_on>
-            <sys_id>17ae6c86e5dc47dfa835b78dafdcc21c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>type</sys_name>
             <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
@@ -27,13 +26,12 @@
             <sequence>1</sequence>
             <synonyms/>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-10 23:01:16</sys_created_on>
+            <sys_created_on>2026-10-12 18:24:34</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>850b58bedc2a4cf9997f923182e575f1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-10 23:01:16</sys_updated_on>
+            <sys_updated_on>2026-10-12 18:24:34</sys_updated_on>
             <value>deposit</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -47,13 +45,12 @@
             <sequence>2</sequence>
             <synonyms/>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-10 23:01:16</sys_created_on>
+            <sys_created_on>2026-10-12 18:24:34</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>0db3bab5241f467e9fd2957e1245d537</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-10 23:01:16</sys_updated_on>
+            <sys_updated_on>2026-10-12 18:24:34</sys_updated_on>
             <value>withdrawal</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -67,13 +64,12 @@
             <sequence>3</sequence>
             <synonyms/>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-10 23:01:16</sys_created_on>
+            <sys_created_on>2026-10-12 18:24:34</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>e3d58bf4748b47ebb3afcd32f58d2f23</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-10 23:01:16</sys_updated_on>
+            <sys_updated_on>2026-10-12 18:24:34</sys_updated_on>
             <value>ach_transfer</value>
         </sys_choice>
     </sys_choice>

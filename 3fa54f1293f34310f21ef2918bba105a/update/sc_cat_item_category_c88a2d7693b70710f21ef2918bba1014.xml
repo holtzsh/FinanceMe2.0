@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
     <sc_cat_item_category action="INSERT_OR_UPDATE">
         <sc_cat_item display_value="Deposit Request">4b0cba54326141818f5c3fc3e44849ab</sc_cat_item>
-        <sc_category display_value="FinanceMe2.0 Withdrawals/Deposits">2709adbe93770710f21ef2918bba1044</sc_category>
+        <sc_category display_value="">2709adbe93770710f21ef2918bba1044</sc_category>
         <sys_class_name>sc_cat_item_category</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-11 19:56:21</sys_created_on>

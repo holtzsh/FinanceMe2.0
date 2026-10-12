@@ -2,13 +2,13 @@
     <sys_user_role action="INSERT_OR_UPDATE">
         <assignable_by/>
         <can_delegate>true</can_delegate>
-        <description>Administrator role - can disable accounts and perform ACH transfers</description>
+        <description>Administrator role for FinanceMe2.0 - grants full administrative access to the banking application</description>
         <elevated_privilege>false</elevated_privilege>
         <federated_id>ioIJJUbv2ojvLSI/L7DJqO3iTHy4mOazamfjGZRY6iM=</federated_id>
         <grantable>true</grantable>
         <includes_roles/>
         <name>x_274351_finance_0.administrator</name>
-        <scoped_admin>false</scoped_admin>
+        <scoped_admin>true</scoped_admin>
         <suffix>administrator</suffix>
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>

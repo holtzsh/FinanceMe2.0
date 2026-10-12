@@ -2,7 +2,7 @@
     <sys_user_role action="INSERT_OR_UPDATE">
         <assignable_by/>
         <can_delegate>true</can_delegate>
-        <description>Customer role - can request deposits/withdrawals and view own accounts</description>
+        <description>Customer role for FinanceMe2.0 - grants access to banking features as an account holder</description>
         <elevated_privilege>false</elevated_privilege>
         <federated_id>EpHZ3q8gcU1YsckWewgnYMxG4AIDTI5cvjoLTeUdhuM=</federated_id>
         <grantable>true</grantable>

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
-  <sys_security_acl_role action="INSERT_OR_UPDATE">
-    <sys_id>49836551fc9b48efb2952e2f8bfcad54</sys_id>
-    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-    <sys_update_name>sys_security_acl_role_49836551fc9b48efb2952e2f8bfcad54</sys_update_name>
-    <sys_security_acl>7f4321c09c2c44e88652e0791b87447b</sys_security_acl>
-    <sys_user_role name="x_274351_finance_0.manager">c221db7741714b969df13bc5b2fef190</sys_user_role>
-  </sys_security_acl_role>
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-12 05:24:56</sys_created_on>
+        <sys_id>49836551fc9b48efb2952e2f8bfcad54</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_274351_finance_0_accounts.x_274351_finance_0.manager</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_security_acl display_value="x_274351_finance_0_accounts">7f4321c09c2c44e88652e0791b87447b</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_49836551fc9b48efb2952e2f8bfcad54</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-12 05:24:56</sys_updated_on>
+        <sys_user_role display_value="x_274351_finance_0.manager" name="x_274351_finance_0.manager">9553643a1e174cc4942f6dc837061a1c</sys_user_role>
+    </sys_security_acl_role>
 </record_update>

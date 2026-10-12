@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
-  <sys_user_role_contains action="INSERT_OR_UPDATE">
-    <sys_id>e5dfc9b2389a4731a8e0eeb2611d394a</sys_id>
-    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-    <sys_update_name>sys_user_role_contains_e5dfc9b2389a4731a8e0eeb2611d394a</sys_update_name>
-    <contains name="x_274351_finance_0.manager">c221db7741714b969df13bc5b2fef190</contains>
-    <role name="x_274351_finance_0.administrator">a060529c20ee4a7eb95afa210ea6ae0c</role>
-  </sys_user_role_contains>
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="x_274351_finance_0.manager" name="x_274351_finance_0.manager">9553643a1e174cc4942f6dc837061a1c</contains>
+        <role display_value="x_274351_finance_0.administrator" name="x_274351_finance_0.administrator">d81f1e5bae5a4b2680f9854440faa44e</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-12 04:54:09</sys_created_on>
+        <sys_id>e5dfc9b2389a4731a8e0eeb2611d394a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_274351_finance_0.manager.x_274351_finance_0.administrator</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_user_role_contains_e5dfc9b2389a4731a8e0eeb2611d394a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-12 04:54:09</sys_updated_on>
+    </sys_user_role_contains>
 </record_update>

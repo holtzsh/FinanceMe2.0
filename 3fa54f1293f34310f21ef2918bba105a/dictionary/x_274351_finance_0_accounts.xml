@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="fec261994ca84ffd96c00f2f154437fb" label="Bank Accounts" name="x_274351_finance_0_accounts" type="collection">
+        <element label="Account Type" mandatory="true" max_length="30" name="account_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Checking" sequence="1" value="checking"/>
+                <element inactive_on_update="false" label="Savings" sequence="2" value="savings"/>
+                <element inactive_on_update="false" label="Mutual Fund" sequence="3" value="mutual_fund"/>
+            </choice>
+        </element>
+        <element default="0" label="Balance" max_length="20" name="balance" read_only="true" read_only_option="display_read_only" type="decimal"/>
+        <element default="true" label="Active" max_length="30" name="active" type="boolean"/>
+        <element attributes="encode_utf8=false" label="Account Holder" mandatory="true" max_length="32" name="holder" reference="sys_user" type="reference"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Account Number" max_length="40" name="number" read_only="true" read_only_option="instance_configured" type="string"/>
+        <index name="index">
+            <element name="holder"/>
+        </index>
+    </element>
+</database>

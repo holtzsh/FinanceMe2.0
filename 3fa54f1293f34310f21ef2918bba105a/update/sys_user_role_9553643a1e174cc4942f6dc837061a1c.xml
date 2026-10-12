@@ -2,7 +2,7 @@
     <sys_user_role action="INSERT_OR_UPDATE">
         <assignable_by/>
         <can_delegate>true</can_delegate>
-        <description>Manager role - can approve requests, create accounts, and manage transactions</description>
+        <description>Manager role for FinanceMe2.0 - grants managerial access to oversee accounts and transfers</description>
         <elevated_privilege>false</elevated_privilege>
         <federated_id>MreGDQjjDATrJ5Gcbh967TCXWioxoQ97y0+CjigWBms=</federated_id>
         <grantable>true</grantable>

@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
-  <sys_ui_policy_action action="INSERT_OR_UPDATE">
-    <sys_id>bfb018f3d7ae4e30bcff790af3676647</sys_id>
-    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-    <sys_update_name>sys_ui_policy_action_bfb018f3d7ae4e30bcff790af3676647</sys_update_name>
-    <cleared>false</cleared>
-    <disabled>true</disabled>
-    <field>number</field>
-    <field_message/>
-    <field_message_type>none</field_message_type>
-    <mandatory>ignore</mandatory>
-    <table>x_274351_finance_0_accounts</table>
-    <ui_policy short_description="Make all account fields read-only after creation" table="x_274351_finance_0_accounts">02476a9f28064c5d9997b54cd71b5e3a</ui_policy>
-    <value/>
-    <value_action>ignore</value_action>
-    <visible>ignore</visible>
-  </sys_ui_policy_action>
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>number</field>
+        <field_message/>
+        <field_message_type>none</field_message_type>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-12 05:24:56</sys_created_on>
+        <sys_id>bfb018f3d7ae4e30bcff790af3676647</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>number</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_ui_policy_action_bfb018f3d7ae4e30bcff790af3676647</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-12 05:24:56</sys_updated_on>
+        <table>x_274351_finance_0_accounts</table>
+        <ui_policy display_value="Make all account fields read-only after creation">02476a9f28064c5d9997b54cd71b5e3a</ui_policy>
+        <value/>
+        <value_action>ignore</value_action>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=bfb018f3d7ae4e30bcff790af3676647"/>
 </record_update>

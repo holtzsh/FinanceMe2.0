@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
-  <sp_widget action="INSERT_OR_UPDATE">
-    <sys_id>a4ad07c6475f46f994722afac9f512a0</sys_id>
-    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-    <sys_update_name>sp_widget_a4ad07c6475f46f994722afac9f512a0</sys_update_name>
-    <category>custom</category>
-    <client_script><![CDATA[api.controller = function($scope) {
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
     var c = this;
 
     c.navigate = function(url) {
@@ -13,8 +10,8 @@
         }
     };
 };]]></client_script>
-    <controller_as>c</controller_as>
-    <css><![CDATA[.quick-links-container .panel-heading {
+        <controller_as>c</controller_as>
+        <css>.quick-links-container .panel-heading {
     background-color: #1a3a5c;
     color: #ffffff;
 }
@@ -59,22 +56,22 @@
 .quick-link-desc {
     font-size: 13px;
     margin-bottom: 0;
-}]]></css>
-    <data_table>sp_instance</data_table>
-    <demo_data/>
-    <description/>
-    <docs/>
-    <field_list/>
-    <has_preview>false</has_preview>
-    <id>x_274351_finance_0_quick_links</id>
-    <internal>false</internal>
-    <link><![CDATA[function link(scope, element, attrs, controller) {
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_274351_finance_0_quick_links</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
 }]]></link>
-    <name>Quick Links</name>
-    <option_schema/>
-    <public>false</public>
-    <roles/>
-    <script><![CDATA[(function() {
+        <name>Quick Links</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
     data.links = [];
 
     data.links.push({label: 'View My Accounts', description: 'View your bank accounts and balances', icon: 'fa-bank', url: '?id=x_274351_finance_0_my_accts_page'});
@@ -95,8 +92,20 @@
     data.links.push({label: 'Ask Manager a Question', description: 'Send a question to your manager', icon: 'fa-comments', url: '?id=x_274351_finance_0_ask_mgr'});
 })();
 ]]></script>
-    <servicenow>false</servicenow>
-    <template><![CDATA[<div class="quick-links-container">
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:39</sys_created_on>
+        <sys_id>a4ad07c6475f46f994722afac9f512a0</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Quick Links</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sp_widget_a4ad07c6475f46f994722afac9f512a0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-11 19:14:33</sys_updated_on>
+        <template><![CDATA[<div class="quick-links-container">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-th-large"></i> Banking Services</h3>
@@ -115,5 +124,5 @@
   </div>
 </div>
 ]]></template>
-  </sp_widget>
+    </sp_widget>
 </record_update>

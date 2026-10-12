@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
-  <sys_number action="INSERT_OR_UPDATE">
-    <sys_id>3906d573e84a495187e72fb7c958d584</sys_id>
-    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-    <sys_update_name>sys_number_3906d573e84a495187e72fb7c958d584</sys_update_name>
-    <category>x_274351_finance_0_txn</category>
-    <maximum_digits>7</maximum_digits>
-    <number>10000000</number>
-    <prefix>TRX</prefix>
-  </sys_number>
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_274351_finance_0_txn">x_274351_finance_0_txn</category>
+        <maximum_digits>7</maximum_digits>
+        <number>10000000</number>
+        <prefix>TRX</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:45</sys_created_on>
+        <sys_id>3906d573e84a495187e72fb7c958d584</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>TRX</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_number_3906d573e84a495187e72fb7c958d584</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:45</sys_updated_on>
+    </sys_number>
 </record_update>
