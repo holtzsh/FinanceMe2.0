@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_action">
+  <sys_ui_action action="INSERT_OR_UPDATE">
+    <sys_id>8dd24537ab144b3498fb69ec9382e2dc</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_ui_action_8dd24537ab144b3498fb69ec9382e2dc</sys_update_name>
+    <action_name>go_to_account</action_name>
+    <active>true</active>
+    <client/>
+    <client_script_v2/>
+    <comments/>
+    <condition>current.state == 'approved' &amp;&amp; current.source_table == 'sc_req_item'</condition>
+    <form_button>true</form_button>
+    <form_button_v2>false</form_button_v2>
+    <form_context_menu>false</form_context_menu>
+    <form_link>false</form_link>
+    <form_menu_button_v2>false</form_menu_button_v2>
+    <form_style>primary</form_style>
+    <format_for_configurable_workspace>false</format_for_configurable_workspace>
+    <hint/>
+    <isolate_script>false</isolate_script>
+    <list_banner_button>false</list_banner_button>
+    <list_button>false</list_button>
+    <list_choice>false</list_choice>
+    <list_context_menu>false</list_context_menu>
+    <list_link>false</list_link>
+    <list_save_with_form_button>false</list_save_with_form_button>
+    <list_style/>
+    <messages/>
+    <name>Go to Account</name>
+    <onclick/>
+    <order>100</order>
+    <overrides/>
+    <script><![CDATA[(function() {
+    // Get the sc_req_item from current.sysapproval
+    var ritmGR = new GlideRecord('sc_req_item');
+    if (!ritmGR.get(current.sysapproval)) {
+        gs.addErrorMessage('Could not find the associated Requested Item.');
+        return;
+    }
+
+    // Read variables: account (sys_id) and amount (string)
+    var account = ritmGR.variables.account.toString();
+    var amount = ritmGR.variables.amount.toString();
+
+    if (!account || !amount) {
+        gs.addErrorMessage('Could not retrieve account or amount from the request variables.');
+        return;
+    }
+
+    // Determine type from catalog item display name
+    // "Deposit Request" → deposit, otherwise → withdrawal
+    var catItemName = ritmGR.cat_item.getDisplayValue();
+    var type = (catItemName.indexOf('Deposit') >= 0) ? 'deposit' : 'withdrawal';
+
+    // Redirect to the accounts form with approval context parameters
+    action.setRedirectURL(
+        'x_274351_finance_0_accounts.do?sys_id=' + account +
+        '&sysparm_action_type=' + type +
+        '&sysparm_amount=' + amount
+    );
+})();
+]]></script>
+    <show_insert>true</show_insert>
+    <show_multiple_update>false</show_multiple_update>
+    <show_query>false</show_query>
+    <show_update>true</show_update>
+    <table>sysapproval_approver</table>
+    <ui11_compatible>false</ui11_compatible>
+    <ui16_compatible/>
+  </sys_ui_action>
+</record_update>

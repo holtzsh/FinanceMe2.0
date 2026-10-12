@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_action_role">
+  <sys_ui_action_role action="INSERT_OR_UPDATE">
+    <sys_id>4c1cd02031ba4cba83a5d18ed003b20c</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_ui_action_role_4c1cd02031ba4cba83a5d18ed003b20c</sys_update_name>
+    <sys_ui_action>8dd24537ab144b3498fb69ec9382e2dc</sys_ui_action>
+    <sys_user_role name="x_274351_finance_0.manager">30110658935141dbb7b6d960b9135429</sys_user_role>
+  </sys_ui_action_role>
+</record_update>

@@ -4,7 +4,7 @@
     <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
     <sys_update_name>sp_widget_acefec84d6214794b804e3636103ef2e</sys_update_name>
     <category>custom</category>
-    <client_script><![CDATA[api.controller = function($scope) {
+    <client_script><![CDATA[api.controller = function($scope, $location) {
     var c = this;
     c.selectedAccount = null;
     c.view = 'list';
@@ -12,6 +12,7 @@
     c.serverErrors = [];
     c.submitting = false;
     c.successMessage = '';
+    c.approvalContext = null;
 
     c.selectAccount = function(acct) {
         c.selectedAccount = acct;
@@ -27,6 +28,9 @@
         c.form = { amount: '', description: '' };
         c.serverErrors = [];
         c.successMessage = '';
+        c.approvalContext = null;
+        // Clear URL params when going back
+        $location.search({id: 'x_274351_finance_0_ach_page'});
     };
 
     c.performAction = function(action) {
@@ -77,6 +81,25 @@
             c.performAction('deactivate');
         }
     };
+
+    // Check for approval context URL parameters on init
+    var params = $location.search();
+    if (params.account_sys_id && params.amount && params.action_type) {
+        c.approvalContext = params.action_type;
+        c.form.amount = params.amount;
+
+        // Find and auto-select the matching account
+        if (c.data && c.data.accounts) {
+            for (var j = 0; j < c.data.accounts.length; j++) {
+                if (c.data.accounts[j].sys_id === params.account_sys_id) {
+                    c.selectAccount(c.data.accounts[j]);
+                    c.form.amount = params.amount;
+                    c.approvalContext = params.action_type;
+                    break;
+                }
+            }
+        }
+    }
 };
 ]]></client_script>
     <controller_as>c</controller_as>
@@ -210,6 +233,14 @@
           <i class="fa fa-arrow-left"></i> Back to List
         </button>
 
+        <!-- Approval Context Info Banner -->
+        <div class="alert alert-info" ng-if="c.approvalContext">
+          <i class="fa fa-info-circle"></i>
+          <strong>Approval Context:</strong> You are performing a
+          <strong>{{c.approvalContext}}</strong> action from an approved request.
+          The amount has been pre-filled.
+        </div>
+
         <!-- Success Message -->
         <div class="alert alert-success" ng-if="c.successMessage">
           <i class="fa fa-check-circle"></i> {{c.successMessage}}
@@ -273,15 +304,18 @@
                    placeholder="Transaction description (optional)" />
           </div>
           <button type="button" class="btn btn-success" ng-click="c.deposit()"
-                  ng-disabled="c.submitting || !c.form.amount">
+                  ng-disabled="c.submitting || !c.form.amount"
+                  ng-if="!c.approvalContext || c.approvalContext === 'deposit'">
             <i class="fa fa-plus"></i> Deposit
           </button>
           <button type="button" class="btn btn-primary" ng-click="c.withdraw()"
-                  ng-disabled="c.submitting || !c.form.amount">
+                  ng-disabled="c.submitting || !c.form.amount"
+                  ng-if="!c.approvalContext || c.approvalContext === 'withdrawal'">
             <i class="fa fa-minus"></i> Withdraw
           </button>
           <button type="button" class="btn btn-danger btn-deactivate" ng-click="c.deactivate()"
-                  ng-disabled="c.submitting">
+                  ng-disabled="c.submitting"
+                  ng-if="!c.approvalContext">
             <i class="fa fa-ban"></i> Deactivate Account
           </button>
         </div>

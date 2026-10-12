@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_client">
+  <sys_script_client action="INSERT_OR_UPDATE">
+    <sys_id>03bec0423d724e319c872a7b1675a681</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_script_client_03bec0423d724e319c872a7b1675a681</sys_update_name>
+    <active>true</active>
+    <applies_extended>false</applies_extended>
+    <description/>
+    <field/>
+    <global>true</global>
+    <isolate_script>false</isolate_script>
+    <messages/>
+    <name>Approval Context Button Visibility</name>
+    <script><![CDATA[function onLoad() {
+    // Read URL parameters for approval context
+    var actionType = getUrlParameter('sysparm_action_type');
+    var amount = getUrlParameter('sysparm_amount');
+
+    // If both params are present, we're in approval context
+    if (actionType && amount) {
+        // Format amount with dollar sign and two decimal places
+        var formattedAmount = parseFloat(amount).toFixed(2);
+        var label = (actionType === 'deposit') ? 'deposit' : 'withdrawal';
+        g_form.addInfoMessage('Approved ' + label + ' request for $' + formattedAmount);
+
+        // Use setTimeout to ensure DOM is fully ready before hiding buttons
+        setTimeout(function() {
+            if (actionType === 'deposit') {
+                // In deposit context: hide Withdraw Funds and Deactivate Account buttons
+                hideButtonByOnclick('withdrawFunds');
+                hideButtonByOnclick('deactivateAccount');
+            } else if (actionType === 'withdrawal') {
+                // In withdrawal context: hide Deposit Funds and Deactivate Account buttons
+                hideButtonByOnclick('depositFunds');
+                hideButtonByOnclick('deactivateAccount');
+            }
+        }, 500);
+    }
+    // If params not present, do nothing (normal behavior)
+
+    function getUrlParameter(name) {
+        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results ? decodeURIComponent(results[1]) : '';
+    }
+
+    function hideButtonByOnclick(fnName) {
+        // Search DOM for buttons whose onclick attribute contains the function name
+        var buttons = document.querySelectorAll('button[onclick], input[type="button"][onclick]');
+        for (var i = 0; i < buttons.length; i++) {
+            var onclickAttr = buttons[i].getAttribute('onclick') || '';
+            if (onclickAttr.indexOf(fnName) >= 0) {
+                buttons[i].style.display = 'none';
+            }
+        }
+    }
+}
+]]></script>
+    <table>x_274351_finance_0_accounts</table>
+    <type>onLoad</type>
+    <ui_type>0</ui_type>
+    <view/>
+  </sys_script_client>
+</record_update>
