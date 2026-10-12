@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+  <sys_script_fix action="INSERT_OR_UPDATE">
+    <sys_id>8dfcf5fde06f4179b5da1ae5916a4680</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_script_fix_8dfcf5fde06f4179b5da1ae5916a4680</sys_update_name>
+    <before>false</before>
+    <description>Creates the FinanceMe2.0 Managers assignment group, assigns the manager role to it, and adds all users with the manager role as group members. Idempotent - skips anything already created. Should run after the initial user provisioning fix script.</description>
+    <name>Provision FinanceMe2.0 Managers Group</name>
+    <record_for_rollback>false</record_for_rollback>
+    <script><![CDATA[// Fix Script: Provision FinanceMe2.0 Managers Group and Members
+// Runs after the initial user provisioning fix script.
+// Creates the managers group (if needed), assigns the manager role to it,
+// and adds all users with the manager role as group members.
+// Idempotent: skips anything already created or complete.
+
+(function() {
+    var SCOPE = 'x_274351_finance_0';
+    var GROUP_NAME = 'FinanceMe2.0 Managers';
+    var ROLE_NAME = SCOPE + '.manager';
+
+    gs.info(SCOPE + ' Fix Script [Managers Group]: Starting managers group provisioning...');
+
+    // =============================================
+    // Step 1: Create or find the managers group
+    // =============================================
+    var groupGr = new GlideRecord('sys_user_group');
+    groupGr.addQuery('name', GROUP_NAME);
+    groupGr.query();
+
+    var groupSysId;
+    if (groupGr.next()) {
+        groupSysId = groupGr.getUniqueValue();
+        gs.info(SCOPE + ' Fix Script [Managers Group]: Group "' + GROUP_NAME + '" already exists (' + groupSysId + '). Skipping creation.');
+    } else {
+        groupGr.initialize();
+        groupGr.setValue('name', GROUP_NAME);
+        groupGr.setValue('active', true);
+        groupGr.setValue('description', 'Assignment group for FinanceMe2.0 manager role users - handles deposit and withdrawal request fulfillment');
+        groupSysId = groupGr.insert();
+        gs.info(SCOPE + ' Fix Script [Managers Group]: Created group "' + GROUP_NAME + '" (' + groupSysId + ')');
+    }
+
+    if (!groupSysId) {
+        gs.error(SCOPE + ' Fix Script [Managers Group]: Failed to create/find group "' + GROUP_NAME + '". Aborting.');
+        return;
+    }
+
+    // =============================================
+    // Step 2: Find the manager role
+    // =============================================
+    var roleGr = new GlideRecord('sys_user_role');
+    roleGr.addQuery('name', ROLE_NAME);
+    roleGr.query();
+
+    if (!roleGr.next()) {
+        gs.error(SCOPE + ' Fix Script [Managers Group]: Role "' + ROLE_NAME + '" not found. Aborting.');
+        return;
+    }
+
+    var roleSysId = roleGr.getUniqueValue();
+    gs.info(SCOPE + ' Fix Script [Managers Group]: Found role "' + ROLE_NAME + '" (' + roleSysId + ')');
+
+    // =============================================
+    // Step 3: Assign the manager role to the group
+    // =============================================
+    var groupRoleGr = new GlideRecord('sys_group_has_role');
+    groupRoleGr.addQuery('group', groupSysId);
+    groupRoleGr.addQuery('role', roleSysId);
+    groupRoleGr.query();
+
+    if (groupRoleGr.next()) {
+        gs.info(SCOPE + ' Fix Script [Managers Group]: Group "' + GROUP_NAME + '" already has role "' + ROLE_NAME + '". Skipping.');
+    } else {
+        groupRoleGr.initialize();
+        groupRoleGr.setValue('group', groupSysId);
+        groupRoleGr.setValue('role', roleSysId);
+        groupRoleGr.insert();
+        gs.info(SCOPE + ' Fix Script [Managers Group]: Assigned role "' + ROLE_NAME + '" to group "' + GROUP_NAME + '".');
+    }
+
+    // =============================================
+    // Step 4: Add all users with the manager role to the group
+    // =============================================
+    var userRoleGr = new GlideRecord('sys_user_has_role');
+    userRoleGr.addQuery('role', roleSysId);
+    userRoleGr.query();
+
+    var addedCount = 0;
+    var skippedCount = 0;
+
+    while (userRoleGr.next()) {
+        var userSysId = userRoleGr.getValue('user');
+
+        // Look up user name for logging
+        var userGr = new GlideRecord('sys_user');
+        var userName = userSysId;
+        if (userGr.get(userSysId)) {
+            userName = userGr.getValue('user_name') || userGr.getValue('name') || userSysId;
+        }
+
+        // Check if user is already a member of the group
+        var memberGr = new GlideRecord('sys_user_grmember');
+        memberGr.addQuery('group', groupSysId);
+        memberGr.addQuery('user', userSysId);
+        memberGr.query();
+
+        if (memberGr.next()) {
+            skippedCount++;
+            gs.info(SCOPE + ' Fix Script [Managers Group]: User "' + userName + '" is already a member of "' + GROUP_NAME + '". Skipping.');
+        } else {
+            memberGr.initialize();
+            memberGr.setValue('group', groupSysId);
+            memberGr.setValue('user', userSysId);
+            memberGr.insert();
+            addedCount++;
+            gs.info(SCOPE + ' Fix Script [Managers Group]: Added user "' + userName + '" to group "' + GROUP_NAME + '".');
+        }
+    }
+
+    gs.info(SCOPE + ' Fix Script [Managers Group]: Provisioning complete. Users added: ' + addedCount + ', Already members: ' + skippedCount);
+})();
+]]></script>
+    <unloadable>false</unloadable>
+  </sys_script_fix>
+</record_update>
