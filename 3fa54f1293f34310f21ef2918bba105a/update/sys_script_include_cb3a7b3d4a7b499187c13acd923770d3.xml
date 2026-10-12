@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_274351_finance_0.AchTransferHandler</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description>Handles ACH transfer processing including transaction creation and webhook notification via RESTMessageV2</description>
+        <mobile_callable>false</mobile_callable>
+        <name>AchTransferHandler</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AchTransferHandler = Class.create();
+
+AchTransferHandler.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+    getAccounts: function() {
+        var accounts = [];
+        var isAdmin = gs.hasRole('x_274351_finance_0.administrator') || gs.hasRole('admin');
+        var gr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!isAdmin) {
+            gr.addQuery('holder', gs.getUserID());
+        }
+        gr.addQuery('active', true);
+        gr.orderBy('number');
+        gr.query();
+        while (gr.next()) {
+            accounts.push({
+                sys_id: gr.getUniqueValue(),
+                number: gr.getValue('number'),
+                account_type: gr.getValue('account_type'),
+                balance: gr.getValue('balance')
+            });
+        }
+        return JSON.stringify(accounts);
+    },
+
+    processTransfer: function() {
+        var accountSysId = this.getParameter('sysparm_account_sys_id');
+        var amount = this.getParameter('sysparm_amount');
+        var description = this.getParameter('sysparm_description');
+        var webhookKey = this.getParameter('sysparm_webhook_key');
+
+        var result = {
+            success: false,
+            message: '',
+            transaction: null
+        };
+
+        // Validate inputs
+        if (!accountSysId || !amount || !webhookKey) {
+            result.message = 'Missing required parameters: account_sys_id, amount, and webhook_key are required';
+            return JSON.stringify(result);
+        }
+
+        // Verify the account exists
+        var acctGr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!acctGr.get(accountSysId)) {
+            result.message = 'Account not found with sys_id: ' + accountSysId;
+            return JSON.stringify(result);
+        }
+
+        // Create the transaction record
+        var txnGr = new GlideRecord('x_274351_finance_0_txn');
+        txnGr.initialize();
+        txnGr.setValue('account', accountSysId);
+        txnGr.setValue('type', 'ach_transfer');
+        txnGr.setValue('amount', amount);
+        txnGr.setValue('status', 'completed');
+        var txnSysId = txnGr.insert();
+
+        if (!txnSysId) {
+            result.message = 'Failed to create transaction record';
+            return JSON.stringify(result);
+        }
+
+        // Send webhook notification
+        try {
+            var restMessage = new sn_ws.RESTMessageV2();
+            restMessage.setEndpoint('https://webhook.site/' + webhookKey);
+            restMessage.setHttpMethod('POST');
+            restMessage.setRequestHeader('Content-Type', 'application/json');
+
+            var payload = {
+                transaction_id: txnSysId,
+                account_number: acctGr.getValue('number'),
+                account_holder: acctGr.getDisplayValue('holder'),
+                type: 'ach_transfer',
+                amount: amount,
+                description: description || '',
+                timestamp: new GlideDateTime().getDisplayValue()
+            };
+
+            restMessage.setRequestBody(JSON.stringify(payload));
+            var response = restMessage.execute();
+            var httpStatus = response.getStatusCode();
+
+            result.success = true;
+            result.message = 'ACH transfer processed successfully. Webhook status: ' + httpStatus;
+            result.transaction = {
+                sys_id: txnSysId,
+                account_number: acctGr.getValue('number'),
+                amount: amount,
+                type: 'ach_transfer',
+                status: 'completed',
+                webhook_status: httpStatus
+            };
+        } catch (e) {
+            // Transaction was created, but webhook failed
+            result.success = true;
+            result.message = 'Transaction created but webhook notification failed: ' + e.getMessage();
+            result.transaction = {
+                sys_id: txnSysId,
+                account_number: acctGr.getValue('number'),
+                amount: amount,
+                type: 'ach_transfer',
+                status: 'completed',
+                webhook_status: 'failed'
+            };
+        }
+
+        return JSON.stringify(result);
+    },
+
+    type: 'AchTransferHandler'
+});
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:45</sys_created_on>
+        <sys_id>cb3a7b3d4a7b499187c13acd923770d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AchTransferHandler</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_script_include_cb3a7b3d4a7b499187c13acd923770d3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:45</sys_updated_on>
+    </sys_script_include>
+</record_update>

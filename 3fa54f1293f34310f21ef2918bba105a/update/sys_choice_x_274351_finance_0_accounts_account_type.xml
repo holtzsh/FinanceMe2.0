@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="account_type" table="x_274351_finance_0_accounts" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>account_type</element>
+            <name>x_274351_finance_0_accounts</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:42</sys_created_on>
+            <sys_id>c4858539cd2d4aa5b6a547b84604fb1d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>account_type</sys_name>
+            <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+            <sys_update_name>sys_choice_x_274351_finance_0_accounts_account_type</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:42</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>account_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Checking</label>
+            <language>en</language>
+            <name>x_274351_finance_0_accounts</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>50e6586ed738436ab22059a654a4db12</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:42</sys_updated_on>
+            <value>checking</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>account_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Savings</label>
+            <language>en</language>
+            <name>x_274351_finance_0_accounts</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c071737926184430a666dbef7895148e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:42</sys_updated_on>
+            <value>savings</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>account_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Mutual Fund</label>
+            <language>en</language>
+            <name>x_274351_finance_0_accounts</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fc4aa58fe4834c5c99720820a5b60703</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:42</sys_updated_on>
+            <value>mutual_fund</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

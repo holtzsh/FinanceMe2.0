@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Transaction Details" section_id="28007ec079a54f58bbb23e24b289ba0e" sys_domain="global" table="x_274351_finance_0_txn" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>d0512a3e933f0710f21ef2918bba1081</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>account</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>50512a3e933f0710f21ef2918bba1082</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>description</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>dc512a3e933f0710f21ef2918bba1082</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>amount</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>5c512a3e933f0710f21ef2918bba1083</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>d8512a3e933f0710f21ef2918bba1084</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>58512a3e933f0710f21ef2918bba1085</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>status</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>d4512a3e933f0710f21ef2918bba1086</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>webhook_key</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-11 23:55:51</sys_created_on>
+            <sys_id>54512a3e933f0710f21ef2918bba1087</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Transaction Details" display_value="Transaction Details" name="x_274351_finance_0_txn" sys_domain="global" view="Default view">28007ec079a54f58bbb23e24b289ba0e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-11 23:55:51</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Transaction Details</caption>
+            <header>false</header>
+            <name>x_274351_finance_0_txn</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>28007ec079a54f58bbb23e24b289ba0e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_274351_finance_0_txn</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+            <sys_update_name>sys_ui_section_28007ec079a54f58bbb23e24b289ba0e</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:47</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

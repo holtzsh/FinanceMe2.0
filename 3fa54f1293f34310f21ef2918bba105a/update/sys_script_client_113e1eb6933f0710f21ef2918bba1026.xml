@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field/>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Validate ACH Form Submission</name>
+        <order/>
+        <script><![CDATA[function onSubmit() {
+    var account = g_form.getValue('account');
+    var amount = parseFloat(g_form.getValue('amount'));
+
+    if (!account) {
+        g_form.showFieldMsg('account', 'Source account is required.', 'error');
+        return false;
+    }
+
+    if (isNaN(amount) || amount <= 0) {
+        g_form.showFieldMsg('amount', 'Please enter a valid amount greater than 0.', 'error');
+        return false;
+    }
+
+    return true;
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-11 23:45:08</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>113e1eb6933f0710f21ef2918bba1026</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Validate ACH Form Submission</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_script_client_113e1eb6933f0710f21ef2918bba1026</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-11 23:45:08</sys_updated_on>
+        <table>x_274351_finance_0_txn</table>
+        <type>onSubmit</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

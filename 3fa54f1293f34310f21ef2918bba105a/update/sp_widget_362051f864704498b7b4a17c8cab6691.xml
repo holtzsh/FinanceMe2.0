@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+    var c = this;
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.my-accounts-container .panel-heading {
+    background-color: #1a3a5c;
+    color: #ffffff;
+}
+
+.my-accounts-container .panel-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.my-accounts-container .table thead th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
+}
+
+.my-accounts-container .table tbody td {
+    vertical-align: middle;
+}
+
+.my-accounts-container .empty-state {
+    padding: 48px 16px;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_274351_finance_0_my_accts</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>My Accounts</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    data.accounts = [];
+
+    var userId = gs.getUserID();
+    var gr = new GlideRecord('x_274351_finance_0_accounts');
+    gr.addQuery('holder', userId);
+    gr.orderBy('number');
+    gr.setLimit(50);
+    gr.query();
+    while (gr.next()) {
+        var isActive = gr.getValue('active') === '1' || gr.getValue('active') === 'true';
+        data.accounts.push({
+            sys_id: gr.getUniqueValue(),
+            number: gr.getValue('number'),
+            account_type: gr.getDisplayValue('account_type'),
+            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),
+            status: isActive ? 'Active' : 'Inactive',
+            statusClass: isActive ? 'label-success' : 'label-default'
+        });
+    }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:39</sys_created_on>
+        <sys_id>362051f864704498b7b4a17c8cab6691</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>My Accounts</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sp_widget_362051f864704498b7b4a17c8cab6691</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:39</sys_updated_on>
+        <template><![CDATA[<div class="my-accounts-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-bank"></i> My Accounts</h3>
+    </div>
+    <div class="panel-body">
+      <div ng-if="c.data.accounts.length">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Account Number</th>
+                <th>Account Type</th>
+                <th>Balance</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="acct in c.data.accounts track by acct.sys_id">
+                <td><strong>{{acct.number}}</strong></td>
+                <td>{{acct.account_type}}</td>
+                <td class="text-right">${{acct.balance}}</td>
+                <td>
+                  <span class="label" ng-class="acct.statusClass">{{acct.status}}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div ng-if="!c.data.accounts.length" class="text-center empty-state">
+        <i class="fa fa-inbox fa-3x text-muted"></i>
+        <p class="text-muted m-t-sm">No accounts found for your user.</p>
+      </div>
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

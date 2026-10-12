@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice">
+    <question_choice action="INSERT_OR_UPDATE">
+        <inactive>false</inactive>
+        <order>3</order>
+        <published_ref/>
+        <question display_value="Account Type">9265999e209d40ecaaeef1f38e7854de</question>
+        <sys_class_name>question_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:30</sys_created_on>
+        <sys_id>725816f8702e4d9b844d8dc0415f6e13</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Mutual Fund</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>question_choice_725816f8702e4d9b844d8dc0415f6e13</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:30</sys_updated_on>
+        <text>Mutual Fund</text>
+        <value>mutual_fund</value>
+    </question_choice>
+    <fx_price action="delete_multiple" query="id=725816f8702e4d9b844d8dc0415f6e13"/>
+</record_update>

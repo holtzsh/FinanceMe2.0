@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="" label="Transactions" language="en" table="x_274351_finance_0_txn">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>Transactions</label>
+            <language>en</language>
+            <name>x_274351_finance_0_txn</name>
+            <plural>Transactions</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-10 13:44:13</sys_created_on>
+            <sys_id>df4fb49b98d84a0085b6c19f42996edd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Transactions</sys_name>
+            <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+            <sys_update_name>sys_documentation_x_274351_finance_0_txn__en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-10 13:44:13</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

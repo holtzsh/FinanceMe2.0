@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+    var c = this;
+    c.view = 'form';
+    c.selectedAccount = null;
+    c.accountSearch = '';
+    c.filteredAccounts = [];
+    c.form = { amount: '', description: '', webhookKey: '' };
+    c.serverErrors = [];
+    c.submitting = false;
+
+    // Initialize filtered accounts from server data safely
+    function initAccounts() {
+        var accounts = (c.data && c.data.accounts) ? c.data.accounts : [];
+        c.filteredAccounts = angular.copy(accounts);
+    }
+
+    // Keep filtered accounts updated if data changes
+    $scope.$watch('c.data.accounts', function(newVal) {
+        initAccounts();
+    }, true);
+
+    // Filter accounts safely based on search input
+    c.filterAccounts = function() {
+        var search = (c.accountSearch || '').toLowerCase();
+        var accounts = (c.data && c.data.accounts) ? c.data.accounts : [];
+
+        if (!search) {
+            c.filteredAccounts = angular.copy(accounts);
+            return;
+        }
+        
+        c.filteredAccounts = accounts.filter(function(acct) {
+            var num = (acct.number || '').toLowerCase();
+            var type = (acct.account_type || '').toLowerCase();
+            return num.indexOf(search) !== -1 || type.indexOf(search) !== -1;
+        });
+    };
+
+    // Pick an account from dropdown
+    c.pickAccount = function(acct) {
+        c.selectedAccount = acct;
+        c.pickerOpen = false; 
+    };
+
+    // Submit form to server
+    c.submit = function() {
+        c.serverErrors = [];
+        c.submitting = true;
+
+        var payload = {
+            action: 'submit_ach',
+            account: c.selectedAccount ? c.selectedAccount.sys_id : '',
+            amount: c.form.amount,
+            description: c.form.description,
+            webhookKey: c.form.webhookKey
+        };
+
+        c.server.update(payload).then(function(response) {
+            c.submitting = false;
+            if (response.submitResult && response.submitResult.success) {
+                c.view = 'success';
+            } else if (response.submitResult && response.submitResult.errors) {
+                c.serverErrors = response.submitResult.errors;
+            }
+        }, function(error) {
+            c.submitting = false;
+            c.serverErrors = ['An unexpected error occurred. Please try again.'];
+        });
+    };
+
+    // Reset form for a new transfer
+    c.reset = function() {
+        c.view = 'form';
+        c.selectedAccount = null;
+        c.form = { amount: '', description: '', webhookKey: '' };
+        c.serverErrors = [];
+        c.accountSearch = '';
+        initAccounts();
+    };
+
+    initAccounts();
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.ach-transfer-container .panel-heading {
+    background-color: #1a3a5c;
+    color: #ffffff;
+}
+
+.ach-transfer-container .panel-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ach-transfer-container .form-group {
+    margin-bottom: 16px;
+}
+
+.ach-transfer-container .form-control {
+    border-radius: 4px;
+}
+
+.ach-transfer-container .form-control:focus {
+    border-color: #1a3a5c;
+    box-shadow: 0 0 0 2px rgba(26, 58, 92, 0.15);
+}
+
+.ach-transfer-container .input-group-addon {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+.ach-transfer-container .btn-primary {
+    background-color: #1a3a5c;
+    border-color: #1a3a5c;
+}
+
+.ach-transfer-container .btn-primary:hover {
+    background-color: #15304d;
+    border-color: #15304d;
+}
+
+/* Account picker dropdown */
+.ach-transfer-container .account-picker-wrapper {
+    width: 100%;
+}
+
+.ach-transfer-container .account-picker-toggle {
+    position: relative;
+    padding-right: 30px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    min-height: 34px;
+    border-radius: 4px;
+}
+
+.ach-transfer-container .account-picker-toggle:hover,
+.ach-transfer-container .account-picker-toggle:focus {
+    border-color: #1a3a5c;
+    box-shadow: 0 0 0 2px rgba(26, 58, 92, 0.15);
+}
+
+.ach-transfer-container .account-picker-caret {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.ach-transfer-container .account-picker-menu {
+    width: 100%;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 0;
+    margin-top: 2px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ach-transfer-container .account-picker-search {
+    padding: 8px 10px;
+}
+
+.ach-transfer-container .account-picker-menu &gt; li &gt; a {
+    padding: 8px 12px;
+    white-space: normal;
+    color: #333;
+    cursor: pointer;
+}
+
+.ach-transfer-container .account-picker-menu &gt; li &gt; a:hover {
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+.ach-transfer-container .account-picker-menu &gt; li.active &gt; a,
+.ach-transfer-container .account-picker-menu &gt; li.active &gt; a:hover {
+    background-color: #1a3a5c;
+    color: #fff;
+}
+
+.ach-transfer-container .account-picker-menu &gt; li.disabled &gt; a {
+    color: #999;
+    font-style: italic;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_274351_finance_0_ach_widget</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>ACH Transfer</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    data.accounts = [];
+    data.txnNumber = '';
+    data.txnAmount = '';
+    data.webhookStatus = '';
+
+    // Always fetch user's active accounts
+    var userId = gs.getUserID();
+    var gr = new GlideRecord('x_274351_finance_0_accounts');
+   //gr.addQuery('holder', userId);
+    gr.addQuery('active', true);
+    gr.orderBy('number');
+    gr.setLimit(50);
+    gr.query();
+    while (gr.next()) {
+        data.accounts.push({
+            sys_id: gr.getUniqueValue(),
+            number: gr.getValue('number'),
+            account_type: gr.getDisplayValue('account_type'),
+            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2)
+        });
+    }
+
+    // Handle form submission
+    if (input && input.action === 'submit_ach') {
+        var errors = [];
+        if (!input.account) {
+            errors.push('Please select a source account.');
+        }
+        if (!input.amount || parseFloat(input.amount) <= 0) {
+            errors.push('Please enter a valid amount.');
+        }
+        if (errors.length > 0) {
+            data.submitResult = { success: false, errors: errors };
+            return;
+        }
+
+        // Create the transaction
+        var txn = new GlideRecord('x_274351_finance_0_txn');
+        txn.initialize();
+        txn.setValue('account', input.account);
+        txn.setValue('type', 'ach_transfer');
+        txn.setValue('amount', parseFloat(input.amount));
+        txn.setValue('status', 'pending');
+        var txnId = txn.insert();
+
+        if (!txnId) {
+            data.submitResult = { success: false, errors: ['Failed to create transaction.'] };
+            return;
+        }
+
+        data.txnNumber = txn.getValue('number');
+        data.txnAmount = parseFloat(input.amount).toFixed(2);
+
+        // Send webhook if key provided
+        data.webhookStatus = 'not_configured';
+        if (input.webhookKey && (input.webhookKey + '').trim() !== '') {
+            try {
+                var rm = new sn_ws.RESTMessageV2();
+                rm.setHttpMethod('POST');
+                rm.setEndpoint('https://webhook.site/' + (input.webhookKey + '').trim());
+                rm.setRequestHeader('Content-Type', 'application/json');
+                var payload = {
+                    transaction_number: data.txnNumber,
+                    account: input.account,
+                    amount: parseFloat(input.amount),
+                    type: 'ach_transfer',
+                    description: (input.description || '') + '',
+                    timestamp: new GlideDateTime().toString()
+                };
+                rm.setRequestBody(JSON.stringify(payload));
+                var response = rm.execute();
+                var httpStatus = response.getStatusCode();
+                data.webhookStatus = (httpStatus >= 200 && httpStatus < 300) ? 'sent' : 'failed';
+            } catch (e) {
+                data.webhookStatus = 'error';
+            }
+        }
+
+        data.submitResult = { success: true };
+        return;
+    }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:40</sys_created_on>
+        <sys_id>acefec84d6214794b804e3636103ef2e</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>ACH Transfer</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sp_widget_acefec84d6214794b804e3636103ef2e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-11 22:57:09</sys_updated_on>
+        <template><![CDATA[<div class="ach-transfer-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-exchange"></i> ACH Transfer</h3>
+    </div>
+    <div class="panel-body">
+
+      <!-- Success view -->
+      <div ng-if="c.view === 'success'" class="text-center">
+        <i class="fa fa-check-circle fa-3x text-success"></i>
+        <h4 class="m-t-sm">ACH Transfer Initiated!</h4>
+        <p class="text-muted">Transaction: <strong>{{c.data.txnNumber}}</strong></p>
+        <p class="text-muted">Amount: <strong>${{c.data.txnAmount}}</strong></p>
+        <div ng-if="c.data.webhookStatus" class="m-t-sm">
+          <span class="label" ng-class="c.data.webhookStatus === 'sent' ? 'label-success' : 'label-warning'">
+            Webhook: {{c.data.webhookStatus}}
+          </span>
+        </div>
+        <button type="button" class="btn btn-default m-t-sm" ng-click="c.reset()">
+          <i class="fa fa-plus"></i> New Transfer
+        </button>
+      </div>
+
+      <!-- Form view -->
+      <div ng-if="c.view === 'form'">
+        <div class="alert alert-danger" ng-if="c.serverErrors.length">
+          <ul class="list-unstyled m-b-none">
+            <li ng-repeat="err in c.serverErrors track by $index">{{err}}</li>
+          </ul>
+        </div>
+
+        <div class="alert alert-info" ng-if="!c.data.accounts || !c.data.accounts.length">
+          <i class="fa fa-info-circle"></i> You have no accounts available for transfer.
+        </div>
+
+        <form name="achForm" ng-submit="c.submit()" novalidate ng-if="c.data.accounts && c.data.accounts.length">
+
+          <!-- Account picker: native dropdown with search -->
+          <div class="form-group">
+            <label>Source Account <span class="text-danger">*</span></label>
+            <div class="dropdown account-picker-wrapper" ng-class="{ 'open': c.pickerOpen }">
+              <button type="button" class="btn btn-default btn-block text-left account-picker-toggle" 
+                      ng-click="c.pickerOpen = !c.pickerOpen">
+                <span ng-if="c.selectedAccount">
+                  {{c.selectedAccount.number}} &mdash; {{c.selectedAccount.account_type}} (${{c.selectedAccount.balance}})
+                </span>
+                <span ng-if="!c.selectedAccount" class="text-muted">&mdash; Select Account &mdash;</span>
+                <i class="fa fa-caret-down account-picker-caret pull-right m-t-xs"></i>
+              </button>
+              
+              <ul class="dropdown-menu account-picker-menu w-100" style="width: 100%;" ng-if="c.pickerOpen">
+                <li class="account-picker-search px-2" ng-click="$event.stopPropagation()" style="padding: 6px 12px;">
+                  <input type="text" class="form-control input-sm"
+                         ng-model="c.accountSearch"
+                         ng-change="c.filterAccounts()"
+                         placeholder="Filter by account number..." />
+                </li>
+                <li class="divider"></li>
+                <li ng-repeat="acct in c.filteredAccounts track by acct.sys_id"
+                    ng-class="{'active': c.selectedAccount.sys_id === acct.sys_id}">
+                  <a href="javascript:void(0)" ng-click="c.pickAccount(acct)">
+                    <strong>{{acct.number}}</strong> &mdash; {{acct.account_type}}
+                    <span class="pull-right">${{acct.balance}}</span>
+                  </a>
+                </li>
+                <li ng-if="c.filteredAccounts.length === 0" class="disabled text-center p-v-sm">
+                  <a href="javascript:void(0)">No matching accounts</a>
+                </li>
+              </ul>
+            </div>
+            <p class="help-block text-danger" ng-if="achForm.$submitted && !c.selectedAccount">
+              Please select an account.
+            </p>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error': achForm.amount.$touched && achForm.amount.$invalid}">
+            <label for="amount">Amount <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="number" id="amount" name="amount" class="form-control"
+                     ng-model="c.form.amount" required min="0.01" step="0.01"
+                     placeholder="0.00" />
+            </div>
+            <span class="help-block" ng-if="achForm.amount.$touched && achForm.amount.$error.required">
+              Amount is required.
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" class="form-control"
+                   ng-model="c.form.description"
+                   placeholder="Transfer description (optional)" />
+          </div>
+
+          <div class="form-group">
+            <label for="webhookKey">Webhook Key</label>
+            <input type="text" id="webhookKey" name="webhookKey" class="form-control"
+                   ng-model="c.form.webhookKey"
+                   placeholder="External webhook key (optional)" />
+          </div>
+
+          <button type="submit" class="btn btn-primary"
+                  ng-disabled="c.submitting || !c.selectedAccount || achForm.$invalid">
+            <span ng-if="c.submitting"><i class="fa fa-spinner fa-spin"></i> Processing...</span>
+            <span ng-if="!c.submitting"><i class="fa fa-exchange"></i> Initiate Transfer</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>
