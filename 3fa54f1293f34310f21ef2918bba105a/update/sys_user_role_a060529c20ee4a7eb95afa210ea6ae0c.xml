@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+  <sys_user_role action="INSERT_OR_UPDATE">
+    <sys_id>a060529c20ee4a7eb95afa210ea6ae0c</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_user_role_a060529c20ee4a7eb95afa210ea6ae0c</sys_update_name>
+    <assignable_by/>
+    <can_delegate>true</can_delegate>
+    <description>Administrator role for FinanceMe2.0 - grants full administrative access to the banking application</description>
+    <elevated_privilege>false</elevated_privilege>
+    <grantable>true</grantable>
+    <name>x_274351_finance_0.administrator</name>
+    <scoped_admin>true</scoped_admin>
+    <suffix>administrator</suffix>
+  </sys_user_role>
+</record_update>

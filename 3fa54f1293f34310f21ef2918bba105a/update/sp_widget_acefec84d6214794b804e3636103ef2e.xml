@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
-    <sp_widget action="INSERT_OR_UPDATE">
-        <category>custom</category>
-        <client_script><![CDATA[api.controller = function($scope) {
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>acefec84d6214794b804e3636103ef2e</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sp_widget_acefec84d6214794b804e3636103ef2e</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function($scope) {
     var c = this;
     c.view = 'form';
     c.selectedAccount = null;
@@ -83,8 +86,8 @@
 
     initAccounts();
 };]]></client_script>
-        <controller_as>c</controller_as>
-        <css>.ach-transfer-container .panel-heading {
+    <controller_as>c</controller_as>
+    <css><![CDATA[.ach-transfer-container .panel-heading {
     background-color: #1a3a5c;
     color: #ffffff;
 }
@@ -164,43 +167,43 @@
     padding: 8px 10px;
 }
 
-.ach-transfer-container .account-picker-menu &gt; li &gt; a {
+.ach-transfer-container .account-picker-menu > li > a {
     padding: 8px 12px;
     white-space: normal;
     color: #333;
     cursor: pointer;
 }
 
-.ach-transfer-container .account-picker-menu &gt; li &gt; a:hover {
+.ach-transfer-container .account-picker-menu > li > a:hover {
     background-color: #f0f4f8;
     color: #333;
 }
 
-.ach-transfer-container .account-picker-menu &gt; li.active &gt; a,
-.ach-transfer-container .account-picker-menu &gt; li.active &gt; a:hover {
+.ach-transfer-container .account-picker-menu > li.active > a,
+.ach-transfer-container .account-picker-menu > li.active > a:hover {
     background-color: #1a3a5c;
     color: #fff;
 }
 
-.ach-transfer-container .account-picker-menu &gt; li.disabled &gt; a {
+.ach-transfer-container .account-picker-menu > li.disabled > a {
     color: #999;
     font-style: italic;
-}</css>
-        <data_table>sp_instance</data_table>
-        <demo_data/>
-        <description/>
-        <docs/>
-        <field_list/>
-        <has_preview>false</has_preview>
-        <id>x_274351_finance_0_ach_widget</id>
-        <internal>false</internal>
-        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>x_274351_finance_0_ach_widget</id>
+    <internal>false</internal>
+    <link><![CDATA[function link(scope, element, attrs, controller) {
 }]]></link>
-        <name>ACH Transfer</name>
-        <option_schema/>
-        <public>false</public>
-        <roles/>
-        <script><![CDATA[(function() {
+    <name>ACH Transfer</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script><![CDATA[(function() {
     data.accounts = [];
     data.txnNumber = '';
     data.txnAmount = '';
@@ -209,7 +212,7 @@
     // Always fetch user's active accounts
     var userId = gs.getUserID();
     var gr = new GlideRecord('x_274351_finance_0_accounts');
-   //gr.addQuery('holder', userId);
+    gr.addQuery('holder', userId);
     gr.addQuery('active', true);
     gr.orderBy('number');
     gr.setLimit(50);
@@ -283,20 +286,8 @@
         return;
     }
 })();]]></script>
-        <servicenow>false</servicenow>
-        <sys_class_name>sp_widget</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-10 13:44:40</sys_created_on>
-        <sys_id>acefec84d6214794b804e3636103ef2e</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>ACH Transfer</sys_name>
-        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_update_name>sp_widget_acefec84d6214794b804e3636103ef2e</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-11 22:57:09</sys_updated_on>
-        <template><![CDATA[<div class="ach-transfer-container">
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="ach-transfer-container">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-exchange"></i> ACH Transfer</h3>
@@ -410,5 +401,5 @@
   </div>
 </div>
 ]]></template>
-    </sp_widget>
+  </sp_widget>
 </record_update>

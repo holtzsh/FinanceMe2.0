@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+  <sys_script_fix action="INSERT_OR_UPDATE">
+    <sys_id>ce2b14306b1d4fd6ba8d25f7452b7520</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_script_fix_ce2b14306b1d4fd6ba8d25f7452b7520</sys_update_name>
+    <before>false</before>
+    <description>Creates Baby Bear (customer), Papa Bear (manager), and Mama Bear (administrator) users with their respective roles and bank accounts. Runs once on application install.</description>
+    <name>Provision FinanceMe2.0 Users and Accounts</name>
+    <record_for_rollback>false</record_for_rollback>
+    <script><![CDATA[// Fix Script: Provision FinanceMe2.0 Users, Roles, and Accounts
+// Runs once when the application is installed on a new instance.
+// Creates three test users with appropriate roles and bank accounts.
+
+(function() {
+    var SCOPE = 'x_274351_finance_0';
+
+    // =============================
+    // User Definitions
+    // =============================
+    var users = [
+        {
+            user_name: 'baby.bear',
+            first_name: 'Baby',
+            last_name: 'Bear',
+            email: 'babybear@gmail.com',
+            role: SCOPE + '.customer',
+            accounts: [
+                { account_type: 'checking', active: true }
+            ]
+        },
+        {
+            user_name: 'papa.bear',
+            first_name: 'Papa',
+            last_name: 'Bear',
+            email: 'papbear@gmail.com',
+            role: SCOPE + '.manager',
+            accounts: []
+        },
+        {
+            user_name: 'mama.bear',
+            first_name: 'Mama',
+            last_name: 'Bear',
+            email: 'mamabear@gmail.com',
+            role: SCOPE + '.administrator',
+            accounts: []
+        }
+    ];
+
+    for (var i = 0; i < users.length; i++) {
+        var u = users[i];
+
+        // ---- Create or find the user ----
+        var userGr = new GlideRecord('sys_user');
+        userGr.addQuery('user_name', u.user_name);
+        userGr.query();
+
+        var userSysId;
+        if (userGr.next()) {
+            userSysId = userGr.getUniqueValue();
+            gs.info(SCOPE + ' Fix Script: User "' + u.user_name + '" already exists (' + userSysId + ')');
+        } else {
+            userGr.initialize();
+            userGr.setValue('user_name', u.user_name);
+            userGr.setValue('first_name', u.first_name);
+            userGr.setValue('last_name', u.last_name);
+            userGr.setValue('email', u.email);
+            userGr.setValue('active', true);
+            userSysId = userGr.insert();
+            gs.info(SCOPE + ' Fix Script: Created user "' + u.user_name + '" (' + userSysId + ')');
+        }
+
+        if (!userSysId) {
+            gs.error(SCOPE + ' Fix Script: Failed to create/find user "' + u.user_name + '"');
+            continue;
+        }
+
+        // ---- Find the role sys_id ----
+        var roleGr = new GlideRecord('sys_user_role');
+        roleGr.addQuery('name', u.role);
+        roleGr.query();
+
+        if (!roleGr.next()) {
+            gs.error(SCOPE + ' Fix Script: Role "' + u.role + '" not found. Skipping role assignment for "' + u.user_name + '"');
+        } else {
+            var roleSysId = roleGr.getUniqueValue();
+
+            // Check if user already has the role
+            var hasRole = new GlideRecord('sys_user_has_role');
+            hasRole.addQuery('user', userSysId);
+            hasRole.addQuery('role', roleSysId);
+            hasRole.query();
+
+            if (!hasRole.next()) {
+                hasRole.initialize();
+                hasRole.setValue('user', userSysId);
+                hasRole.setValue('role', roleSysId);
+                hasRole.insert();
+                gs.info(SCOPE + ' Fix Script: Assigned role "' + u.role + '" to "' + u.user_name + '"');
+            } else {
+                gs.info(SCOPE + ' Fix Script: User "' + u.user_name + '" already has role "' + u.role + '"');
+            }
+        }
+
+        // ---- Create bank accounts ----
+        for (var j = 0; j < u.accounts.length; j++) {
+            var acct = u.accounts[j];
+
+            // Check if user already has an account of this type
+            var existingAcct = new GlideRecord(SCOPE + '_accounts');
+            existingAcct.addQuery('holder', userSysId);
+            existingAcct.addQuery('account_type', acct.account_type);
+            existingAcct.query();
+
+            if (!existingAcct.next()) {
+                var newAcct = new GlideRecord(SCOPE + '_accounts');
+                newAcct.initialize();
+                newAcct.setValue('holder', userSysId);
+                newAcct.setValue('account_type', acct.account_type);
+                newAcct.setValue('active', acct.active);
+                var acctId = newAcct.insert();
+                gs.info(SCOPE + ' Fix Script: Created ' + acct.account_type + ' account for "' + u.user_name + '" (' + acctId + ')');
+            } else {
+                gs.info(SCOPE + ' Fix Script: User "' + u.user_name + '" already has a ' + acct.account_type + ' account');
+            }
+        }
+    }
+
+    gs.info(SCOPE + ' Fix Script: User provisioning complete.');
+})();
+]]></script>
+  </sys_script_fix>
+</record_update>

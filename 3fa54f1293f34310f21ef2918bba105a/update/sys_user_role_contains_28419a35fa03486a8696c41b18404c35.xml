@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+  <sys_user_role_contains action="INSERT_OR_UPDATE">
+    <sys_id>28419a35fa03486a8696c41b18404c35</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_user_role_contains_28419a35fa03486a8696c41b18404c35</sys_update_name>
+    <contains name="x_274351_finance_0.customer">0799dae0f1fd4f9b981807f8c7528176</contains>
+    <role name="x_274351_finance_0.manager">c221db7741714b969df13bc5b2fef190</role>
+  </sys_user_role_contains>
+</record_update>
