@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy">
+  <sys_ui_policy action="INSERT_OR_UPDATE">
+    <sys_id>02476a9f28064c5d9997b54cd71b5e3a</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_ui_policy_02476a9f28064c5d9997b54cd71b5e3a</sys_update_name>
+    <active>true</active>
+    <conditions>sys_idANYTHING</conditions>
+    <description/>
+    <global>true</global>
+    <inherit>false</inherit>
+    <isolate_script>false</isolate_script>
+    <model_id/>
+    <model_table/>
+    <on_load>true</on_load>
+    <order>100</order>
+    <reverse_if_false>true</reverse_if_false>
+    <run_scripts>false</run_scripts>
+    <script_false>function onCondition() {
+
+}</script_false>
+    <script_true>function onCondition() {
+
+}</script_true>
+    <set_values/>
+    <short_description>Make all account fields read-only after creation</short_description>
+    <table>x_274351_finance_0_accounts</table>
+    <ui_type>0</ui_type>
+    <view/>
+  </sys_ui_policy>
+</record_update>

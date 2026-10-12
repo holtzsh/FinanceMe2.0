@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+  <sys_security_acl action="INSERT_OR_UPDATE">
+    <sys_id>b6bbbe8542c047fa854d9774d4d6c534</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_security_acl_b6bbbe8542c047fa854d9774d4d6c534</sys_update_name>
+    <active>true</active>
+    <admin_overrides>false</admin_overrides>
+    <advanced>true</advanced>
+    <applies_to/>
+    <condition/>
+    <decision_type>allow</decision_type>
+    <description>No one can delete transaction records. Transaction history must be preserved.</description>
+    <local_or_existing>Local</local_or_existing>
+    <name>x_274351_finance_0_txn</name>
+    <operation>delete</operation>
+    <script><![CDATA[answer = false;]]></script>
+    <security_attribute/>
+    <type>record</type>
+  </sys_security_acl>
+</record_update>

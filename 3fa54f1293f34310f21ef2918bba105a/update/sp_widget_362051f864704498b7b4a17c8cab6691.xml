@@ -1,85 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
-    <sp_widget action="INSERT_OR_UPDATE">
-        <category>custom</category>
-        <client_script><![CDATA[api.controller = function() {
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>362051f864704498b7b4a17c8cab6691</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sp_widget_362051f864704498b7b4a17c8cab6691</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function() {
     var c = this;
+    c.selectedAccount = null;
+
+    c.selectAccount = function(acct) {
+        c.selectedAccount = acct;
+    };
+
+    c.clearSelection = function() {
+        c.selectedAccount = null;
+    };
 };
 ]]></client_script>
-        <controller_as>c</controller_as>
-        <css>.my-accounts-container .panel-heading {
-    background-color: #1a3a5c;
-    color: #ffffff;
+    <controller_as>c</controller_as>
+    <css><![CDATA[.my-accounts-container {
+    .panel-heading {
+        background-color: #1a3a5c;
+        color: #ffffff;
+        .panel-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+    .table > tbody > tr {
+        cursor: pointer;
+        &:hover { background-color: #f0f5fa; }
+        &.selected-row {
+            background-color: #d6e9f8;
+            border-left: 3px solid #1a3a5c;
+        }
+    }
+    .account-detail-panel {
+        background: #f9fbfd;
+        border: 1px solid #dce4ec;
+        border-radius: 4px;
+        padding: 20px;
+        margin-top: 15px;
+        .detail-header {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a3a5c;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #1a3a5c;
+        }
+        .detail-row {
+            display: flex;
+            padding: 6px 0;
+            .detail-label {
+                font-weight: 600;
+                color: #555;
+                width: 140px;
+                flex-shrink: 0;
+            }
+            .detail-value {
+                color: #333;
+            }
+        }
+    }
+    .status-badge {
+        &.active { color: #3c763d; font-weight: 600; }
+        &.inactive { color: #a94442; font-weight: 600; }
+    }
+    .empty-state { padding: 30px 0; }
 }
-
-.my-accounts-container .panel-title {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.my-accounts-container .table thead th {
-    background-color: #f5f5f5;
-    font-weight: 600;
-    border-bottom: 2px solid #ddd;
-}
-
-.my-accounts-container .table tbody td {
-    vertical-align: middle;
-}
-
-.my-accounts-container .empty-state {
-    padding: 48px 16px;
-}
-</css>
-        <data_table>sp_instance</data_table>
-        <demo_data/>
-        <description/>
-        <docs/>
-        <field_list/>
-        <has_preview>false</has_preview>
-        <id>x_274351_finance_0_my_accts</id>
-        <internal>false</internal>
-        <link><![CDATA[function link(scope, element, attrs, controller) {
+]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>x_274351_finance_0_my_accts</id>
+    <internal>false</internal>
+    <link><![CDATA[function link(scope, element, attrs, controller) {
 }]]></link>
-        <name>My Accounts</name>
-        <option_schema/>
-        <public>false</public>
-        <roles/>
-        <script><![CDATA[(function() {
+    <name>My Accounts</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script><![CDATA[(function() {
     data.accounts = [];
-
-    var userId = gs.getUserID();
+    data.isManager = gs.hasRole('x_274351_finance_0.manager');
+    
     var gr = new GlideRecord('x_274351_finance_0_accounts');
-    gr.addQuery('holder', userId);
+    if (!data.isManager) {
+        gr.addQuery('holder', gs.getUserID());
+    }
     gr.orderBy('number');
-    gr.setLimit(50);
     gr.query();
     while (gr.next()) {
-        var isActive = gr.getValue('active') === '1' || gr.getValue('active') === 'true';
         data.accounts.push({
             sys_id: gr.getUniqueValue(),
             number: gr.getValue('number'),
             account_type: gr.getDisplayValue('account_type'),
+            holder_name: gr.getDisplayValue('holder'),
             balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),
-            status: isActive ? 'Active' : 'Inactive',
-            statusClass: isActive ? 'label-success' : 'label-default'
+            active: gr.getValue('active') == '1' || gr.getValue('active') == 'true'
         });
     }
 })();
 ]]></script>
-        <servicenow>false</servicenow>
-        <sys_class_name>sp_widget</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-10 13:44:39</sys_created_on>
-        <sys_id>362051f864704498b7b4a17c8cab6691</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>My Accounts</sys_name>
-        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_update_name>sp_widget_362051f864704498b7b4a17c8cab6691</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-10 13:44:39</sys_updated_on>
-        <template><![CDATA[<div class="my-accounts-container">
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="my-accounts-container">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-bank"></i> My Accounts</h3>
@@ -91,31 +119,72 @@
             <thead>
               <tr>
                 <th>Account Number</th>
+                <th ng-if="c.data.isManager">Account User</th>
                 <th>Account Type</th>
-                <th>Balance</th>
+                <th class="text-right">Balance</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="acct in c.data.accounts track by acct.sys_id">
+              <tr ng-repeat="acct in c.data.accounts track by acct.sys_id"
+                  ng-click="c.selectAccount(acct)"
+                  ng-class="{'selected-row': c.selectedAccount.sys_id === acct.sys_id}">
                 <td><strong>{{acct.number}}</strong></td>
+                <td ng-if="c.data.isManager">{{acct.holder_name}}</td>
                 <td>{{acct.account_type}}</td>
                 <td class="text-right">${{acct.balance}}</td>
                 <td>
-                  <span class="label" ng-class="acct.statusClass">{{acct.status}}</span>
+                  <span class="status-badge" ng-class="acct.active ? 'active' : 'inactive'">
+                    {{acct.active ? 'Active' : 'Inactive'}}
+                  </span>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
+
+        <!-- Detail Panel -->
+        <div ng-if="c.selectedAccount" class="account-detail-panel">
+          <div class="detail-header">
+            Account Details
+            <button type="button" class="btn btn-xs btn-default pull-right" ng-click="c.clearSelection()">
+              <i class="fa fa-times"></i> Close
+            </button>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Account Number</span>
+            <span class="detail-value">{{c.selectedAccount.number}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Account User</span>
+            <span class="detail-value">{{c.selectedAccount.holder_name}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Account Type</span>
+            <span class="detail-value">{{c.selectedAccount.account_type}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Account Balance</span>
+            <span class="detail-value">${{c.selectedAccount.balance}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Status</span>
+            <span class="detail-value">
+              <span class="status-badge" ng-class="c.selectedAccount.active ? 'active' : 'inactive'">
+                {{c.selectedAccount.active ? 'Active' : 'Inactive'}}
+              </span>
+            </span>
+          </div>
+        </div>
       </div>
+
       <div ng-if="!c.data.accounts.length" class="text-center empty-state">
         <i class="fa fa-inbox fa-3x text-muted"></i>
-        <p class="text-muted m-t-sm">No accounts found for your user.</p>
+        <p class="text-muted m-t-sm">No accounts found.</p>
       </div>
     </div>
   </div>
 </div>
 ]]></template>
-    </sp_widget>
+  </sp_widget>
 </record_update>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+  <sys_security_acl_role action="INSERT_OR_UPDATE">
+    <sys_id>49836551fc9b48efb2952e2f8bfcad54</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_security_acl_role_49836551fc9b48efb2952e2f8bfcad54</sys_update_name>
+    <sys_security_acl>7f4321c09c2c44e88652e0791b87447b</sys_security_acl>
+    <sys_user_role name="x_274351_finance_0.manager">c221db7741714b969df13bc5b2fef190</sys_user_role>
+  </sys_security_acl_role>
+</record_update>

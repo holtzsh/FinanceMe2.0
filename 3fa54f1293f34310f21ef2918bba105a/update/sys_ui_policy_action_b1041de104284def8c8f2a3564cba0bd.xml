@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+  <sys_ui_policy_action action="INSERT_OR_UPDATE">
+    <sys_id>b1041de104284def8c8f2a3564cba0bd</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_ui_policy_action_b1041de104284def8c8f2a3564cba0bd</sys_update_name>
+    <cleared>false</cleared>
+    <disabled>true</disabled>
+    <field>balance</field>
+    <field_message/>
+    <field_message_type>none</field_message_type>
+    <mandatory>ignore</mandatory>
+    <table>x_274351_finance_0_accounts</table>
+    <ui_policy short_description="Make all account fields read-only after creation" table="x_274351_finance_0_accounts">02476a9f28064c5d9997b54cd71b5e3a</ui_policy>
+    <value/>
+    <value_action>ignore</value_action>
+    <visible>ignore</visible>
+  </sys_ui_policy_action>
+</record_update>

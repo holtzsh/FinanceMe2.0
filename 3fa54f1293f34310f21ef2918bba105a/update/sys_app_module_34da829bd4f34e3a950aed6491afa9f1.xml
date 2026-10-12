@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_app_module">
+  <sys_app_module action="INSERT_OR_UPDATE">
+    <sys_id>34da829bd4f34e3a950aed6491afa9f1</sys_id>
+    <sys_scope display_value="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+    <sys_update_name>sys_app_module_34da829bd4f34e3a950aed6491afa9f1</sys_update_name>
+    <active>true</active>
+    <application>ba1aa9db868c4f199804d09b4889709c</application>
+    <link_type>LIST</link_type>
+    <name>x_274351_finance_0_txn</name>
+    <order>400</order>
+    <roles>[object Object]</roles>
+    <title>Transaction Logs</title>
+  </sys_app_module>
+</record_update>
