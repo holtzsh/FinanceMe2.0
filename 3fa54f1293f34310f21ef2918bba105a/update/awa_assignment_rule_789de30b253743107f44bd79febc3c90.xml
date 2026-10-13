@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_assignment_rule">
+    <awa_assignment_rule action="INSERT_OR_UPDATE">
+        <after_timeout_presence/>
+        <allow_agents_to_decline>false</allow_agents_to_decline>
+        <assign_by>most_capacity</assign_by>
+        <display_option>card_and_tab</display_option>
+        <enable_auto_assign>true</enable_auto_assign>
+        <enable_skills>true</enable_skills>
+        <enforce_mandatory_skills>false</enforce_mandatory_skills>
+        <evaluate_skill_level>false</evaluate_skill_level>
+        <external>false</external>
+        <include_ai_agents>false</include_ai_agents>
+        <name>Assign Deposit and Withdrawal Requests</name>
+        <prioritize_ai_agent>true</prioritize_ai_agent>
+        <reassign_on_timeout>false</reassign_on_timeout>
+        <short_description>Assign FinanceMe2.0 Deposit and Withdrawal requests</short_description>
+        <sys_class_name>awa_assignment_rule</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-13 00:09:29</sys_created_on>
+        <sys_id>789de30b253743107f44bd79febc3c90</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Assign Deposit and Withdrawal Requests</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>awa_assignment_rule_789de30b253743107f44bd79febc3c90</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-13 00:26:22</sys_updated_on>
+        <timeout>1970-01-01 00:00:00</timeout>
+    </awa_assignment_rule>
+</record_update>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysrule_assignment">
+    <sysrule_assignment action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition table="sc_req_item">state=1^cat_item=4b0cba54326141818f5c3fc3e44849ab^ORcat_item=d6e6b885add24b7f91e34794928438e8^EQ<item display_value="Open" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="1"/>
+            <item display_table="sc_cat_item" display_value="Deposit Request" endquery="false" field="cat_item" goto="false" newquery="false" operator="=" or="false" value="4b0cba54326141818f5c3fc3e44849ab"/>
+            <item display_table="sc_cat_item" display_value="Withdrawal Request" endquery="false" field="cat_item" goto="false" newquery="false" operator="=" or="true" value="d6e6b885add24b7f91e34794928438e8"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <description/>
+        <group/>
+        <match_conditions>ALL</match_conditions>
+        <name>Withdrawal or Deposit Requests</name>
+        <order>100</order>
+        <script>/**&#13;
+* Example:&#13;
+* The following script requires personalizing the instance to add the Malware category and the Security assignment group.&#13;
+* if (current.category == "Hardware")&#13;
+*    current.assignment_group.setDisplayValue("Hardware"); &#13;
+* else if (current.category == "Software")&#13;
+*    current.assignment_group.setDisplayValue("Software");&#13;
+* else if (current.category == "Malware")&#13;
+*    current.assignment_group.setDisplayValue("Security");	&#13;
+*&#13;
+* Another Example:&#13;
+* Release Planning Example, which assigns the last person assigned to a release to the current release.&#13;
+* current.release.product.service.assigned_to;&#13;
+*/</script>
+        <sys_class_name>sysrule_assignment</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-13 00:35:30</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>0892f787257743107f44bd79febc3cff</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Withdrawal or Deposit Requests</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sysrule_assignment_0892f787257743107f44bd79febc3cff</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-13 05:28:40</sys_updated_on>
+        <table>sc_req_item</table>
+        <user/>
+    </sysrule_assignment>
+</record_update>
