@@ -56,6 +56,14 @@
 
     // Set timestamp to current time
     current.setValue('timestamp', new GlideDateTime());
+
+    // Generate TRX number for deposit and withdrawal types
+    var txnType = current.getValue('type');
+    if (txnType === 'deposit' || txnType === 'withdrawal') {
+        var gdt = new GlideDateTime();
+        var timestamp = gdt.getValue().replace(/[-:\s]/g, '');
+        current.setValue('number', 'TRX-' + timestamp);
+    }
 })(current, previous);
 ]]></script>
         <sys_class_name>sys_script</sys_class_name>

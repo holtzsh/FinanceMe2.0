@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes/>
+        <authored_on_release_version/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description>Handles deposit request approval workflow: gets catalog variables, requests manager approval, creates transaction on approval</description>
+        <display_name_after_preview/>
+        <flow_priority>MEDIUM</flow_priority>
+        <generation_source>fluent</generation_source>
+        <internal_name>deposit_request_flow</internal_name>
+        <label_cache>[{"name":"Service Catalog_1.request_item","label":"Trigger - Service Catalog➛Request Item","type":"reference","base_type":"reference","usedInstances":{"72a32e88-6a53-475b-9faa-39a3bf659c85":["requested_item"],"f0248ed6-73a6-45e0-b0f3-c7fdf852c0bb":["record"],"2a92691f-d5e8-498e-8df7-6f1dbcd61755":["record"],"34a5cb49-5f0e-44a5-92eb-9c187c154260":["record"]},"attributes":{}},{"name":"static.5ebf025d53494fc68ce227c1a0c49e80","label":"static➛5ebf025d53494fc68ce227c1a0c49e80","usedInstances":{"f0248ed6-73a6-45e0-b0f3-c7fdf852c0bb":["approval_conditions"]},"attributes":{}},{"name":"f0248ed6-73a6-45e0-b0f3-c7fdf852c0bb.approval_state","label":"f0248ed6-73a6-45e0-b0f3-c7fdf852c0bb➛approval_state","type":"choice","base_type":"choice","usedInstances":{"1d6fc544-8508-4705-8e2c-186f55ae6544":["condition"],"cb16d67c-bfdb-4c79-b264-7a54189a12a9":["condition"]},"attributes":{}},{"name":"72a32e88-6a53-475b-9faa-39a3bf659c85.account","label":"72a32e88-6a53-475b-9faa-39a3bf659c85➛account","type":"reference","base_type":"reference","usedInstances":{"e556c4e5-27e1-4d03-820f-8103863452db":["values"],"64c3afff-c656-45f3-a095-e4b673f50e76":["values"]},"attributes":{}},{"name":"72a32e88-6a53-475b-9faa-39a3bf659c85.amount","label":"72a32e88-6a53-475b-9faa-39a3bf659c85➛amount","type":"string","base_type":"string","usedInstances":{"e556c4e5-27e1-4d03-820f-8103863452db":["values"],"64c3afff-c656-45f3-a095-e4b673f50e76":["values"]},"attributes":{}},{"name":"72a32e88-6a53-475b-9faa-39a3bf659c85.justification","label":"72a32e88-6a53-475b-9faa-39a3bf659c85➛justification","type":"string","base_type":"string","usedInstances":{"e556c4e5-27e1-4d03-820f-8103863452db":["values"],"64c3afff-c656-45f3-a095-e4b673f50e76":["values"]},"attributes":{}}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>Deposit Request Flow</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ac56b517b2864f9d9012ecb1ad12f85d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Deposit Request Flow</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_hub_flow_ac56b517b2864f9d9012ecb1ad12f85d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <type>flow</type>
+        <updation_source/>
+        <version>2</version>
+        <version_record/>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_variable_value action="delete_multiple" query="document_key=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=ac56b517b2864f9d9012ecb1ad12f85d^sys_idNOT INae058722b4bf4b509097f552f6dfb91f"/>
+    <sys_hub_trigger_instance_v2 action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <generation_source/>
+        <name>Service Catalog</name>
+        <published_version/>
+        <remote_sys_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>ae058722b4bf4b509097f552f6dfb91f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <trigger_definition display_value="Service Catalog">c43a1011c36813002841b63b12d3ae15</trigger_definition>
+        <trigger_inputs>H4sIAAAAAAAAA62SMU/DMBCF/0p0E0geyuqNBSlSWSiwRFV1tc+phXOO7EshqvLfkdWqlCqwwOjz83ufzq85gCTftpRqzoJsaDXm2oIGUBBwSwE0PA1cuRDfq5pBgWehxBiex55Ag9lFbwgUWOqJLbEcHx/nS58FdHMA94phKHrkERS45bW35wp5rExkoQ8pkrrDlo5mbkWBjJAF7TBkUuBe8uXp0efsuT0NJnURuEXz1qY4sP0p90tR3VhyOAS5/UcAFxP9DvBd8YfYtYIO2aLENJ5FMVlKoO8WCwWMXbFOA29K+MaXH93Pbcr63AccZ7d4unvwFE5VySb5Xu6N+D2dg83OB5uIQTdrBT0m7EgKygHkqjyzXPP9Q5Hkt4NQLkZo96W1BUPSQDBN0/oTRGbyxNUCAAA=</trigger_inputs>
+        <trigger_outputs/>
+        <trigger_type>service_catalog</trigger_type>
+        <updation_source/>
+    </sys_hub_trigger_instance_v2>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=ac56b517b2864f9d9012ecb1ad12f85d^sys_idNOT IN72a32e886a53475b9faa39a3bf659c85,f0248ed673a645e0b0f3c7fdf852c0bb,e556c4e527e14d03820f8103863452db,2a92691fd5e8498e8df76f1dbcd61755,64c3afffc65645f3a095e4b673f50e76,34a5cb495f0e44a592eb9c187c154260"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Get Catalog Variables">330ba3abc31013002841b63b12d3aee8</action_type>
+        <action_type_parent display_value="">330ba3abc31013002841b63b12d3aee8</action_type_parent>
+        <attributes/>
+        <comment>Get deposit request catalog variables</comment>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>72a32e886a53475b9faa39a3bf659c85</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>72a32e88-6a53-475b-9faa-39a3bf659c85</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA92Sy0rEQBBFf2XodZB+VB49O9EvUHAjEqo61dqYl0knMoT8u4yOomYzuHRd9xbn1q37RbTYsNgLhxHr7rGccQhINY8iETPW03GWaYPWo3OsC0hzS1hoY31hUwkKwOxD5Kbs+hi6tmz5NSFDVZoZy5o0SDSWtEPQSMjgctQbgzdcKJ+rTGYEvsox86CktKBZgrN+Y9BZAZ7YSKcJjJekMDOuQvJI1viNQSSiCmNf4+HuX4Ua3RD6eOlimFnsPdYjJ6LHARuOPIj9IuKhP8Yd62l8osk9cxTrmnz1PvDLxGPkqjwu/1b6stzyMAfHu6vTa6iLk/hduq7bm57lORt5YM8Dt45/AEdu+hojl58f+4sbSDrCFIzOFKhCFT51xjvDAAVYpC31NffdGOLu5oP0r4gPb4j0uW9NAwAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=72a32e886a53475b9faa39a3bf659c85"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Ask For Approval">f8f2e9920b10030085c083eb37673abd</action_type>
+        <action_type_parent display_value="">f8f2e9920b10030085c083eb37673abd</action_type_parent>
+        <attributes/>
+        <comment>Request approval from FinanceMe2.0 Managers group</comment>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <generation_source/>
+        <order>2</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>f0248ed673a645e0b0f3c7fdf852c0bb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>f0248ed6-73a6-45e0-b0f3-c7fdf852c0bb</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA62Qy2rDMBBFf8XM2gQnjdsku9BC9y10E4KZjCdBRZYUzdgQjP691PThkI0LXWlxuTrnzq4Hhw3DBjCE6Du0FXlXGzXeCeTQoW0/0+2QsrzwO5PK1l2ed30vimpoVvLhWCzKurxbrpdHul8RLxYPNMeClmteFSntIYfaSLB4efu/H4WiCbolNR3D5ohWOIeAERtWjrDpQS/haltsLQuklP/MVjxYHg0VqiKfK6Pc3Dpfh5PxA6MagGN0ZPKxHrH7/pVjZ4izR1S0/lTNZ5HPLYsOzJRulSZ1JpvWntqGnVamvlL9PSCjeDdyfuLgxWj2xRxeE1myBh2eOGbf1Vv1v1QnLxCNxp0gpf0H0HtrUtsCAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=f0248ed673a645e0b0f3c7fdf852c0bb"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="">2de05916c31332002841b63b12d3aee1</action_type_parent>
+        <attributes/>
+        <comment>Create deposit transaction record</comment>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <generation_source/>
+        <order>4</order>
+        <parent_ui_id>1d6fc544-8508-4705-8e2c-186f55ae6544</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>e556c4e527e14d03820f8103863452db</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>e556c4e5-27e1-4d03-820f-8103863452db</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA92Sz07DMAzG38XnFkGzrH+kHjjwAFy4IBq5qSsFJWnUuNOmKu+Ouk0IwYFx5WjLn/37bL+u4NERNMDYW1LnIIMD2mVLHlVR7oR8UKPx6DWpe8VHDxkMJgaLp5ff6qKeTeBHzeZA0IxoI2UQcEZHTDM0K/ApfBufUvZJdQaJX4hQ62nx3K5rWaAoqKryPUqR70rZ5/WImIsaRT/uZa0reXctT6lD9yedu8o2vHagMEXDXWTkJbZ6csES09ANdDFoJn9r5/clshmNxk2UUvf0/HOd/9Pk7b9ALlhkUpejp/T2AY29Ka6nAgAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=e556c4e527e14d03820f8103863452db"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="">f9d01dd2c31332002841b63b12d3aea1</action_type_parent>
+        <attributes/>
+        <comment>Close request item as completed</comment>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <generation_source/>
+        <order>5</order>
+        <parent_ui_id>1d6fc544-8508-4705-8e2c-186f55ae6544</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>2a92691fd5e8498e8df76f1dbcd61755</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>2a92691f-d5e8-498e-8df7-6f1dbcd61755</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA62RwUoEMQyGX6X0PAyIt4U9iPoAouxF3BLbXyl22m6SGVmGvrs4gqy6hzl4TELyfUkeZ5tpgN1YpecEtwSdnSiNn0nxjnFwUTHYzoYoNdFxd7YonmPVK69xgt28UBJ0thLTAAXbzWz1WH+BWuu++QxfOJyw5/kePEUPc01Kqby6i55xGCG6MFv7q7SqZ7VpKH4ckNXF8EN1MZTTMykptpf798JvLheFbG9Qi0Q1VCuXCcFQDqZy8RBB6M0DUxbyGks2nkGK0O9v785c+T9nr38ShppI4b5WbO3pAx7Ezd8qAgAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=2a92691fd5e8498e8df76f1dbcd61755"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="">2de05916c31332002841b63b12d3aee1</action_type_parent>
+        <attributes/>
+        <comment>Create rejected deposit transaction record for notification</comment>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <generation_source/>
+        <order>7</order>
+        <parent_ui_id>cb16d67c-bfdb-4c79-b264-7a54189a12a9</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>64c3afffc65645f3a095e4b673f50e76</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>64c3afff-c656-45f3-a095-e4b673f50e76</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA92Sz2rDMAzG38XnpGxx3fyBHHrYA+zSy1iM4sjgYjsmVkpL8LuPtGWM7bDuuqOEPun3SXpbmAeHrGEEvUV5DTJ2AjuvybMsyi0Xz1IbD16hfJJ09ixjg4nBwuXwW11Ukwm0V2ROyBoNNmLGAkzgkHBizcLoEr6NTyn7pLqCxC9EoNQ4e2qXpSyAF1hV+Q4Ez7el6PNaA+S8Bt7rnahVJTb38pQ6cH/SubtsxWsHDGM01EUCmmM74REV4dANePNnRv9o4+McyWijYBWl1L28/tzmv/T4+CegCxYI5e3kKb1/AFT8PNWlAgAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=64c3afffc65645f3a095e4b673f50e76"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="">f9d01dd2c31332002841b63b12d3aea1</action_type_parent>
+        <attributes/>
+        <comment>Close request item as rejected</comment>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <generation_source/>
+        <order>8</order>
+        <parent_ui_id>cb16d67c-bfdb-4c79-b264-7a54189a12a9</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>34a5cb495f0e44a592eb9c187c154260</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>34a5cb49-5f0e-44a5-92eb-9c187c154260</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA6WRwUoEMQyGX2XIeVgQPA3sQdQHEMGLuCXb/i7VdtpNMyPD0HcXR5FV9zDgMQnJ9yV5nKnnCOpIeR9glqClkcPwkSzWCI7GKyK15HzJgaeHs8VixWe9supHUPfMoaClzMIRCqFuJp3yL1Ct7TdfYJO4E/Y830NGb9Fcs3JIB3OxERwHFF2Ytf5VWtWz2tQlO0T0arz7oboYltMzKSu2l7u3JK+mT4qyvUFOxWvzRW8EL7AK1+ynJnLPB8hmd3t35qr/mbX+CYg5sMJ8rlDr0zs8Bk9pCgIAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=34a5cb495f0e44a592eb9c187c154260"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=ac56b517b2864f9d9012ecb1ad12f85d^sys_idNOT IN1d6fc544850847058e2c186f55ae6544,cb16d67cbfdb4c79b2647a54189a12a9"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block/>
+        <comment>Check if deposit was approved</comment>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>1d6fc544850847058e2c186f55ae6544</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>1d6fc544-8508-4705-8e2c-186f55ae6544</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA63QwWrDMAwG4HfRORmhTdsQ2KHH3ksvoxTFljcxxzaWk1KM372EZtAH2E36fiGBMvgphSnJ2R9F+NtB/3WtYMbIOFiSV6tJsbB358VObplfg4fDkdU73X38Ndbf343/6gwOR4IelHeaE3sHyzE7LZazaTZtR3pfH7a4r9sdNfXQmG2tDkabbrdRzTB8YAjRz2hvkjBRKZ8vIA0VaJZg8XH5v43qh62OtP4lYMSREkXoc6lAVOSQjirxTNAbtELlWp7KIEhuVAEAAA==</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block/>
+        <comment>Check if deposit was rejected</comment>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Deposit Request Flow">ac56b517b2864f9d9012ecb1ad12f85d</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Else If">666e5545c3e232002841b63b12d3ae99</logic_definition>
+        <order>6</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>cb16d67cbfdb4c79b2647a54189a12a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-15 21:57:18</sys_updated_on>
+        <ui_id>cb16d67c-bfdb-4c79-b264-7a54189a12a9</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAAA62QzWrDMBCE32XPdjD5x9BDjr2HXkoI69Wq3VaWhLR2CELvXkxTyAP0NvPNsAtTIEwaJ83ncMpZPjz075cGZkyCg+P8aw2TZAn+vLBXv/Qfwd3jKPSMbiF9Wxduz0z+dAGPI0MPFLwRleBheeamhZViu/X2yGbfHja4b7c77tqhs5uWDtbY425N3TCsMMYUZnTXrKhc60viLyZlAw0YydHh/e3/LtKnOJP4sUvEhCMrJ+hLbSBTkqgnUpkZeosuc73UHyesDHdUAQAA</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=ac56b517b2864f9d9012ecb1ad12f85d"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=ac56b517b2864f9d9012ecb1ad12f85d"/>
+</record_update>

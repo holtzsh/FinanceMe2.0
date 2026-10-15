@@ -4,7 +4,7 @@
         <active>true</active>
         <availability>on_desktop</availability>
         <billable>false</billable>
-        <category display_value="">2709adbe93770710f21ef2918bba1044</category>
+        <category display_value="FinanceMe2.0 Withdrawal and Deposits">a9d8c45f257b43107f44bd79febc3cdb</category>
         <cc_render_type>conversational_agentic</cc_render_type>
         <checked_out/>
         <cost>0</cost>
@@ -15,9 +15,9 @@
         <description/>
         <display_price_property>non_zero</display_price_property>
         <entitlement_script/>
-        <flow_designer_flow display_value="Withdrawal Request Flow">6ef4ef1696b64871b1e23e3f13ec753c</flow_designer_flow>
+        <flow_designer_flow display_value="Withdrawal Request Flow">50100ec173cf40808b457eb6cced9aaf</flow_designer_flow>
         <fulfillment_automation_level>unspecified</fulfillment_automation_level>
-        <group display_value="FinanceMe2.0 Managers" name="FinanceMe2.0 Managers">5ebf025d53494fc68ce227c1a0c49e80</group>
+        <group display_value="">5ebf025d53494fc68ce227c1a0c49e80</group>
         <hide_sp>false</hide_sp>
         <icon>1410d53dfe68945a61e65e986e94eeca</icon>
         <ignore_price>true</ignore_price>
@@ -32,10 +32,10 @@
         <model/>
         <name>Withdrawal Request</name>
         <no_attachment_v2>false</no_attachment_v2>
-        <no_cart>false</no_cart>
+        <no_cart>true</no_cart>
         <no_cart_v2>true</no_cart_v2>
         <no_delivery_time_v2>true</no_delivery_time_v2>
-        <no_order>false</no_order>
+        <no_order>true</no_order>
         <no_order_now>false</no_order_now>
         <no_proceed_checkout>false</no_proceed_checkout>
         <no_quantity>false</no_quantity>
@@ -67,14 +67,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-10 13:44:33</sys_created_on>
         <sys_id>d6e6b885add24b7f91e34794928438e8</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>49</sys_mod_count>
         <sys_name>Withdrawal Request</sys_name>
         <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
         <sys_policy/>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
         <sys_update_name>sc_cat_item_d6e6b885add24b7f91e34794928438e8</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2026-10-12 22:00:47</sys_updated_on>
+        <sys_updated_on>2026-10-15 21:57:16</sys_updated_on>
         <taxonomy_topic/>
         <template/>
         <template_manager_roles/>
@@ -120,22 +120,22 @@
         <size_compressed>591</size_compressed>
         <state/>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-12 22:00:48</sys_created_on>
+        <sys_created_on>2026-10-15 21:57:17</sys_created_on>
         <sys_id>1410d53dfe68945a61e65e986e94eeca</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-12 22:00:48</sys_updated_on>
+        <sys_updated_on>2026-10-15 21:57:17</sys_updated_on>
         <table_name>ZZ_YYsc_cat_item</table_name>
         <table_sys_id>d6e6b885add24b7f91e34794928438e8</table_sys_id>
     </sys_attachment>
     <sys_attachment_doc action="INSERT_OR_UPDATE">
-        <data>H4sIAItYzWoAAw==</data>
+        <data>H4sIABVM0WoAAw==</data>
         <length>16</length>
         <position>0</position>
         <sys_attachment display_value="icon" sys_id="1410d53dfe68945a61e65e986e94eeca">1410d53dfe68945a61e65e986e94eeca</sys_attachment>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-12 22:00:48</sys_created_on>
-        <sys_id>b6c1c3e2e89d0b7aa71be12b93f621f1</sys_id>
+        <sys_created_on>2026-10-15 21:57:17</sys_created_on>
+        <sys_id>e803a8a4ba9ea412aa540cae86dc8c37</sys_id>
     </sys_attachment_doc>
     <sys_attachment_doc action="INSERT_OR_UPDATE">
         <data>ATgCx/2JUE5HDQoaCgAAAA1JSERSAAAALwAAACoIBgAAACPqAh8AAAABc1JHQgCuzhzpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAc1JREFUaEPtlz9Iw0AUxr9qK1XRTBYUq4uLLuI/KDoIgiAO3RQEiwi6KoggVBzagot1cXBRdBHEpYKDuCh0KAqi4C4ixTpUOgTxT1MlDralPntNhiZn5H7wlu8duS/v7l4uNlVVVViUCipYCWGeF8I8L4R5Xtg0+7zyiuRzhqqG46yTUF9F1Z+UMP+K2EYA4wePNGESDvRM+7E304Z6msrC3Dbps02OxgEgg6vdNfhj7FVnVv4s5IPvBIBnCuf+PjjpAENRcLy6gOULAN5FJJY66YBvVAanwUm1qX9SbQpe0pQp6JmfuW2swD83r7wgmZJND1mhRn6jfWB5MzKPxEovVQFdlf/DCPO8EOZ5od1tmjsw0d1A04YTv44i9lC624jrAS+EeV4I87ywU4FJ6gYb25eIF0gtg2OY80hFc3nahxH2tlK1LOiv/Ns9IkdR7BdE5O6FmcvHzRN9UtnQb76yFu5GCa6CcFc7mLl8SNkxRkAbfw49Hwkj0TO/duU/qWAGGbzn/qSq2CvHvNskDwPoCt9S2XRGQzvYGir+AszKu7yzCA9IVDYVl3ce6wzjKFX5HGlZhvxBVROw12gedk3zfxnmtrECwjwvLG3+C4g/+Rqn8xi3AAAAAElFTkSuQmCC0dC7vDgCAAA=</data>
@@ -143,7 +143,7 @@
         <position>1</position>
         <sys_attachment display_value="icon" sys_id="1410d53dfe68945a61e65e986e94eeca">1410d53dfe68945a61e65e986e94eeca</sys_attachment>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-12 22:00:48</sys_created_on>
+        <sys_created_on>2026-10-15 21:57:17</sys_created_on>
         <sys_id>157df426513468a7a8baacf559fdaebc</sys_id>
     </sys_attachment_doc>
 </record_update>

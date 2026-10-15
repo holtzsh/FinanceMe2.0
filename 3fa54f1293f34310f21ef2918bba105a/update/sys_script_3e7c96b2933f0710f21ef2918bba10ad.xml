@@ -28,52 +28,59 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-    // 1. Generate a unique transaction number
-    var txnNum = 'ACH-' + new Date().getTime().toString().slice(-6);
-    current.setValue('number', txnNum);
+    var txnType = current.getValue('type');
 
-    // 2. Validate amount
-    var amount = parseFloat(current.getValue('amount'));
-    if (isNaN(amount) || amount <= 0) {
-        gs.addErrorMessage('A valid transfer amount greater than zero is required.');
-        current.setAbortAction(true);
-        return;
-    }
+    // Only generate ACH number and process webhook for ach_transfer type
+    // Deposit and withdrawal types get their TRX number from "Set Transaction Details" BR
+    if (txnType === 'ach_transfer') {
+        // 1. Generate a unique transaction number
+        var txnNum = 'ACH-' + new Date().getTime().toString().slice(-6);
+        current.setValue('number', txnNum);
 
-    // 3. Optional: Send payload to webhook.site if webhook key is provided
-    var webhookKey = current.getValue('webhook_key');
-    if (webhookKey) {
-        try {
-            var rm = new sn_ws.RESTMessageV2();
-            rm.setEndpoint('https://webhook.site/' + webhookKey);
-            rm.setHttpMethod('POST');
-            rm.setRequestHeader('Content-Type', 'application/json');
-            
-            var payload = {
-                transaction: txnNum,
-                amount: amount,
-                account: current.getDisplayValue('account'),
-                description: current.getValue('description'),
-                timestamp: new GlideDateTime().getDisplayValue()
-            };
-            
-            rm.setRequestBody(JSON.stringify(payload));
-            var response = rm.execute();
-            
-            if (response.getStatusCode() === 200) {
-                gs.addInfoMessage('ACH Transfer ' + txnNum + ' created and webhook sent successfully.');
-            } else {
-                gs.addWarningMessage('ACH Transfer created, but webhook returned status: ' + response.getStatusCode());
-            }
-        } catch (e) {
-            gs.error('ACH Webhook Integration Error: ' + e.message);
-            gs.addErrorMessage('Transfer recorded, but webhook transmission failed.');
+        // 2. Validate amount
+        var amount = parseFloat(current.getValue('amount'));
+        if (isNaN(amount) || amount <= 0) {
+            gs.addErrorMessage('A valid transfer amount greater than zero is required.');
+            current.setAbortAction(true);
+            return;
         }
-    } else {
-        gs.addInfoMessage('ACH Transfer ' + txnNum + ' successfully created.');
+
+        // 3. Optional: Send payload to webhook.site if webhook key is provided
+        var webhookKey = current.getValue('webhook_key');
+        if (webhookKey) {
+            try {
+                var rm = new sn_ws.RESTMessageV2();
+                rm.setEndpoint('https://webhook.site/' + webhookKey);
+                rm.setHttpMethod('POST');
+                rm.setRequestHeader('Content-Type', 'application/json');
+
+                var payload = {
+                    transaction: txnNum,
+                    amount: amount,
+                    account: current.getDisplayValue('account'),
+                    description: current.getValue('description'),
+                    timestamp: new GlideDateTime().getDisplayValue()
+                };
+
+                rm.setRequestBody(JSON.stringify(payload));
+                var response = rm.execute();
+
+                if (response.getStatusCode() === 200) {
+                    gs.addInfoMessage('ACH Transfer ' + txnNum + ' created and webhook sent successfully.');
+                } else {
+                    gs.addWarningMessage('ACH Transfer created, but webhook returned status: ' + response.getStatusCode());
+                }
+            } catch (e) {
+                gs.error('ACH Webhook Integration Error: ' + e.message);
+                gs.addErrorMessage('Transfer recorded, but webhook transmission failed.');
+            }
+        } else {
+            gs.addInfoMessage('ACH Transfer ' + txnNum + ' successfully created.');
+        }
     }
 
-})(current, previous);]]></script>
+})(current, previous);
+]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-11 23:40:08</sys_created_on>
