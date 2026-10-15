@@ -41,7 +41,7 @@
         <update_guid_history>4e91a3fe8173031050293a4c5a6431cb:1662942865</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="FinanceMe2.0 Withdrawals/Deposits.Deposit Request">3eb5ac5b25ff43107f44bd79febc3c9d</sys_audit_delete>
+        <sys_audit_delete display_value="">3eb5ac5b25ff43107f44bd79febc3c9d</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-13 04:12:52</sys_created_on>
