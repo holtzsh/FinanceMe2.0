@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description>Creates the FinanceMe2.0 Managers assignment group, assigns the approver_user and x_274351_finance_0.manager roles to it, and adds the Papa Bear user as a member. Runs after the FinanceMe2.0 app is committed or installed.</description>
+        <name>Setup FinanceMe2.0 Managers Group</name>
+        <record_for_rollback>false</record_for_rollback>
+        <script><![CDATA[(function() {
+    // Step 1: Create the assignment group "FinanceMe2.0 Managers"
+    var grGroup = new GlideRecord('sys_user_group');
+    grGroup.addQuery('name', 'FinanceMe2.0 Managers');
+    grGroup.query();
+
+    var groupSysId;
+    if (!grGroup.next()) {
+        grGroup.initialize();
+        grGroup.setValue('name', 'FinanceMe2.0 Managers');
+        grGroup.setValue('description', 'FinanceMe2.0 Managers assignment group for the FinanceMe2.0 application');
+        grGroup.setValue('active', true);
+        groupSysId = grGroup.insert();
+        gs.info('FinanceMe2.0 Fix Script: Created FinanceMe2.0 Managers group with sys_id: ' + groupSysId);
+    } else {
+        groupSysId = grGroup.getUniqueValue();
+        gs.info('FinanceMe2.0 Fix Script: FinanceMe2.0 Managers group already exists with sys_id: ' + groupSysId);
+    }
+
+    // Step 2: Assign the approver_user role to the group
+    var approverRoleSysId = 'debab85bff02110053ccffffffffffb6';
+    var grApproverRole = new GlideRecord('sys_group_has_role');
+    grApproverRole.addQuery('group', groupSysId);
+    grApproverRole.addQuery('role', approverRoleSysId);
+    grApproverRole.query();
+
+    if (!grApproverRole.next()) {
+        grApproverRole.initialize();
+        grApproverRole.setValue('group', groupSysId);
+        grApproverRole.setValue('role', approverRoleSysId);
+        grApproverRole.insert();
+        gs.info('FinanceMe2.0 Fix Script: Assigned approver_user role to FinanceMe2.0 Managers group');
+    } else {
+        gs.info('FinanceMe2.0 Fix Script: approver_user role already assigned to FinanceMe2.0 Managers group');
+    }
+
+    // Step 3: Assign the x_274351_finance_0.manager role to the group
+    var managerRoleSysId = '9553643a1e174cc4942f6dc837061a1c';
+    var grManagerRole = new GlideRecord('sys_group_has_role');
+    grManagerRole.addQuery('group', groupSysId);
+    grManagerRole.addQuery('role', managerRoleSysId);
+    grManagerRole.query();
+
+    if (!grManagerRole.next()) {
+        grManagerRole.initialize();
+        grManagerRole.setValue('group', groupSysId);
+        grManagerRole.setValue('role', managerRoleSysId);
+        grManagerRole.insert();
+        gs.info('FinanceMe2.0 Fix Script: Assigned x_274351_finance_0.manager role to FinanceMe2.0 Managers group');
+    } else {
+        gs.info('FinanceMe2.0 Fix Script: x_274351_finance_0.manager role already assigned to FinanceMe2.0 Managers group');
+    }
+
+    // Step 4: Add Papa Bear user to the group
+    var papaBearSysId = '25574eded88c13107f44360b5685007a';
+    var grMember = new GlideRecord('sys_user_grmember');
+    grMember.addQuery('group', groupSysId);
+    grMember.addQuery('user', papaBearSysId);
+    grMember.query();
+
+    if (!grMember.next()) {
+        grMember.initialize();
+        grMember.setValue('group', groupSysId);
+        grMember.setValue('user', papaBearSysId);
+        grMember.insert();
+        gs.info('FinanceMe2.0 Fix Script: Added Papa Bear user to FinanceMe2.0 Managers group');
+    } else {
+        gs.info('FinanceMe2.0 Fix Script: Papa Bear is already a member of FinanceMe2.0 Managers group');
+    }
+
+    gs.info('FinanceMe2.0 Fix Script: Setup complete for FinanceMe2.0 Managers group');
+})();
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-22 19:41:52</sys_created_on>
+        <sys_id>e2945062994a40619ea55d1968401ca3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Setup FinanceMe2.0 Managers Group</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sys_script_fix_e2945062994a40619ea55d1968401ca3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-22 19:41:52</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

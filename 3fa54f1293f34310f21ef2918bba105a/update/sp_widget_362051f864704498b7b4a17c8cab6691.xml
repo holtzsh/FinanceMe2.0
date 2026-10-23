@@ -5,67 +5,148 @@
     var c = this;
     c.selectedAccount = null;
 
+    var now = new Date();
+    var currentMonth = now.getMonth() + 1;
+    var currentYear = now.getFullYear();
+
+    c.filter = {
+        fromMonth: currentMonth,
+        fromYear: currentYear,
+        toMonth: currentMonth,
+        toYear: currentYear,
+        searchText: ''
+    };
+
+    c.months = [
+        { value: 1, label: 'January' },
+        { value: 2, label: 'February' },
+        { value: 3, label: 'March' },
+        { value: 4, label: 'April' },
+        { value: 5, label: 'May' },
+        { value: 6, label: 'June' },
+        { value: 7, label: 'July' },
+        { value: 8, label: 'August' },
+        { value: 9, label: 'September' },
+        { value: 10, label: 'October' },
+        { value: 11, label: 'November' },
+        { value: 12, label: 'December' }
+    ];
+
+    c.years = [];
+    for (var y = 2020; y <= 2030; y++) {
+        c.years.push(y);
+    }
+
     c.selectAccount = function(acct) {
         c.selectedAccount = acct;
+        c.loadTransactions();
     };
 
     c.clearSelection = function() {
         c.selectedAccount = null;
+        c.data.transactions = undefined;
+    };
+
+    c.loadTransactions = function() {
+        if (!c.selectedAccount) return;
+
+        var fromMonth = ('0' + c.filter.fromMonth).slice(-2);
+        var fromDate = c.filter.fromYear + '-' + fromMonth + '-01';
+
+        var toMonth = c.filter.toMonth;
+        var toYear = c.filter.toYear;
+        var lastDay = new Date(toYear, toMonth, 0).getDate();
+        var toMonthStr = ('0' + toMonth).slice(-2);
+        var toDate = toYear + '-' + toMonthStr + '-' + ('0' + lastDay).slice(-2);
+
+        c.server.get({
+            action: 'getTransactions',
+            account_id: c.selectedAccount.sys_id,
+            from_date: fromDate,
+            to_date: toDate,
+            search_text: c.filter.searchText
+        }).then(function(response) {
+            c.data.transactions = response.data.transactions;
+        });
+    };
+
+    c.applyFilters = function() {
+        c.loadTransactions();
     };
 };
 ]]></client_script>
         <controller_as>c</controller_as>
-        <css>.my-accounts-container {
-    .panel-heading {
-        background-color: #1a3a5c;
-        color: #ffffff;
-        .panel-title {
-            font-size: 16px;
-            font-weight: 600;
-        }
+        <css>.my-accounts-widget {
+    .panel-title {
+        font-size: $sp-text-lg;
+        color: $text-color;
     }
-    .table &gt; tbody &gt; tr {
+
+    .cursor-pointer {
         cursor: pointer;
-        &amp;:hover { background-color: #f0f5fa; }
-        &amp;.selected-row {
-            background-color: #d6e9f8;
-            border-left: 3px solid #1a3a5c;
-        }
     }
-    .account-detail-panel {
-        background: #f9fbfd;
-        border: 1px solid #dce4ec;
-        border-radius: 4px;
-        padding: 20px;
+
+    .table &gt; tbody &gt; tr.active &gt; td {
+        background-color: lighten($brand-primary, 45%);
+    }
+
+    .table &gt; tbody &gt; tr:hover &gt; td {
+        background-color: lighten($brand-primary, 50%);
+    }
+
+    .transactions-section {
         margin-top: 15px;
-        .detail-header {
-            font-size: 15px;
+    }
+
+    .transaction-filters {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid lighten($text-muted, 30%);
+
+        .form-group {
+            margin-right: 10px;
+            margin-bottom: 5px;
+
+            label {
+                margin-right: 5px;
+                color: $text-color;
+                font-size: $sp-text-xs;
+            }
+
+            .form-control {
+                font-size: $sp-text-xs;
+            }
+        }
+
+        .btn-primary {
+            background-color: $brand-primary;
+            border-color: $brand-primary;
+        }
+    }
+
+    .transactions-table {
+        font-size: $sp-text-xs;
+
+        th {
+            color: $text-muted;
             font-weight: 600;
-            color: #1a3a5c;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #1a3a5c;
+            text-transform: uppercase;
+            font-size: $sp-text-xs;
         }
-        .detail-row {
-            display: flex;
-            padding: 6px 0;
-            .detail-label {
-                font-weight: 600;
-                color: #555;
-                width: 140px;
-                flex-shrink: 0;
-            }
-            .detail-value {
-                color: #333;
-            }
+
+        td {
+            color: $text-color;
+            vertical-align: middle;
         }
     }
-    .status-badge {
-        &amp;.active { color: #3c763d; font-weight: 600; }
-        &amp;.inactive { color: #a94442; font-weight: 600; }
+
+    .empty-state {
+        padding: 20px;
+        color: $text-muted;
+        font-size: $sp-text-xs;
     }
-    .empty-state { padding: 30px 0; }
-}</css>
+}
+</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -80,7 +161,58 @@
         <option_schema/>
         <public>false</public>
         <roles/>
-        <script><![CDATA["(function() {\n    data.accounts = [];\n    data.isManager = gs.hasRole('x_274351_finance_0.manager') && !gs.hasRole('x_274351_finance_0.administrator');\n    \n    var gr = new GlideRecord('x_274351_finance_0_accounts');\n    // My Accounts ALWAYS shows only the logged-in user's accounts\n    gr.addQuery('holder', gs.getUserID());\n    gr.orderBy('number');\n    gr.query();\n    while (gr.next()) {\n        data.accounts.push({\n            sys_id: gr.getUniqueValue(),\n            number: gr.getValue('number'),\n            account_type: gr.getDisplayValue('account_type'),\n            holder_name: gr.getDisplayValue('holder'),\n            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),\n            active: gr.getValue('active') == '1' || gr.getValue('active') == 'true'\n        });\n    }\n})();\n"]]></script>
+        <script><![CDATA[(function() {
+    if (input && input.action === 'getTransactions') {
+        data.transactions = [];
+        var txnGr = new GlideRecord('x_274351_finance_0_txn');
+        txnGr.addQuery('account', input.account_id);
+        if (input.from_date) {
+            txnGr.addQuery('timestamp', '>=', input.from_date);
+        }
+        if (input.to_date) {
+            txnGr.addQuery('timestamp', '<=', input.to_date);
+        }
+        if (input.search_text) {
+            txnGr.addQuery('description', 'CONTAINS', input.search_text);
+        }
+        txnGr.orderByDesc('timestamp');
+        txnGr.setLimit(100);
+        txnGr.query();
+        while (txnGr.next()) {
+            data.transactions.push({
+                sys_id: txnGr.getUniqueValue(),
+                number: txnGr.getValue('number'),
+                timestamp: txnGr.getDisplayValue('timestamp'),
+                type: txnGr.getDisplayValue('type'),
+                description: txnGr.getValue('description'),
+                amount: parseFloat(txnGr.getValue('amount') || 0).toFixed(2),
+                balance_after: parseFloat(txnGr.getValue('balance_after') || 0).toFixed(2),
+                status: txnGr.getDisplayValue('status')
+            });
+        }
+        return;
+    }
+
+    data.accounts = [];
+    data.isManager = gs.hasRole('x_274351_finance_0.manager') && !gs.hasRole('x_274351_finance_0.administrator');
+
+    var gr = new GlideRecord('x_274351_finance_0_accounts');
+    gr.addQuery('holder', gs.getUserID());
+    gr.orderBy('number');
+    gr.setLimit(50);
+    gr.query();
+    while (gr.next()) {
+        data.accounts.push({
+            sys_id: gr.getUniqueValue(),
+            number: gr.getValue('number'),
+            account_type: gr.getDisplayValue('account_type'),
+            holder_name: gr.getDisplayValue('holder'),
+            balance: parseFloat(gr.getValue('balance') || 0).toFixed(2),
+            active: gr.getValue('active') == '1' || gr.getValue('active') == 'true'
+        });
+    }
+})();
+]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -94,83 +226,132 @@
         <sys_update_name>sp_widget_362051f864704498b7b4a17c8cab6691</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-10-10 13:44:39</sys_updated_on>
-        <template><![CDATA[<div class="my-accounts-container">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-bank"></i> My Accounts</h3>
-    </div>
-    <div class="panel-body">
-      <div ng-if="c.data.accounts.length">
-        <div class="table-responsive">
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th>Account Number</th>
-                <th ng-if="c.data.isManager">Account User</th>
-                <th>Account Type</th>
-                <th class="text-right">Balance</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="acct in c.data.accounts track by acct.sys_id"
-                  ng-click="c.selectAccount(acct)"
-                  ng-class="{'selected-row': c.selectedAccount.sys_id === acct.sys_id}">
-                <td><strong>{{acct.number}}</strong></td>
-                <td ng-if="c.data.isManager">{{acct.holder_name}}</td>
-                <td>{{acct.account_type}}</td>
-                <td class="text-right">${{acct.balance}}</td>
-                <td>
-                  <span class="status-badge" ng-class="acct.active ? 'active' : 'inactive'">
-                    {{acct.active ? 'Active' : 'Inactive'}}
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <template><![CDATA[<div class="my-accounts-widget">
+    <!-- Accounts Table -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">My Accounts</h3>
         </div>
-
-        <!-- Detail Panel -->
-        <div ng-if="c.selectedAccount" class="account-detail-panel">
-          <div class="detail-header">
-            Account Details
-            <button type="button" class="btn btn-xs btn-default pull-right" ng-click="c.clearSelection()">
-              <i class="fa fa-times"></i> Close
-            </button>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Account Number</span>
-            <span class="detail-value">{{c.selectedAccount.number}}</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Account User</span>
-            <span class="detail-value">{{c.selectedAccount.holder_name}}</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Account Type</span>
-            <span class="detail-value">{{c.selectedAccount.account_type}}</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Account Balance</span>
-            <span class="detail-value">${{c.selectedAccount.balance}}</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Status</span>
-            <span class="detail-value">
-              <span class="status-badge" ng-class="c.selectedAccount.active ? 'active' : 'inactive'">
-                {{c.selectedAccount.active ? 'Active' : 'Inactive'}}
-              </span>
-            </span>
-          </div>
+        <div class="panel-body">
+            <table class="table table-hover" ng-if="c.data.accounts.length > 0">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Type</th>
+                        <th ng-if="c.data.isManager">Holder</th>
+                        <th>Balance</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="acct in c.data.accounts track by acct.sys_id"
+                        ng-click="c.selectAccount(acct)"
+                        ng-class="{'active': c.selectedAccount.sys_id === acct.sys_id}"
+                        class="cursor-pointer">
+                        <td>{{acct.number}}</td>
+                        <td>{{acct.account_type}}</td>
+                        <td ng-if="c.data.isManager">{{acct.holder_name}}</td>
+                        <td>{{acct.balance}}</td>
+                        <td>
+                            <span class="label" ng-class="acct.active ? 'label-success' : 'label-default'">
+                                {{acct.active ? 'Active' : 'Inactive'}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="c.data.accounts.length === 0" class="text-muted text-center">
+                No accounts found.
+            </div>
         </div>
-      </div>
-
-      <div ng-if="!c.data.accounts.length" class="text-center empty-state">
-        <i class="fa fa-inbox fa-3x text-muted"></i>
-        <p class="text-muted m-t-sm">No accounts found.</p>
-      </div>
     </div>
-  </div>
+
+    <!-- Account Detail Panel -->
+    <div class="panel panel-info" ng-if="c.selectedAccount">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Account: {{c.selectedAccount.number}}
+                <button class="btn btn-xs btn-default pull-right" ng-click="c.clearSelection()">
+                    <i class="fa fa-times"></i> Close
+                </button>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-4"><strong>Type:</strong> {{c.selectedAccount.account_type}}</div>
+                <div class="col-sm-4"><strong>Balance:</strong> {{c.selectedAccount.balance}}</div>
+                <div class="col-sm-4"><strong>Status:</strong> {{c.selectedAccount.active ? 'Active' : 'Inactive'}}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transactions Section -->
+    <div class="transactions-section" ng-if="c.selectedAccount && c.data.transactions !== undefined">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Transactions</h3>
+            </div>
+            <div class="panel-body">
+                <!-- Filter Row -->
+                <div class="transaction-filters">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label>From:</label>
+                            <select class="form-control" ng-model="c.filter.fromMonth">
+                                <option ng-repeat="m in c.months track by m.value" ng-value="m.value">{{m.label}}</option>
+                            </select>
+                            <select class="form-control" ng-model="c.filter.fromYear">
+                                <option ng-repeat="yr in c.years track by yr" ng-value="yr">{{yr}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>To:</label>
+                            <select class="form-control" ng-model="c.filter.toMonth">
+                                <option ng-repeat="m in c.months track by m.value" ng-value="m.value">{{m.label}}</option>
+                            </select>
+                            <select class="form-control" ng-model="c.filter.toYear">
+                                <option ng-repeat="yr in c.years track by yr" ng-value="yr">{{yr}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Search:</label>
+                            <input type="text" class="form-control" ng-model="c.filter.searchText" placeholder="Search description...">
+                        </div>
+                        <button class="btn btn-primary" ng-click="c.applyFilters()">Apply</button>
+                    </form>
+                </div>
+
+                <!-- Transactions Table -->
+                <table class="table table-striped transactions-table" ng-if="c.data.transactions.length > 0">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Timestamp</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Balance After</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="txn in c.data.transactions track by txn.sys_id">
+                            <td>{{txn.number}}</td>
+                            <td>{{txn.timestamp}}</td>
+                            <td>{{txn.type}}</td>
+                            <td>{{txn.description}}</td>
+                            <td>{{txn.amount}}</td>
+                            <td>{{txn.balance_after}}</td>
+                            <td>{{txn.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-if="c.data.transactions.length === 0" class="text-muted text-center empty-state">
+                    No transactions found for the selected filters.
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 ]]></template>
     </sp_widget>
