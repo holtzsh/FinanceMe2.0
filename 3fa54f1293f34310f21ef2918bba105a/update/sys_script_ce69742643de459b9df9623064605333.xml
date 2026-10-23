@@ -28,7 +28,7 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-    current.setValue('balance', 9);
+    current.setValue('balance', 0);
 })(current, previous);
 ]]></script>
         <sys_class_name>sys_script</sys_class_name>
