@@ -1038,7 +1038,7 @@
         <binding_strategy>com.snc.process_flow.engine.binding.RunAlways</binding_strategy>
         <plan>{"@class":"com.snc.process_flow.engine.serialization.plan_data.ChunkingPlanData","chunk_data":{"table":"sys_flow_trigger_plan","id":"c19a0212d80053107f44360b568500fc","name":"plan","plan_signature":null},"plan_data":"CHUNKING_PLAN"}</plan>
         <plan_id>ac56b517b2864f9d9012ecb1ad12f85d</plan_id>
-        <snapshot>209a0212d80053107f44360b5685003c</snapshot>
+        <snapshot>3b55ba7a410c13107f44414d597f8de9</snapshot>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-22 19:15:14</sys_created_on>
         <sys_domain>global</sys_domain>
