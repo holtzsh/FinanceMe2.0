@@ -10,22 +10,38 @@
         <messages/>
         <name>Validate ACH Form Submission</name>
         <order/>
-        <script><![CDATA[function onSubmit() {
+        <script><![CDATA[/**
+ * @name Validate ACH Form Submission
+ * @type Client Script (onSubmit)
+ * @table x_274351_finance_0_txn
+ * @description Validates required fields before allowing a transaction form submission.
+ *   Checks that:
+ *   1. A source account is selected (account field is not empty)
+ *   2. The amount is a valid positive number greater than zero
+ *   Returns false to prevent submission if validation fails, displaying
+ *   field-level error messages to guide the user.
+ */
+function onSubmit() {
+    // Retrieve field values from the form
     var account = g_form.getValue('account');
     var amount = parseFloat(g_form.getValue('amount'));
 
+    // Validate that an account has been selected
     if (!account) {
         g_form.showFieldMsg('account', 'Source account is required.', 'error');
         return false;
     }
 
+    // Validate that the amount is a positive number
     if (isNaN(amount) || amount <= 0) {
         g_form.showFieldMsg('amount', 'Please enter a valid amount greater than 0.', 'error');
         return false;
     }
 
+    // All validations passed — allow form submission
     return true;
-}]]></script>
+}
+]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-11 23:45:08</sys_created_on>

@@ -27,7 +27,18 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+        <script><![CDATA[/**
+ * Business Rule: Set Initial Balance
+ * Table:         x_274351_finance_0_accounts (Accounts)
+ * When:          Before Insert
+ * Order:         50
+ *
+ * Initializes the balance to zero whenever a new account record is
+ * created. This ensures every account starts with a clean slate
+ * regardless of any value submitted by the client.
+ */
+(function executeRule(current, previous /*null when async*/) {
+    // Default the opening balance to zero for all new accounts
     current.setValue('balance', 0);
 })(current, previous);
 ]]></script>

@@ -10,7 +10,18 @@
         <messages/>
         <name>Approval Context Button Visibility</name>
         <order/>
-        <script><![CDATA[function onLoad() {
+        <script><![CDATA[/**
+ * @name Approval Context Button Visibility
+ * @type Client Script (onLoad)
+ * @table x_274351_finance_0_accounts
+ * @description Detects when the account form is opened from an approved catalog request
+ *   (via URL parameters sysparm_action_type and sysparm_amount). When in approval context,
+ *   displays an info message about the approved request and hides irrelevant UI action buttons:
+ *   - Deposit context: hides Withdraw Funds and Deactivate Account
+ *   - Withdrawal context: hides Deposit Funds and Deactivate Account
+ *   If no URL parameters are present, the form loads normally with all buttons visible.
+ */
+function onLoad() {
     // Read URL parameters for approval context
     var actionType = getUrlParameter('sysparm_action_type');
     var amount = getUrlParameter('sysparm_amount');
@@ -37,11 +48,20 @@
     }
     // If params not present, do nothing (normal behavior)
 
+    /**
+     * Extracts a named parameter from the current page URL.
+     * @param {string} name - The URL parameter name to extract
+     * @returns {string} The decoded parameter value, or empty string if not found
+     */
     function getUrlParameter(name) {
         var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
         return results ? decodeURIComponent(results[1]) : '';
     }
 
+    /**
+     * Hides a UI action button by matching its onclick attribute against a function name.
+     * @param {string} fnName - The function name to search for in onclick attributes
+     */
     function hideButtonByOnclick(fnName) {
         // Search DOM for buttons whose onclick attribute contains the function name
         var buttons = document.querySelectorAll('button[onclick], input[type="button"][onclick]');

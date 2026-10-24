@@ -27,20 +27,35 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[
+        <script><![CDATA[/**
+ * Business Rule: Set Transaction Details
+ * Table:         x_274351_finance_0_txn (Transactions)
+ * When:          Before Insert
+ * Order:         50
+ *
+ * Populates derived metadata on a new transaction before it is saved:
+ *   1. Copies the account holder to the transaction's 'user' field.
+ *   2. Snapshots the account's current balance into 'balance_before'.
+ *   3. Calculates the projected 'balance_after' based on transaction type.
+ *   4. Stamps the current server time as the transaction timestamp.
+ *   5. Generates a TRX-prefixed transaction number for deposit and
+ *      withdrawal types (ACH transfers get their number from the
+ *      "Process ACH Transfer & Webhook" business rule).
+ */
 (function executeRule(current, previous) {
     var accountId = current.getValue('account');
     if (accountId) {
+        // Look up the related account to pull holder and balance info
         var account = new GlideRecord('x_274351_finance_0_accounts');
         if (account.get(accountId)) {
-            // Set user from account holder
+            // Set the transaction user from the account holder
             current.setValue('user', account.getValue('holder'));
 
-            // Set balance before
+            // Snapshot the current account balance before this transaction
             var currentBalance = parseFloat(account.getValue('balance') || 0);
             current.setValue('balance_before', currentBalance);
 
-            // Calculate and set balance after
+            // Project what the balance will be after the transaction
             var amount = parseFloat(current.getValue('amount') || 0);
             var txnType = current.getValue('type');
             var newBalance = currentBalance;
@@ -54,13 +69,14 @@
         }
     }
 
-    // Set timestamp to current time
+    // Record the server-side timestamp for this transaction
     current.setValue('timestamp', new GlideDateTime());
 
-    // Generate TRX number for deposit and withdrawal types
+    // Generate a TRX number for deposit/withdrawal types only
     var txnType = current.getValue('type');
     if (txnType === 'deposit' || txnType === 'withdrawal') {
         var gdt = new GlideDateTime();
+        // Strip date separators to create a compact numeric suffix (e.g. TRX-20240115120000)
         var timestamp = gdt.getValue().replace(/[-:\s]/g, '');
         current.setValue('number', 'TRX-' + timestamp);
     }

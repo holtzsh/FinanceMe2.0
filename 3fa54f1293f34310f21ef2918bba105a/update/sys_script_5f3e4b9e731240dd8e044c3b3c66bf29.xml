@@ -27,24 +27,42 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+        <script><![CDATA[/**
+ * Business Rule: Log Transaction
+ * Table:         x_274351_finance_0_txn (Transactions)
+ * When:          After Insert
+ * Order:         (default)
+ *
+ * Fires after a new transaction record is inserted. If the transaction
+ * status is 'completed', this rule looks up the associated account and
+ * adjusts its balance accordingly:
+ *   - Deposits increase the balance.
+ *   - Withdrawals and ACH transfers decrease the balance.
+ *
+ * The account record is updated in-place with the new balance.
+ */
+(function executeRule(current, previous /*null when async*/) {
+    // Only adjust balances for completed transactions
     var status = current.getValue('status');
     if (status === 'completed') {
         var txnType = current.getValue('type');
         var amount = parseFloat(current.getValue('amount'));
         var accountId = current.getValue('account');
 
+        // Retrieve the associated account record
         var account = new GlideRecord('x_274351_finance_0_accounts');
         if (account.get(accountId)) {
             var currentBalance = parseFloat(account.getValue('balance'));
             var newBalance = currentBalance;
 
+            // Apply the transaction: add for deposits, subtract for withdrawals/ACH
             if (txnType === 'deposit') {
                 newBalance = currentBalance + amount;
             } else if (txnType === 'withdrawal' || txnType === 'ach_transfer') {
                 newBalance = currentBalance - amount;
             }
 
+            // Persist the updated balance to the account
             account.setValue('balance', newBalance);
             account.update();
         }

@@ -27,9 +27,22 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+        <script><![CDATA[/**
+ * Business Rule: Prevent Negative Balance
+ * Table:         x_274351_finance_0_accounts (Accounts)
+ * When:          Before Update
+ * Order:         (default)
+ *
+ * Guards against account balances going below zero. If an update would
+ * result in a negative balance, the operation is aborted and an error
+ * message is displayed to the user. This acts as a server-side safety
+ * net complementing any client-side validation.
+ */
+(function executeRule(current, previous /*null when async*/) {
+    // Check if the incoming balance value is negative
     var balance = parseFloat(current.getValue('balance'));
     if (balance < 0) {
+        // Reject the update and notify the user
         gs.addErrorMessage('Transaction denied: account balance cannot go below zero.');
         current.setAbortAction(true);
     }
