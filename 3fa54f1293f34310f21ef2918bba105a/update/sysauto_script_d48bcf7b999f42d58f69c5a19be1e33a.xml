@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>false</advanced>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_run_end/>
+        <entered_run_start/>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Clear Fluent Generation Source on Flows</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <repeat_every/>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_daysofweek/>
+        <run_end/>
+        <run_month>1</run_month>
+        <run_period/>
+        <run_start>2026-10-24 08:00:00</run_start>
+        <run_time>1970-01-01 00:00:00</run_time>
+        <run_type>once</run_type>
+        <run_weekinmonth>1</run_weekinmonth>
+        <script><![CDATA[(function() {
+    var flowSysIds = [
+        'ac56b517b2864f9d9012ecb1ad12f85d',
+        '50100ec173cf40808b457eb6cced9aaf'
+    ];
+    for (var i = 0; i < flowSysIds.length; i++) {
+        var gr = new GlideRecord('sys_hub_flow');
+        if (gr.get(flowSysIds[i])) {
+            gr.setValue('generation_source', '');
+            gr.update();
+            gs.info('Cleared generation_source on flow: ' + gr.getValue('name'));
+        }
+    }
+    gs.info('Flow generation_source cleanup complete.');
+})();]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-24 08:03:58</sys_created_on>
+        <sys_id>d48bcf7b999f42d58f69c5a19be1e33a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Clear Fluent Generation Source on Flows</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sysauto_script_d48bcf7b999f42d58f69c5a19be1e33a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-24 08:03:58</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
