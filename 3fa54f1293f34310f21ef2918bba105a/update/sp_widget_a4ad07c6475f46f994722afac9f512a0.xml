@@ -79,13 +79,20 @@
     data.links.push({label: 'Request Withdrawal', description: 'Submit a withdrawal request', icon: 'fa-credit-card', url: '?id=sc_cat_item&sys_id=d6e6b885add24b7f91e34794928438e8'});
 
     var isAdmin = gs.hasRole('x_274351_finance_0.administrator') || gs.hasRole('admin');
-    if (isAdmin) {
-        data.links.push({label: 'ACH Transfer', description: 'Initiate an ACH bank transfer', icon: 'fa-exchange', url: '?id=x_274351_finance_0_ach_page'});
+    var isManager = gs.hasRole('x_274351_finance_0.manager');
+
+    // All Accounts link for administrators and managers
+    if (isAdmin || isManager) {
+        data.links.push({label: 'All Accounts', description: 'View and manage all bank accounts', icon: 'fa-list', url: '/x_274351_finance_0_accounts_list.do'});
     }
 
-    // Approvals link for managers
-    var isManager = gs.hasRole('x_274351_finance_0.manager') && !gs.hasRole('x_274351_finance_0.administrator');
-    if (isManager) {
+    // Manage Users link for administrators only
+    if (isAdmin) {
+        data.links.push({label: 'Manage Users', description: 'Add or remove users from the FinanceMe2.0 Managers group', icon: 'fa-users', url: '/x_274351_finance_0_manage_users.do'});
+    }
+
+    // Approvals link for managers (non-admin)
+    if (isManager && !isAdmin) {
         data.links.push({label: 'Approvals', description: 'Review and manage pending approvals', icon: 'fa-check-square-o', url: '?id=x_274351_finance_0_approvals_page'});
     }
 

@@ -2,7 +2,7 @@
     <sp_page action="INSERT_OR_UPDATE">
         <category>custom</category>
         <css/>
-        <draft>false</draft>
+        <draft>true</draft>
         <dynamic_title_structure/>
         <human_readable_url_structure/>
         <id>x_274351_finance_0_ach_page</id>
