@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rectangle_menu_item">
+    <sp_rectangle_menu_item action="DELETE">
+        <active>true</active>
+        <color>default</color>
+        <condition/>
+        <display_1/>
+        <display_2/>
+        <display_date/>
+        <filter/>
+        <glyph>transfer</glyph>
+        <hint/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <label>ACH Transfer</label>
+        <order>400</order>
+        <record_script/>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description/>
+        <sp_page display_value="x_274351_finance_0_ach_page">24f6169d4ecd4192a25d59a3a3f91242</sp_page>
+        <sp_rectangle_menu display_value="Banking Menu">16cfddd0cb354dfb985f6982461e375f</sp_rectangle_menu>
+        <sp_rectangle_menu_item/>
+        <sys_class_name>sp_rectangle_menu_item</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:36</sys_created_on>
+        <sys_id>4dde92a1d6a34ff29da51e8dbcccd37d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ACH Transfer</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sp_rectangle_menu_item_4dde92a1d6a34ff29da51e8dbcccd37d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:36</sys_updated_on>
+        <table/>
+        <type>page</type>
+        <url/>
+        <url_target/>
+    </sp_rectangle_menu_item>
+    <sys_translated_text action="DELETE" query="documentkey=4dde92a1d6a34ff29da51e8dbcccd37d"/>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</application>
+        <file_path/>
+        <instance_id>93e48956970cdfd0c4c873600153af42</instance_id>
+        <instance_name>nowlearning-nlinst04799844-4ja5m-0001</instance_name>
+        <name>sp_rectangle_menu_item_4dde92a1d6a34ff29da51e8dbcccd37d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rectangle_menu_item">
+    <sp_rectangle_menu_item action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <color>default</color>
+        <condition/>
+        <display_1/>
+        <display_2/>
+        <display_date/>
+        <filter/>
+        <glyph>transfer</glyph>
+        <hint/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <label>ACH Transfer</label>
+        <order>400</order>
+        <record_script/>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description/>
+        <sp_page display_value="x_274351_finance_0_ach_page">24f6169d4ecd4192a25d59a3a3f91242</sp_page>
+        <sp_rectangle_menu display_value="Banking Menu">16cfddd0cb354dfb985f6982461e375f</sp_rectangle_menu>
+        <sp_rectangle_menu_item/>
+        <sys_class_name>sp_rectangle_menu_item</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-10 13:44:36</sys_created_on>
+        <sys_id>4dde92a1d6a34ff29da51e8dbcccd37d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ACH Transfer</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_update_name>sp_rectangle_menu_item_4dde92a1d6a34ff29da51e8dbcccd37d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-10 13:44:36</sys_updated_on>
+        <table/>
+        <type>page</type>
+        <url/>
+        <url_target/>
+    </sp_rectangle_menu_item>
+    <sys_translated_text action="delete_multiple" query="documentkey=4dde92a1d6a34ff29da51e8dbcccd37d"/>
+</record_update>]]></payload>
+        <payload_hash>-674863544</payload_hash>
+        <record_name>ACH Transfer</record_name>
+        <reverted_from/>
+        <source>5817869ed88c13107f44360b56850008</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-22 19:00:15</sys_created_on>
+        <sys_id>f1270e9ed88c13107f44360b568500b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a164fc41e50000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-22 19:00:15</sys_updated_on>
+        <type>Menu Item</type>
+        <update_guid>b1270e9e148c131026c4653f35c99eb5</update_guid>
+        <update_guid_history>b1270e9e148c131026c4653f35c99eb5:-674863544</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="ACH Transfer">625e7aba414c13107f44414d597f8dff</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-24 12:18:24</sys_created_on>
+        <sys_db_object display_value="" name="sp_rectangle_menu_item">sp_rectangle_menu_item</sys_db_object>
+        <sys_id>3e7cf8d9ead74a528f4ad4d518a40a59</sys_id>
+        <sys_metadata>4dde92a1d6a34ff29da51e8dbcccd37d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ACH Transfer</sys_name>
+        <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_scope_delete display_value="">37372539a85949cda483f3220c4fdeb1</sys_scope_delete>
+        <sys_update_name>sp_rectangle_menu_item_4dde92a1d6a34ff29da51e8dbcccd37d</sys_update_name>
+        <sys_update_version display_value="sp_rectangle_menu_item_4dde92a1d6a34ff29da51e8dbcccd37d">f1270e9ed88c13107f44360b568500b5</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-24 12:18:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
