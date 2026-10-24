@@ -3,7 +3,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>number</element>
-            <list_id display_value="x_274351_finance_0_accounts" element="NULL" name="x_274351_finance_0_accounts" parent="NULL" relationship="NULL" sys_domain="global" view="09f22e33292103107f44f3a98c182477">de6f1eb6933f0710f21ef2918bba102f</list_id>
+            <list_id display_value="x_274351_finance_0_accounts" element="NULL" name="x_274351_finance_0_accounts" parent="NULL" relationship="NULL" sys_domain="global" view="da4d9140a52103108bb220b7a4d2128a">de6f1eb6933f0710f21ef2918bba102f</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -40,7 +40,7 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2026-10-12 18:24:42</sys_updated_on>
             <sys_user/>
-            <view display_value="Reference List" name="sys_ref_list">09f22e33292103107f44f3a98c182477</view>
+            <view display_value="Reference List" name="sys_ref_list">da4d9140a52103108bb220b7a4d2128a</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>

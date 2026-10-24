@@ -21,6 +21,7 @@
         <file_path/>
         <instance_id>93e48956970cdfd0c4c873600153af42</instance_id>
         <instance_name>nowlearning-nlinst04799844-4ja5m-0001</instance_name>
+        <merge_base/>
         <name>sc_cat_item_catalog_84e03d0531ad4081871a32861f9c8c12</name>
         <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
     <sc_cat_item_catalog action="INSERT_OR_UPDATE">
@@ -58,7 +59,7 @@
         <update_guid_history>74278a9eda8c1310b21cc87bcebb2f9f:-850943361</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Service Catalog.Deposit Request">c8e4fa3a410c13107f44414d597f8d5d</sys_audit_delete>
+        <sys_audit_delete display_value="">c8e4fa3a410c13107f44414d597f8d5d</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-24 11:37:00</sys_created_on>

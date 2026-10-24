@@ -45,6 +45,7 @@
         <file_path/>
         <instance_id>93e48956970cdfd0c4c873600153af42</instance_id>
         <instance_name>nowlearning-nlinst04799844-4ja5m-0001</instance_name>
+        <merge_base/>
         <name>sp_rectangle_menu_item_4dde92a1d6a34ff29da51e8dbcccd37d</name>
         <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rectangle_menu_item">
     <sp_rectangle_menu_item action="INSERT_OR_UPDATE">
@@ -106,7 +107,7 @@
         <update_guid_history>b1270e9e148c131026c4653f35c99eb5:-674863544</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="ACH Transfer">625e7aba414c13107f44414d597f8dff</sys_audit_delete>
+        <sys_audit_delete display_value="">625e7aba414c13107f44414d597f8dff</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-24 12:18:24</sys_created_on>

@@ -9,9 +9,7 @@
         <enforce_mandatory_skills>false</enforce_mandatory_skills>
         <evaluate_skill_level>false</evaluate_skill_level>
         <external>false</external>
-        <include_ai_agents>false</include_ai_agents>
         <name>Assign Deposit and Withdrawal Requests</name>
-        <prioritize_ai_agent>true</prioritize_ai_agent>
         <reassign_on_timeout>false</reassign_on_timeout>
         <short_description>Assign FinanceMe2.0 Deposit and Withdrawal requests</short_description>
         <sys_class_name>awa_assignment_rule</sys_class_name>

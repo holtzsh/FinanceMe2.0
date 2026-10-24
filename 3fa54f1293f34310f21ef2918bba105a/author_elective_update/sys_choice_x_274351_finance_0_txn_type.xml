@@ -6,6 +6,7 @@
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2026-10-10 13:44:43</sys_created_on>
+            <sys_id>12997ffac3c81f10e80f7533e40131ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>type</sys_name>
             <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
@@ -29,6 +30,7 @@
             <sys_created_on>2026-10-12 18:24:34</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
+            <sys_id>07a9bb3ec3c81f10e80f7533e40131e4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2026-10-12 18:24:34</sys_updated_on>
@@ -48,6 +50,7 @@
             <sys_created_on>2026-10-12 18:24:34</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
+            <sys_id>cba9bb3ec3c81f10e80f7533e40131e5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2026-10-12 18:24:34</sys_updated_on>
@@ -67,6 +70,7 @@
             <sys_created_on>2026-10-12 18:24:34</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
+            <sys_id>83a9bb3ec3c81f10e80f7533e40131e7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2026-10-12 18:24:34</sys_updated_on>

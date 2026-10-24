@@ -37,19 +37,19 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>50100ec173cf40808b457eb6cced9aaf</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Withdrawal Request Flow</sys_name>
         <sys_overrides/>
         <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
         <sys_policy/>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
         <sys_update_name>sys_hub_flow_50100ec173cf40808b457eb6cced9aaf</sys_update_name>
-        <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2026-10-24 08:10:46</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-24 16:37:24</sys_updated_on>
         <type>flow</type>
         <updation_source/>
         <version>2</version>
-        <version_record>0a7ef53e418013107f44414d597f8dd2</version_record>
+        <version_record/>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=50100ec173cf40808b457eb6cced9aaf"/>
     <sys_variable_value action="delete_multiple" query="document_key=50100ec173cf40808b457eb6cced9aaf"/>
@@ -270,31 +270,7 @@
         <trigger_type>service_catalog</trigger_type>
         <updation_source/>
     </sys_hub_trigger_instance_v2>
-    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=50100ec173cf40808b457eb6cced9aaf^sys_idNOT INcf8815eb53cf4c3dae3708e3bde5eb8a,05120a7f668c4d8da6ad17da55c6ead0,7fc916abd3b0408c899bf6fd4ed5d8f3,7a340e72300643569db95eecc4bf1ac9,220718f617694c4d825ffa2aac495856,96d6b8c5de8542d49ca4b3bf0159847a"/>
-    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
-        <action_type display_value="Get Catalog Variables">330ba3abc31013002841b63b12d3aee8</action_type>
-        <action_type_parent display_value="">330ba3abc31013002841b63b12d3aee8</action_type_parent>
-        <attributes/>
-        <comment>Get withdrawal request catalog variables</comment>
-        <compiled_snapshot>330ba3abc31013002841b63b12d3aee8</compiled_snapshot>
-        <display_text/>
-        <flow display_value="Withdrawal Request Flow">50100ec173cf40808b457eb6cced9aaf</flow>
-        <generation_source/>
-        <order>1</order>
-        <parent_ui_id/>
-        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
-        <sys_id>cf8815eb53cf4c3dae3708e3bde5eb8a</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2026-10-23 19:54:26</sys_updated_on>
-        <ui_id>cf8815eb-53cf-4c3d-ae37-08e3bde5eb8a</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/91V244bNwz9FWOeDWPGc/dbusECBdoGWBfpQxAIHImzFqq5RNLY2Rr776Xm5tk42N0C3QLNoyhSPOThET+dvRoq9HYeBwuquWdH0BIKhcZbe0dQXX8nYpFvwySJeBAlGULqhyLNgjgSflxmyU5arFjTWtnUrMbTOt8mcZ7nuPVzEfnIARDLoAwzTDMKwquApADkUVkkZYQR+HEmSj+KE5FTjpwyXQUIeheEiFNI4yhAkSWCi0yIUGSQhOkVJKpGSNMqePj4QxXVgib+LGpvd/b4QSqhsfZ2nz6vPSmoyrTwCwih4GHgB6Hvb7MoKJKwCLYiBCxTekJBgYpcb4YJWH1cTMAzw2EfWndlVGcORcf/RDsafxnf27ub1U/TVaOFQ7lde/jVYi2Q4JWgDK69CmoBttEPs0UjiA+1uhgOsrb0puecvxr5F6UOtr7vO9cSqWaOw/V8ZCPfg7l8TyXsre647fToyg+N5FRL3y2BJXTK3ixtg8OHvt9DiHXVj9GN6qr6t6FB3vzANF5k6QyBwNbV6sCPlZT7Q3O6m1Deyrpvy3ipGg5qPoG1WhaddXjOnjSsVGTC+sIDTQH2nfT6EEqKCitKxypoW1nfs1Y3R9mnIMTV5l7RYVOq5kTQjLyvN8BdeRsiADa3ZH/fm6ch+JWeoWBHgECmu9rKCln/MTBZ0yyao6RB3HnUWpde1lx15FlRK6SmLDNUtObi5lqzAIGanfSQaXZpNcXoIzJDJXHbFzlemabTRPBExreqeCSPB3OjwJgLPTQX7EvnmjuQNdLCBmZdCNeyte+oG0ccGXhcz9+jxi8dGkLBXLbF33g+7wkljclq1A8LNqNz7/r4eP31vEK3RfmcbhEWut13RSVpLMTqbsh70e0V6lG0F808lezdwj7q1X9er46R18k13D7VquGM4E3Avifbuwn96ufB6X8p4nKPoPnhVqJyxNZdVfSCeirut5JtQ6wwoZu2HYvuJfQWCiGKiDeLbFoW3whFJJgUWRbTgttGRVrmAYZRmkc5jTbt0OxaJn9IexAaTqAWk/2icJ5feMFCOL+PiCfl9mNmVjTc8w5c7d23tX6pxn8uq+DNZGUZUfsEoGH08PwRMzOU9D3FvdyIH0KCLtd/JUDa2hqrxo7rii25mtYZFUKsOIgX46v27b+n489/Ayd5uLYKDAAA</values>
-    </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=cf8815eb53cf4c3dae3708e3bde5eb8a"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=50100ec173cf40808b457eb6cced9aaf^sys_idNOT IN05120a7f668c4d8da6ad17da55c6ead0,220718f617694c4d825ffa2aac495856,7a340e72300643569db95eecc4bf1ac9,7fc916abd3b0408c899bf6fd4ed5d8f3,96d6b8c5de8542d49ca4b3bf0159847a,cf8815eb53cf4c3dae3708e3bde5eb8a"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Ask For Approval">f8f2e9920b10030085c083eb37673abd</action_type>
         <action_type_parent display_value="">f8f2e9920b10030085c083eb37673abd</action_type_parent>
@@ -323,26 +299,26 @@
         <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
         <action_type_parent display_value="">2de05916c31332002841b63b12d3aee1</action_type_parent>
         <attributes/>
-        <comment>Create withdrawal transaction record</comment>
+        <comment>Create rejected withdrawal transaction record for notification</comment>
         <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
         <display_text/>
         <flow display_value="Withdrawal Request Flow">50100ec173cf40808b457eb6cced9aaf</flow>
         <generation_source/>
-        <order>4</order>
-        <parent_ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</parent_ui_id>
+        <order>7</order>
+        <parent_ui_id>1dc05af0-6b2a-45a5-843f-3549b9407703</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-15 21:57:18</sys_created_on>
-        <sys_id>7fc916abd3b0408c899bf6fd4ed5d8f3</sys_id>
+        <sys_id>220718f617694c4d825ffa2aac495856</sys_id>
         <sys_mod_count>5</sys_mod_count>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
         <sys_updated_by>system</sys_updated_by>
         <sys_updated_on>2026-10-23 19:54:26</sys_updated_on>
-        <ui_id>7fc916ab-d3b0-408c-899b-f6fd4ed5d8f3</ui_id>
+        <ui_id>220718f6-1769-4c4d-825f-fa2aac495856</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOTmDHSZrmNrTLaWuxdcilawxaohMNsuxJcj4W5L+Pspw02FoUBXYp5ptIPuo9mn5+2DMNJbIpc5ArzNpDxNagGh/cZoPLYTpKskJq0ByzOHNbTQVC2lrBbv5aXQ2GOjo0bLpnfCWVMKjZ9OExYlIQcJxgPLpKxjxN0nQQx4PJMMnHaZ4MRAqIQ2qhIEdFpd88QTo/x9ft6mdjn86xF7chURnh+cQRw61DLZCIFKAsRqwELcBVZsemzjQUMAjiTqvdqWIltaOGzNdurfxF105iX1cgKeMYcqdj1g0qhIsbcHBPnblrTFfKV5XkaMNMBBbQKHd9HgsFd7WTlQ6QVmaHrlRT6tswEnZqcHwvFGkskcDa6/TMOxnF/arafD2ynEndjqRLqoqDOp3AOSPzxnk+e4YKS2qUlVDXUi+z2lRr2YKJS9lfKjr0C1Vt6FIrl7oP3BPv01ihP6P4TRueg5FexWdqQ+BDxOzOXiuw9kkLDTH72XgmQVmnIQtj8BBuZO0+0AVr7OgeotNCtztsz5YZOK8a7b43cZyK/Z4Xk0kywrw3SnnRG/JU9ADTy148wTQXSJkJ9DvM4bCA8u3gssP6VQzIjXQrYWADamEduMaGMI2uVvSZiAVNrVVFM3vTXT8a62QhOXgkXfnxy99f6f83gFftR2B89aL9JPmZ/cwkKmGf/Oe0XkfvQVIADrOwbn/4T5e8mHfJzoOSf+VByThun3fkREHcuzeis3/OC5b0+BurzfcOZQcAAA==</values>
+        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOSWDHSZrmNrTLaWuxdeilbQxaohMVsuxJcj4W5L+Pshw32FoUBXYplptIPvI9hnm53zMNBbIZc5ApTJtHj61B1T64TYfno2Qcp7nUoDmmUeq2mgqEtJWC3d1bdRUY6ujQsNme8ZVUwqBms/vHHpOCgJMYo/FFPOFJnCTDKBpOR3E2SbJ4KBJAHFELBRkqKv3hCdL7Jb5uV70Y+3KKPbsOidIIzyfqMdw61AKJSA7KYo8VoAW40uzYzJmaAgZB3Gi16ypWUjtqyHzt1spfNHYa+bocSRnHkOueabuoEM6vwMEtdeauNm0pX5WSow07EZhDrdzlaSwU3FROljpAGpktulR1oa/DSljX4Pi9UKS2RAIrr9Mzb2Xkt6ty8/3Ici51s5I2qUoOqnuBc0ZmtfN89gwVFtQoLaCqpF6mlSnXsgETl2KwVPQY5Krc0FArl3oA3BMf0FphMKf4VRO+AyO9iq/UhsCHHrM7e6nA2mcttMT0Z+2ZBGWthjSswUO4kZX7RAPW2NI99LqDbm7YnhwzcF7W2j3UUZSI/Z7n02k8xqw/TnjeH/FE9AGT8340xSQTSJkpDFrM4bCA4v3gosX6UwzIjXQrYWADamEduNqGsMEn5A7FgpbWiKKVvWvUU22dzCUHj6SJn7/9/SP97/S/aT4Co4tXzSfOTsxnLlEJ++w+3XEdnQcLWrXDNBzbH+7TJs/u2mTrQPG/cqB4EjWfD+RDQdyHt6GTf5xXDOnxN697K39jBwAA</values>
     </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=7fc916abd3b0408c899bf6fd4ed5d8f3"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=220718f617694c4d825ffa2aac495856"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
         <action_type_parent display_value="">f9d01dd2c31332002841b63b12d3aea1</action_type_parent>
@@ -371,26 +347,26 @@
         <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
         <action_type_parent display_value="">2de05916c31332002841b63b12d3aee1</action_type_parent>
         <attributes/>
-        <comment>Create rejected withdrawal transaction record for notification</comment>
+        <comment>Create withdrawal transaction record</comment>
         <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
         <display_text/>
         <flow display_value="Withdrawal Request Flow">50100ec173cf40808b457eb6cced9aaf</flow>
         <generation_source/>
-        <order>7</order>
-        <parent_ui_id>1dc05af0-6b2a-45a5-843f-3549b9407703</parent_ui_id>
+        <order>4</order>
+        <parent_ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-15 21:57:18</sys_created_on>
-        <sys_id>220718f617694c4d825ffa2aac495856</sys_id>
+        <sys_id>7fc916abd3b0408c899bf6fd4ed5d8f3</sys_id>
         <sys_mod_count>5</sys_mod_count>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
         <sys_updated_by>system</sys_updated_by>
         <sys_updated_on>2026-10-23 19:54:26</sys_updated_on>
-        <ui_id>220718f6-1769-4c4d-825f-fa2aac495856</ui_id>
+        <ui_id>7fc916ab-d3b0-408c-899b-f6fd4ed5d8f3</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOSWDHSZrmNrTLaWuxdeilbQxaohMVsuxJcj4W5L+Pshw32FoUBXYplptIPvI9hnm53zMNBbIZc5ApTJtHj61B1T64TYfno2Qcp7nUoDmmUeq2mgqEtJWC3d1bdRUY6ujQsNme8ZVUwqBms/vHHpOCgJMYo/FFPOFJnCTDKBpOR3E2SbJ4KBJAHFELBRkqKv3hCdL7Jb5uV70Y+3KKPbsOidIIzyfqMdw61AKJSA7KYo8VoAW40uzYzJmaAgZB3Gi16ypWUjtqyHzt1spfNHYa+bocSRnHkOueabuoEM6vwMEtdeauNm0pX5WSow07EZhDrdzlaSwU3FROljpAGpktulR1oa/DSljX4Pi9UKS2RAIrr9Mzb2Xkt6ty8/3Ici51s5I2qUoOqnuBc0ZmtfN89gwVFtQoLaCqpF6mlSnXsgETl2KwVPQY5Krc0FArl3oA3BMf0FphMKf4VRO+AyO9iq/UhsCHHrM7e6nA2mcttMT0Z+2ZBGWthjSswUO4kZX7RAPW2NI99LqDbm7YnhwzcF7W2j3UUZSI/Z7n02k8xqw/TnjeH/FE9AGT8340xSQTSJkpDFrM4bCA4v3gosX6UwzIjXQrYWADamEduNqGsMEn5A7FgpbWiKKVvWvUU22dzCUHj6SJn7/9/SP97/S/aT4Co4tXzSfOTsxnLlEJ++w+3XEdnQcLWrXDNBzbH+7TJs/u2mTrQPG/cqB4EjWfD+RDQdyHt6GTf5xXDOnxN697K39jBwAA</values>
+        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOTmDHSZrmNrTLaWuxdcilawxaohMNsuxJcj4W5L+Pspw02FoUBXYp5ptIPuo9mn5+2DMNJbIpc5ArzNpDxNagGh/cZoPLYTpKskJq0ByzOHNbTQVC2lrBbv5aXQ2GOjo0bLpnfCWVMKjZ9OExYlIQcJxgPLpKxjxN0nQQx4PJMMnHaZ4MRAqIQ2qhIEdFpd88QTo/x9ft6mdjn86xF7chURnh+cQRw61DLZCIFKAsRqwELcBVZsemzjQUMAjiTqvdqWIltaOGzNdurfxF105iX1cgKeMYcqdj1g0qhIsbcHBPnblrTFfKV5XkaMNMBBbQKHd9HgsFd7WTlQ6QVmaHrlRT6tswEnZqcHwvFGkskcDa6/TMOxnF/arafD2ynEndjqRLqoqDOp3AOSPzxnk+e4YKS2qUlVDXUi+z2lRr2YKJS9lfKjr0C1Vt6FIrl7oP3BPv01ihP6P4TRueg5FexWdqQ+BDxOzOXiuw9kkLDTH72XgmQVmnIQtj8BBuZO0+0AVr7OgeotNCtztsz5YZOK8a7b43cZyK/Z4Xk0kywrw3SnnRG/JU9ADTy148wTQXSJkJ9DvM4bCA8u3gssP6VQzIjXQrYWADamEduMaGMI2uVvSZiAVNrVVFM3vTXT8a62QhOXgkXfnxy99f6f83gFftR2B89aL9JPmZ/cwkKmGf/Oe0XkfvQVIADrOwbn/4T5e8mHfJzoOSf+VByThun3fkREHcuzeis3/OC5b0+BurzfcOZQcAAA==</values>
     </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=220718f617694c4d825ffa2aac495856"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=7fc916abd3b0408c899bf6fd4ed5d8f3"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
         <action_type_parent display_value="">f9d01dd2c31332002841b63b12d3aea1</action_type_parent>
@@ -415,35 +391,32 @@
         <values>H4sIAAAAAAAA/+1UXW/aMBT9K5GfUZQQilreJhjSpK3VytQ9dG10Y1/AmxOntgNliP/emw9CxFC7Bx5Wabwg3y+fc3Ku77csgxTZiDlIFMbVocdWoIoyaHls8CmWDlOKCmlzBZu7k8kcDPU6NGy0ZXwplTCYsdH9Q49JQdXJhQjCq3DIozCK+kHQvxyEyTBKwr6IAPkVjVCQoKLSbyUUOp9C5jb5ydjnbq93XSe0ESWei6DH8NlhJpCQzEFZ7LEUMgFOmw0bOVNQwCCIm0xt2oqlzBxNZGXts5W/6d7LoKybI1HjWOfaY9zIU4fnE3Awo8ncFaYp5UstOdpaFIFzKJQbd2N1wU3upM7qlopn061VkWbXtSasHbD/GhQpLIHAvORZIm9ozGdLvb7do5zKrNKkSSrNQbUncM7IpHAlni1DhSkNilPIc5kt4tzolayaCUvqLxQd/LnSa7rUykXmAy+B+yQr+FOKT6rwHRhZsvhCY6h512N2Y8cKrD1wIRHjp6JEUjNrOMS1DGULNzJ3H+iCFTZwd73WuwY5feqOb7fbGZoVaemNCYzSizj0yasFWlf5dbf7085/4eEBvuZhDDsevt1DOobYGFhoXlTqSnHk4EmT8T5NDhYOz2bhwXuycE3r3Tu481q96eXKwrb7Bjtw+KMIgkgMHtfa/IozTfzqyHfplsLAGpTX+Jv+fyJ3KLxk45FDYIHGf/z49cT7fbbBb+1N0H91b7CzN1OJStjD3rRy7B9+TImDw7iW5+jxb5LeXZNst+ds6xMOg+r3f4n+vSV6eAFOf8cMzggAAA==</values>
     </sys_hub_action_instance_v2>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=96d6b8c5de8542d49ca4b3bf0159847a"/>
-    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=50100ec173cf40808b457eb6cced9aaf"/>
-    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=50100ec173cf40808b457eb6cced9aaf^sys_idNOT IN65d2cdd797ae4529b6cecf2a6e2431b8,1dc05af06b2a45a5843f3549b9407703"/>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes>timeFromCreateToActivate=595055000</attributes>
-        <block display_value="">677a4aded8cc13107f44360b568500f9</block>
-        <comment>Check if withdrawal was approved</comment>
-        <connected_to/>
-        <decision_table/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Get Catalog Variables">330ba3abc31013002841b63b12d3aee8</action_type>
+        <action_type_parent display_value="">330ba3abc31013002841b63b12d3aee8</action_type_parent>
+        <attributes/>
+        <comment>Get withdrawal request catalog variables</comment>
+        <compiled_snapshot>330ba3abc31013002841b63b12d3aee8</compiled_snapshot>
         <display_text/>
         <flow display_value="Withdrawal Request Flow">50100ec173cf40808b457eb6cced9aaf</flow>
-        <flow_variables_assigned/>
         <generation_source/>
-        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
-        <order>3</order>
-        <outputs_assigned/>
+        <order>1</order>
         <parent_ui_id/>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-15 21:57:18</sys_created_on>
-        <sys_id>65d2cdd797ae4529b6cecf2a6e2431b8</sys_id>
+        <sys_id>cf8815eb53cf4c3dae3708e3bde5eb8a</sys_id>
         <sys_mod_count>5</sys_mod_count>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-22 23:44:29</sys_updated_on>
-        <ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</ui_id>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-10-23 19:54:26</sys_updated_on>
+        <ui_id>cf8815eb-53cf-4c3d-ae37-08e3bde5eb8a</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+1Vy27bMBD8lYJn29DDkh+3wIEBA2kD1EEubSCsSMomSpMqScVRBf97l5JsB4mLpI9jb+aQu5xZzlgN0ZUrK2fv9JW1YqPI/MvDgAjlMfzdEAU7TuaEasWEE1qRAXkEWXmsaYIkjAKYFMM0ndLhmE3ZEFJgw3DCIEloyoEFIyhLo7Emsw4cPxy+VkEQsw7lDPsxYUsJ9f0/bku3QjLDe0klGFTiuCHz5sWWYHjrDJIiCYOExlEaR0EQTcdhnsZ5GLEY+DjFhhJyLvHo4tksLozH1aWHrDNCbfr1TV+6PoLaME8lCgaEPzmuGFKeFyAtH5AdKAZOm5rMnakQMCj4Vsn6dGIrlMNuxJ99suIH952CwJ8sOOqivNs9LbN+xh1cXIMDpFJRV5n+KN1qQbntJsJ4AZV0i+dYd+C2bFW2JQ5yeazWstqpT90wyKnB8UkRqSyS4KVX6rn3Qor1Vu8/H1kuhWqn0m9KTUGeVuBwdnnlPJ+GcMl32Cjb4YPjRDP/6qItRi670UbiYlRIvcdLva9HQD3xEQ4WRkvEr1v4HozwKj5iGyxGL9jMUiPKo7b2cnIYEFvbhQRrzxpxuNn3yjPsFPfasm48vqRtdIUXP/JexmHQEM/qRm8EXSm0Lspe13blLZgmLKKMTWYTNFwSzfKUclpEkPJoHIf5lPRWLQIowhkNL1sV4gu2zFrgHN3XqSNvR+Qd976KyIfO+b9m9DtpCd9IS4+8Ky5J8j8tf50WTzMHK2jWfjGwnf/D+sO49ENfCi7ZRQtdytOD93TH6vQaVFgsu/PY6vgh8xs1Ws6n7gzttfnmZZ+xw0+sbjOTEgcAAA==</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
+        <values>H4sIAAAAAAAA/91V244bNwz9FWOeDWPGc/dbusECBdoGWBfpQxAIHImzFqq5RNLY2Rr776Xm5tk42N0C3QLNoyhSPOThET+dvRoq9HYeBwuquWdH0BIKhcZbe0dQXX8nYpFvwySJeBAlGULqhyLNgjgSflxmyU5arFjTWtnUrMbTOt8mcZ7nuPVzEfnIARDLoAwzTDMKwquApADkUVkkZYQR+HEmSj+KE5FTjpwyXQUIeheEiFNI4yhAkSWCi0yIUGSQhOkVJKpGSNMqePj4QxXVgib+LGpvd/b4QSqhsfZ2nz6vPSmoyrTwCwih4GHgB6Hvb7MoKJKwCLYiBCxTekJBgYpcb4YJWH1cTMAzw2EfWndlVGcORcf/RDsafxnf27ub1U/TVaOFQ7lde/jVYi2Q4JWgDK69CmoBttEPs0UjiA+1uhgOsrb0puecvxr5F6UOtr7vO9cSqWaOw/V8ZCPfg7l8TyXsre647fToyg+N5FRL3y2BJXTK3ixtg8OHvt9DiHXVj9GN6qr6t6FB3vzANF5k6QyBwNbV6sCPlZT7Q3O6m1Deyrpvy3ipGg5qPoG1WhaddXjOnjSsVGTC+sIDTQH2nfT6EEqKCitKxypoW1nfs1Y3R9mnIMTV5l7RYVOq5kTQjLyvN8BdeRsiADa3ZH/fm6ch+JWeoWBHgECmu9rKCln/MTBZ0yyao6RB3HnUWpde1lx15FlRK6SmLDNUtObi5lqzAIGanfSQaXZpNcXoIzJDJXHbFzlemabTRPBExreqeCSPB3OjwJgLPTQX7EvnmjuQNdLCBmZdCNeyte+oG0ccGXhcz9+jxi8dGkLBXLbF33g+7wkljclq1A8LNqNz7/r4eP31vEK3RfmcbhEWut13RSVpLMTqbsh70e0V6lG0F808lezdwj7q1X9er46R18k13D7VquGM4E3Avifbuwn96ufB6X8p4nKPoPnhVqJyxNZdVfSCeirut5JtQ6wwoZu2HYvuJfQWCiGKiDeLbFoW3whFJJgUWRbTgttGRVrmAYZRmkc5jTbt0OxaJn9IexAaTqAWk/2icJ5feMFCOL+PiCfl9mNmVjTc8w5c7d23tX6pxn8uq+DNZGUZUfsEoGH08PwRMzOU9D3FvdyIH0KCLtd/JUDa2hqrxo7rii25mtYZFUKsOIgX46v27b+n489/Ayd5uLYKDAAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=cf8815eb53cf4c3dae3708e3bde5eb8a"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=50100ec173cf40808b457eb6cced9aaf"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=50100ec173cf40808b457eb6cced9aaf^sys_idNOT IN1dc05af06b2a45a5843f3549b9407703,65d2cdd797ae4529b6cecf2a6e2431b8"/>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
         <attributes>timeFromCreateToActivate=595055000</attributes>
         <block display_value="">677a4aded8cc13107f44360b568500fe</block>
@@ -471,8 +444,36 @@
         <values>H4sIAAAAAAAA/+1V0W6bMBT9lcnPSWQgkDRvVatKkbpVWqq+bBW62Cbx5tjMNm0Zyr/vGkhSdZnWrXvcGz72vT7ncg60xNS+qr27NefOybUmi0/3IyJ1wPC5JRq2giwIM5pLL40mI/IAqg5Y29I0iinMynGWzdl4yud8DBnwcTTjkKYsE8DpBKrKGqzJnQcvdrvPNaUJt+KLYF5w7MelqxQ0d/+4LdtIhetBUgUWlXhhyaJ9sSU53lpSKKMzFrEkzpKY0ng+jYosKaKYJyAgwoYKCqHw6MWzWZwYj2+qADlvpV4P6+uhdLUHjeWBSkxHRDx5oTlSXpSgnBiRLWgO3tiGLLytEbAo+Ear5nBiI7XHbiScfXLyuwidKA0nS4G6mOh3D8t8mHEPl5fgAanUzNd2OMo2RjLh+olwUUKt/MVzrD9wU3UquxIPhdpXG1Vv9Yd+GOTQYP9KEakdkhBVUBq4D0LK1cY8ftyzvJK6m8qwqQwDdViBx9kVtQ98WiKU2GKjfIs2wInmwQuyK0Yu28la4WJSKvOIlwZfT4AF4hMcLEyuEL/s4DuwMqh4j22wGL3gcsesrPbausvJbkRc4y4UOHfUiMPNv9WBYa940Jb34wklXaNzvPhBDDJ2o5YEVtdmLdlSo3VR9qpxy2DBiDOaQkmzIoZpCul8mpRJOj0rzqZ0NqMJeZ1V4xO2zDvgGN2fU0feHJH4VETe9c7/NaM/SUv0m7QMyKvikqb/0/LmtASaBTjJ8u6Pge3CB+sv4zIM/UoKxU9a6FSe7oOne1aHt8Gkw7LbgC33P7Kw0aDlQuqO0KOxX4PsI7b7AbdWzDgSBwAA</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes>timeFromCreateToActivate=595055000</attributes>
+        <block display_value="">677a4aded8cc13107f44360b568500f9</block>
+        <comment>Check if withdrawal was approved</comment>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Withdrawal Request Flow">50100ec173cf40808b457eb6cced9aaf</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-15 21:57:18</sys_created_on>
+        <sys_id>65d2cdd797ae4529b6cecf2a6e2431b8</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-22 23:44:29</sys_updated_on>
+        <ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1Vy27bMBD8lYJn29DDkh+3wIEBA2kD1EEubSCsSMomSpMqScVRBf97l5JsB4mLpI9jb+aQu5xZzlgN0ZUrK2fv9JW1YqPI/MvDgAjlMfzdEAU7TuaEasWEE1qRAXkEWXmsaYIkjAKYFMM0ndLhmE3ZEFJgw3DCIEloyoEFIyhLo7Emsw4cPxy+VkEQsw7lDPsxYUsJ9f0/bku3QjLDe0klGFTiuCHz5sWWYHjrDJIiCYOExlEaR0EQTcdhnsZ5GLEY+DjFhhJyLvHo4tksLozH1aWHrDNCbfr1TV+6PoLaME8lCgaEPzmuGFKeFyAtH5AdKAZOm5rMnakQMCj4Vsn6dGIrlMNuxJ99suIH952CwJ8sOOqivNs9LbN+xh1cXIMDpFJRV5n+KN1qQbntJsJ4AZV0i+dYd+C2bFW2JQ5yeazWstqpT90wyKnB8UkRqSyS4KVX6rn3Qor1Vu8/H1kuhWqn0m9KTUGeVuBwdnnlPJ+GcMl32Cjb4YPjRDP/6qItRi670UbiYlRIvcdLva9HQD3xEQ4WRkvEr1v4HozwKj5iGyxGL9jMUiPKo7b2cnIYEFvbhQRrzxpxuNn3yjPsFPfasm48vqRtdIUXP/JexmHQEM/qRm8EXSm0Lspe13blLZgmLKKMTWYTNFwSzfKUclpEkPJoHIf5lPRWLQIowhkNL1sV4gu2zFrgHN3XqSNvR+Qd976KyIfO+b9m9DtpCd9IS4+8Ky5J8j8tf50WTzMHK2jWfjGwnf/D+sO49ENfCi7ZRQtdytOD93TH6vQaVFgsu/PY6vgh8xs1Ws6n7gzttfnmZZ+xw0+sbjOTEgcAAA==</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=50100ec173cf40808b457eb6cced9aaf"/>
     <sys_hub_flow_variable action="delete_multiple" query="model=50100ec173cf40808b457eb6cced9aaf"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_variable_50100ec173cf40808b457eb6cced9aaf"/>
     <sys_documentation action="INSERT_OR_UPDATE">
         <element>request_item</element>
         <help/>
@@ -486,11 +487,11 @@
         <sys_created_on>2026-10-22 19:14:49</sys_created_on>
         <sys_id>8b7a4aded8cc13107f44360b56850004</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Request Item</sys_name>
         <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
         <sys_policy/>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_update_name/>
+        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_50100ec173cf40808b457eb6cced9aaf_request_item_en</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-10-22 19:14:49</sys_updated_on>
         <url/>
@@ -509,11 +510,11 @@
         <sys_created_on>2026-10-22 19:14:50</sys_created_on>
         <sys_id>c77a4aded8cc13107f44360b56850065</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Table Name</sys_name>
         <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
         <sys_policy/>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_update_name/>
+        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_50100ec173cf40808b457eb6cced9aaf_table_name_en</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-10-22 19:14:50</sys_updated_on>
         <url/>
@@ -776,7 +777,79 @@
         <trigger_type>service_catalog</trigger_type>
         <updation_source/>
     </sys_hub_trigger_instance_v2>
-    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=108a8aded8cc13107f44360b568500eb^sys_idNOT IN498acaded8cc13107f44360b568500a1,498acaded8cc13107f44360b568500a2,458acaded8cc13107f44360b568500a3,418acaded8cc13107f44360b568500a4,098acaded8cc13107f44360b568500a4,cd8acaded8cc13107f44360b568500a4"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=108a8aded8cc13107f44360b568500eb^sys_idNOT IN098acaded8cc13107f44360b568500a4,418acaded8cc13107f44360b568500a4,458acaded8cc13107f44360b568500a3,498acaded8cc13107f44360b568500a1,498acaded8cc13107f44360b568500a2,cd8acaded8cc13107f44360b568500a4"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
+        <attributes>timeFromCreateToActivate=595055000</attributes>
+        <comment>Create rejected withdrawal transaction record for notification</comment>
+        <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Withdrawal Request Flow">108a8aded8cc13107f44360b568500eb</flow>
+        <generation_source/>
+        <order>7</order>
+        <parent_ui_id>1dc05af0-6b2a-45a5-843f-3549b9407703</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-22 19:14:57</sys_created_on>
+        <sys_id>098acaded8cc13107f44360b568500a4</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-22 20:04:52</sys_updated_on>
+        <ui_id>220718f6-1769-4c4d-825f-fa2aac495856</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOSWDHSZrmNrTLaWuxdeilbQxaohMVsuxJcj4W5L+Pshw32FoUBXYplptIPvI9hnm53zMNBbIZc5ApTJtHj61B1T64TYfno2Qcp7nUoDmmUeq2mgqEtJWC3d1bdRUY6ujQsNme8ZVUwqBms/vHHpOCgJMYo/FFPOFJnCTDKBpOR3E2SbJ4KBJAHFELBRkqKv3hCdL7Jb5uV70Y+3KKPbsOidIIzyfqMdw61AKJSA7KYo8VoAW40uzYzJmaAgZB3Gi16ypWUjtqyHzt1spfNHYa+bocSRnHkOueabuoEM6vwMEtdeauNm0pX5WSow07EZhDrdzlaSwU3FROljpAGpktulR1oa/DSljX4Pi9UKS2RAIrr9Mzb2Xkt6ty8/3Ici51s5I2qUoOqnuBc0ZmtfN89gwVFtQoLaCqpF6mlSnXsgETl2KwVPQY5Krc0FArl3oA3BMf0FphMKf4VRO+AyO9iq/UhsCHHrM7e6nA2mcttMT0Z+2ZBGWthjSswUO4kZX7RAPW2NI99LqDbm7YnhwzcF7W2j3UUZSI/Z7n02k8xqw/TnjeH/FE9AGT8340xSQTSJkpDFrM4bCA4v3gosX6UwzIjXQrYWADamEduNqGsMEn5A7FgpbWiKKVvWvUU22dzCUHj6SJn7/9/SP97/S/aT4Co4tXzSfOTsxnLlEJ++w+3XEdnQcLWrXDNBzbH+7TJs/u2mTrQPG/cqB4EjWfD+RDQdyHt6GTf5xXDOnxN697K39jBwAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=098acaded8cc13107f44360b568500a4"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <attributes>timeFromCreateToActivate=595055000</attributes>
+        <comment>Close request item as completed</comment>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Withdrawal Request Flow">108a8aded8cc13107f44360b568500eb</flow>
+        <generation_source/>
+        <order>5</order>
+        <parent_ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-22 19:14:57</sys_created_on>
+        <sys_id>418acaded8cc13107f44360b568500a4</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-22 20:04:52</sys_updated_on>
+        <ui_id>7a340e72-3006-4356-9db9-5eecc4bf1ac9</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1VXU/bMBT9K5GfqyhpoIK+TXSVJm2gAWIPDKJb+7a15tjBdlq6qv99N3EaIlbBHpg0pPWp99PnXJ/r3G6ZhgLZmHmYKcwbY8BWoKra6Xhu8SGXHgvyCulKBZubg8ESLNV6tGy8ZXwplbCo2fj2bsCkoOzZsUjS03TEszTLhkkyPDlKZ6Nslg5FBshPqYWCGSpKva6hkH0Imd+UB32f+7XReQgYK2o8x8mA4aNHLZCQzEE5HLACtABv7IaNva3IYRHEhVabLmMptaeOrM59dPInnXuS1HlzJGocQ6wz83Y8wT2fgIcr6sx9ZdtUvjSSowtDETiHSvmzvi8kXJReGh1KGp5ttVFVoc/DTFjXYH8b5KkcgcCy5lkjb2nMr5ZmfblHOZW6mUkbVIaD6izw3spZ5Ws8W4YKC2qUF1CWUi/y0pqVbIoJSxEvFBnxXJk1HerkQsfAa+AxjRXiKfknjfsGrKxZfKE2VLwbMLdxZwqce+JCQ8wfqhpJYNZyyMMY6hJuZek/0AErbOHuBp12LXK66p5ut9srtCuaZXRGYJRZ5GlMWq3Q+Uavu93vcv4DDR/hSxrGtKfhyz2k5xBbAQvDq2a6UjxT8KSNRJ8mTxJO30zCR+9JwoHWu1dw77V6VcuNhF3/Dfbg8XuVJJnI7tfG/si1IX7B8036pbCwBhUROKKHIiJVRPSXrsShiKNrC9oFYhEnhXhy3n/8euA9/2sHvbZXyfDFvcLeXk0lKuGe9qob1/7DgAVx8piH8T37OLTB6KYNdtv1ZuuVjpLm93/J/r0lu/sF3fdcVu4IAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=418acaded8cc13107f44360b568500a4"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
+        <attributes>timeFromCreateToActivate=595055000</attributes>
+        <comment>Create withdrawal transaction record</comment>
+        <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Withdrawal Request Flow">108a8aded8cc13107f44360b568500eb</flow>
+        <generation_source/>
+        <order>4</order>
+        <parent_ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-22 19:14:57</sys_created_on>
+        <sys_id>458acaded8cc13107f44360b568500a3</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-22 20:04:52</sys_updated_on>
+        <ui_id>7fc916ab-d3b0-408c-899b-f6fd4ed5d8f3</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOTmDHSZrmNrTLaWuxdcilawxaohMNsuxJcj4W5L+Pspw02FoUBXYp5ptIPuo9mn5+2DMNJbIpc5ArzNpDxNagGh/cZoPLYTpKskJq0ByzOHNbTQVC2lrBbv5aXQ2GOjo0bLpnfCWVMKjZ9OExYlIQcJxgPLpKxjxN0nQQx4PJMMnHaZ4MRAqIQ2qhIEdFpd88QTo/x9ft6mdjn86xF7chURnh+cQRw61DLZCIFKAsRqwELcBVZsemzjQUMAjiTqvdqWIltaOGzNdurfxF105iX1cgKeMYcqdj1g0qhIsbcHBPnblrTFfKV5XkaMNMBBbQKHd9HgsFd7WTlQ6QVmaHrlRT6tswEnZqcHwvFGkskcDa6/TMOxnF/arafD2ynEndjqRLqoqDOp3AOSPzxnk+e4YKS2qUlVDXUi+z2lRr2YKJS9lfKjr0C1Vt6FIrl7oP3BPv01ihP6P4TRueg5FexWdqQ+BDxOzOXiuw9kkLDTH72XgmQVmnIQtj8BBuZO0+0AVr7OgeotNCtztsz5YZOK8a7b43cZyK/Z4Xk0kywrw3SnnRG/JU9ADTy148wTQXSJkJ9DvM4bCA8u3gssP6VQzIjXQrYWADamEduMaGMI2uVvSZiAVNrVVFM3vTXT8a62QhOXgkXfnxy99f6f83gFftR2B89aL9JPmZ/cwkKmGf/Oe0XkfvQVIADrOwbn/4T5e8mHfJzoOSf+VByThun3fkREHcuzeis3/OC5b0+BurzfcOZQcAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=458acaded8cc13107f44360b568500a3"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Get Catalog Variables">330ba3abc31013002841b63b12d3aee8</action_type>
         <action_type_parent display_value="Get Catalog Variables">22f0b88cc3c632002841b63b12d3aeff</action_type_parent>
@@ -825,78 +898,6 @@
         <values>H4sIAAAAAAAA/+1YUW/iOBD+K8jPlHMICaFvVVFPe7rbldru3kOpIseegFchYW2nXQ7x328SO5CFFm4rVupe96XU45nJN+PvcwbuViRncyDnhC0WqnhgWZxKyATpEvy/bG+gSUi9yNjy0/7OgilMY0CR8xXhM5kJBTk5v7vvEinQlXppH0ajPk08Sn1Ko4DTyIfEH4ZDn4kIU2QsgQxdL1zWzpUD8hxAs1xU9noZ107W9qdLVMd33tuNQokKXL9L4KuBXACiSlmmoUvmLBfMFGq5sShg4kOebQ0zmRvMSCrnr1r+g8+NKKWVZwpYKQe7u1nGrlXWnI6ZYTdGldyUyrnyWSE5aNsjASkrM3PZtlmHDwsji9yGGJZkTXSRlfP8ve0M2SRoTgYtpUYQsKhKrbDjw7GO9GZWPF43IK9kXjfFFZkVHM+yWTFjlExKU8FZEchgjnniOZ6CzKdxdRSyDkYo8940w0UvzYpHfKaW07zHeIW7h41lvSu0j2vzJ6ZkVcRfmAaD112il/oyY1pvS8Eexl/KCoktzJUQ112wLajiuJILc4FPeQCHed3dkPlzUar8AJfjmdT1iT/L6ZbHMW7zg9wGv8XtPyyuXWrvwn0Js/1fzH4LzBYlFs8MtEi9mhCLaULOJyQvcpiQ7oRUXnHFmtqMHvjkzUZtW63tulTMhXut5TZWsKWuPTWfgSgza52Q9b58/otcgkNySUctuYxL6IxtsfvlO5E0mGJbr9wTy41zqDP9divboglOJprBzyQZV8Yr0wzClPFmpkBFoLBfIKTjGtrc8bzIhayQ6Zac7PwB+ho+Azf6Il/+frdaaYOi4L1wxFPKglBEAxr4Hh2mg4Ef0iQIo4BSnq7X9/uiOEHGY6IaHBQVQEtU16gF/cRY9U0znLg2m8oFtYW1GdSajE5Ug8Oisvf1//BF9DpV9SMEZLu0lYzmsYIvsTQw32f/t5vHiJzwQ0TmvEXkW4diB5Sjbr18aniqw3aGJ+873wOWw09S9hdhXyFhFXA86fbMtLoB9YC97FwimKyYxl4PWVqCNjVT1y+bbYbRQfbS9jXcQNqF6PgrCl7W3ZVih8Bjt9N5N94ymJ7q0vX7PxGD39bsv30bA9MYuKXz39LMhGKP+DJ2LK4/pQLdQRawKajO87/jfGf0MRHAIPQD/DNMfer1PRpBGEV8RBmPwjAYtL8Pb0eIpqJnS23GfTy/fLo74jfGk//K44Vv6UIv5e1Ol61lr88/7gvAx1wiA99VPAr7STiikTgTKU3OBpEfnDEO9AxCL4BAhDzw/BO+Le7/BQhKMFgMFQAA</values>
     </sys_hub_action_instance_v2>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=498acaded8cc13107f44360b568500a2"/>
-    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
-        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
-        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
-        <attributes>timeFromCreateToActivate=595055000</attributes>
-        <comment>Create withdrawal transaction record</comment>
-        <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
-        <display_text/>
-        <flow display_value="Withdrawal Request Flow">108a8aded8cc13107f44360b568500eb</flow>
-        <generation_source/>
-        <order>4</order>
-        <parent_ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</parent_ui_id>
-        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-22 19:14:57</sys_created_on>
-        <sys_id>458acaded8cc13107f44360b568500a3</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-22 20:04:52</sys_updated_on>
-        <ui_id>7fc916ab-d3b0-408c-899b-f6fd4ed5d8f3</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOTmDHSZrmNrTLaWuxdcilawxaohMNsuxJcj4W5L+Pspw02FoUBXYp5ptIPuo9mn5+2DMNJbIpc5ArzNpDxNagGh/cZoPLYTpKskJq0ByzOHNbTQVC2lrBbv5aXQ2GOjo0bLpnfCWVMKjZ9OExYlIQcJxgPLpKxjxN0nQQx4PJMMnHaZ4MRAqIQ2qhIEdFpd88QTo/x9ft6mdjn86xF7chURnh+cQRw61DLZCIFKAsRqwELcBVZsemzjQUMAjiTqvdqWIltaOGzNdurfxF105iX1cgKeMYcqdj1g0qhIsbcHBPnblrTFfKV5XkaMNMBBbQKHd9HgsFd7WTlQ6QVmaHrlRT6tswEnZqcHwvFGkskcDa6/TMOxnF/arafD2ynEndjqRLqoqDOp3AOSPzxnk+e4YKS2qUlVDXUi+z2lRr2YKJS9lfKjr0C1Vt6FIrl7oP3BPv01ihP6P4TRueg5FexWdqQ+BDxOzOXiuw9kkLDTH72XgmQVmnIQtj8BBuZO0+0AVr7OgeotNCtztsz5YZOK8a7b43cZyK/Z4Xk0kywrw3SnnRG/JU9ADTy148wTQXSJkJ9DvM4bCA8u3gssP6VQzIjXQrYWADamEduMaGMI2uVvSZiAVNrVVFM3vTXT8a62QhOXgkXfnxy99f6f83gFftR2B89aL9JPmZ/cwkKmGf/Oe0XkfvQVIADrOwbn/4T5e8mHfJzoOSf+VByThun3fkREHcuzeis3/OC5b0+BurzfcOZQcAAA==</values>
-    </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=458acaded8cc13107f44360b568500a3"/>
-    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
-        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
-        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
-        <attributes>timeFromCreateToActivate=595055000</attributes>
-        <comment>Close request item as completed</comment>
-        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
-        <display_text/>
-        <flow display_value="Withdrawal Request Flow">108a8aded8cc13107f44360b568500eb</flow>
-        <generation_source/>
-        <order>5</order>
-        <parent_ui_id>65d2cdd7-97ae-4529-b6ce-cf2a6e2431b8</parent_ui_id>
-        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-22 19:14:57</sys_created_on>
-        <sys_id>418acaded8cc13107f44360b568500a4</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-22 20:04:52</sys_updated_on>
-        <ui_id>7a340e72-3006-4356-9db9-5eecc4bf1ac9</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/+1VXU/bMBT9K5GfqyhpoIK+TXSVJm2gAWIPDKJb+7a15tjBdlq6qv99N3EaIlbBHpg0pPWp99PnXJ/r3G6ZhgLZmHmYKcwbY8BWoKra6Xhu8SGXHgvyCulKBZubg8ESLNV6tGy8ZXwplbCo2fj2bsCkoOzZsUjS03TEszTLhkkyPDlKZ6Nslg5FBshPqYWCGSpKva6hkH0Imd+UB32f+7XReQgYK2o8x8mA4aNHLZCQzEE5HLACtABv7IaNva3IYRHEhVabLmMptaeOrM59dPInnXuS1HlzJGocQ6wz83Y8wT2fgIcr6sx9ZdtUvjSSowtDETiHSvmzvi8kXJReGh1KGp5ttVFVoc/DTFjXYH8b5KkcgcCy5lkjb2nMr5ZmfblHOZW6mUkbVIaD6izw3spZ5Ws8W4YKC2qUF1CWUi/y0pqVbIoJSxEvFBnxXJk1HerkQsfAa+AxjRXiKfknjfsGrKxZfKE2VLwbMLdxZwqce+JCQ8wfqhpJYNZyyMMY6hJuZek/0AErbOHuBp12LXK66p5ut9srtCuaZXRGYJRZ5GlMWq3Q+Uavu93vcv4DDR/hSxrGtKfhyz2k5xBbAQvDq2a6UjxT8KSNRJ8mTxJO30zCR+9JwoHWu1dw77V6VcuNhF3/Dfbg8XuVJJnI7tfG/si1IX7B8036pbCwBhUROKKHIiJVRPSXrsShiKNrC9oFYhEnhXhy3n/8euA9/2sHvbZXyfDFvcLeXk0lKuGe9qob1/7DgAVx8piH8T37OLTB6KYNdtv1ZuuVjpLm93/J/r0lu/sF3fdcVu4IAAA=</values>
-    </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=418acaded8cc13107f44360b568500a4"/>
-    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
-        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
-        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
-        <attributes>timeFromCreateToActivate=595055000</attributes>
-        <comment>Create rejected withdrawal transaction record for notification</comment>
-        <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
-        <display_text/>
-        <flow display_value="Withdrawal Request Flow">108a8aded8cc13107f44360b568500eb</flow>
-        <generation_source/>
-        <order>7</order>
-        <parent_ui_id>1dc05af0-6b2a-45a5-843f-3549b9407703</parent_ui_id>
-        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-10-22 19:14:57</sys_created_on>
-        <sys_id>098acaded8cc13107f44360b568500a4</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-22 20:04:52</sys_updated_on>
-        <ui_id>220718f6-1769-4c4d-825f-fa2aac495856</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/+VVTW/bMAz9K4XOSWDHSZrmNrTLaWuxdeilbQxaohMVsuxJcj4W5L+Pshw32FoUBXYplptIPvI9hnm53zMNBbIZc5ApTJtHj61B1T64TYfno2Qcp7nUoDmmUeq2mgqEtJWC3d1bdRUY6ujQsNme8ZVUwqBms/vHHpOCgJMYo/FFPOFJnCTDKBpOR3E2SbJ4KBJAHFELBRkqKv3hCdL7Jb5uV70Y+3KKPbsOidIIzyfqMdw61AKJSA7KYo8VoAW40uzYzJmaAgZB3Gi16ypWUjtqyHzt1spfNHYa+bocSRnHkOueabuoEM6vwMEtdeauNm0pX5WSow07EZhDrdzlaSwU3FROljpAGpktulR1oa/DSljX4Pi9UKS2RAIrr9Mzb2Xkt6ty8/3Ici51s5I2qUoOqnuBc0ZmtfN89gwVFtQoLaCqpF6mlSnXsgETl2KwVPQY5Krc0FArl3oA3BMf0FphMKf4VRO+AyO9iq/UhsCHHrM7e6nA2mcttMT0Z+2ZBGWthjSswUO4kZX7RAPW2NI99LqDbm7YnhwzcF7W2j3UUZSI/Z7n02k8xqw/TnjeH/FE9AGT8340xSQTSJkpDFrM4bCA4v3gosX6UwzIjXQrYWADamEduNqGsMEn5A7FgpbWiKKVvWvUU22dzCUHj6SJn7/9/SP97/S/aT4Co4tXzSfOTsxnLlEJ++w+3XEdnQcLWrXDNBzbH+7TJs/u2mTrQPG/cqB4EjWfD+RDQdyHt6GTf5xXDOnxN697K39jBwAA</values>
-    </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=098acaded8cc13107f44360b568500a4"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
         <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
@@ -979,6 +980,7 @@
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=108a8aded8cc13107f44360b568500eb"/>
     <sys_hub_flow_variable action="delete_multiple" query="model=108a8aded8cc13107f44360b568500eb"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_variable_108a8aded8cc13107f44360b568500eb"/>
     <sys_documentation action="INSERT_OR_UPDATE">
         <element>request_item</element>
         <help/>
@@ -992,7 +994,7 @@
         <sys_created_on>2026-10-22 19:14:57</sys_created_on>
         <sys_id>f88acaded8cc13107f44360b5685007a</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Request Item</sys_name>
         <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
         <sys_policy/>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>
@@ -1015,7 +1017,7 @@
         <sys_created_on>2026-10-22 19:14:56</sys_created_on>
         <sys_id>fc8acaded8cc13107f44360b5685003e</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Table Name</sys_name>
         <sys_package display_value="FinanceMe2.0" source="x_274351_finance_0">3fa54f1293f34310f21ef2918bba105a</sys_package>
         <sys_policy/>
         <sys_scope display_value="FinanceMe2.0">3fa54f1293f34310f21ef2918bba105a</sys_scope>

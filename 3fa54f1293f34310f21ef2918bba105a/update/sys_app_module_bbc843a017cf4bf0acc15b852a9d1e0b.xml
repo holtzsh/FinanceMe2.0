@@ -8,6 +8,7 @@
         <hint>Initiate a new ACH transfer record</hint>
         <homepage/>
         <image/>
+        <karuna_route/>
         <link_type>NEW</link_type>
         <map_page/>
         <mobile_title>ACH Transfer</mobile_title>

@@ -3,6 +3,7 @@
         <choices/>
         <description/>
         <name>chrome_header</name>
+        <order/>
         <page display_value="FinanceMe2.0 Workpace">3570aa7641c413107f44414d597f8d3d</page>
         <required_translations>[ ]</required_translations>
         <route/>
