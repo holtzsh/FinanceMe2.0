@@ -5,7 +5,7 @@
         <client>true</client>
         <client_script_v2/>
         <comments/>
-        <condition>current.active == true &amp;&amp; !gs.hasRole('x_274351_finance_0.administrator')</condition>
+        <condition>current.active == true</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_button_icon/>

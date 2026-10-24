@@ -9,7 +9,289 @@
         <mobile_callable>false</mobile_callable>
         <name>AchTransferHandler</name>
         <sandbox_callable>false</sandbox_callable>
-        <script><![CDATA["var AchTransferHandler = Class.create();\n\nAchTransferHandler.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {\n\n    getAccounts: function() {\n        var accounts = [];\n        var isManager = gs.hasRole('x_274351_finance_0.manager') && !gs.hasRole('x_274351_finance_0.administrator');\n        var gr = new GlideRecord('x_274351_finance_0_accounts');\n        if (!isManager) {\n            gr.addQuery('holder', gs.getUserID());\n        }\n        gr.addQuery('active', true);\n        gr.orderBy('number');\n        gr.query();\n        while (gr.next()) {\n            accounts.push({\n                sys_id: gr.getUniqueValue(),\n                number: gr.getValue('number'),\n                account_type: gr.getValue('account_type'),\n                balance: gr.getValue('balance')\n            });\n        }\n        return JSON.stringify(accounts);\n    },\n\n    deposit: function() {\n        var result = { success: false, message: '' };\n\n        // Only managers (not administrators) can deposit\n        if (gs.hasRole('x_274351_finance_0.administrator')) {\n            result.message = 'Administrators are not allowed to perform deposits.';\n            return JSON.stringify(result);\n        }\n        if (!gs.hasRole('x_274351_finance_0.manager')) {\n            result.message = 'Only managers can perform deposits.';\n            return JSON.stringify(result);\n        }\n\n        var accountSysId = this.getParameter('sysparm_account_sys_id');\n        var amount = parseFloat(this.getParameter('sysparm_amount'));\n\n        if (!accountSysId) {\n            result.message = 'Missing required parameter: account_sys_id';\n            return JSON.stringify(result);\n        }\n        if (isNaN(amount) || amount <= 0) {\n            result.message = 'Amount must be a valid number greater than 0';\n            return JSON.stringify(result);\n        }\n\n        var acctGr = new GlideRecord('x_274351_finance_0_accounts');\n        if (!acctGr.get(accountSysId)) {\n            result.message = 'Account not found';\n            return JSON.stringify(result);\n        }\n        if (acctGr.getValue('active') != 'true' && acctGr.getValue('active') != '1') {\n            result.message = 'Account is not active';\n            return JSON.stringify(result);\n        }\n\n        var txnGr = new GlideRecord('x_274351_finance_0_txn');\n        txnGr.initialize();\n        txnGr.setValue('account', accountSysId);\n        txnGr.setValue('type', 'deposit');\n        txnGr.setValue('amount', amount);\n        txnGr.setValue('status', 'completed');\n        var txnSysId = txnGr.insert();\n\n        if (!txnSysId) {\n            result.message = 'Failed to create deposit transaction';\n            return JSON.stringify(result);\n        }\n\n        result.success = true;\n        result.message = 'Deposit of $' + amount.toFixed(2) + ' completed successfully';\n        return JSON.stringify(result);\n    },\n\n    withdraw: function() {\n        var result = { success: false, message: '' };\n\n        if (gs.hasRole('x_274351_finance_0.administrator')) {\n            result.message = 'Administrators are not allowed to perform withdrawals.';\n            return JSON.stringify(result);\n        }\n        if (!gs.hasRole('x_274351_finance_0.manager')) {\n            result.message = 'Only managers can perform withdrawals.';\n            return JSON.stringify(result);\n        }\n\n        var accountSysId = this.getParameter('sysparm_account_sys_id');\n        var amount = parseFloat(this.getParameter('sysparm_amount'));\n\n        if (!accountSysId) {\n            result.message = 'Missing required parameter: account_sys_id';\n            return JSON.stringify(result);\n        }\n        if (isNaN(amount) || amount <= 0) {\n            result.message = 'Amount must be a valid number greater than 0';\n            return JSON.stringify(result);\n        }\n\n        var acctGr = new GlideRecord('x_274351_finance_0_accounts');\n        if (!acctGr.get(accountSysId)) {\n            result.message = 'Account not found';\n            return JSON.stringify(result);\n        }\n        if (acctGr.getValue('active') != 'true' && acctGr.getValue('active') != '1') {\n            result.message = 'Account is not active';\n            return JSON.stringify(result);\n        }\n\n        var currentBalance = parseFloat(acctGr.getValue('balance'));\n        if (currentBalance < amount) {\n            result.message = 'Insufficient funds. Current balance: $' + currentBalance.toFixed(2);\n            return JSON.stringify(result);\n        }\n\n        var txnGr = new GlideRecord('x_274351_finance_0_txn');\n        txnGr.initialize();\n        txnGr.setValue('account', accountSysId);\n        txnGr.setValue('type', 'withdrawal');\n        txnGr.setValue('amount', amount);\n        txnGr.setValue('status', 'completed');\n        var txnSysId = txnGr.insert();\n\n        if (!txnSysId) {\n            result.message = 'Failed to create withdrawal transaction';\n            return JSON.stringify(result);\n        }\n\n        result.success = true;\n        result.message = 'Withdrawal of $' + amount.toFixed(2) + ' completed successfully';\n        return JSON.stringify(result);\n    },\n\n    deactivateAccount: function() {\n        var result = { success: false, message: '' };\n\n        if (gs.hasRole('x_274351_finance_0.administrator')) {\n            result.message = 'Administrators are not allowed to deactivate accounts.';\n            return JSON.stringify(result);\n        }\n        if (!gs.hasRole('x_274351_finance_0.manager')) {\n            result.message = 'Only managers can deactivate accounts.';\n            return JSON.stringify(result);\n        }\n\n        var accountSysId = this.getParameter('sysparm_account_sys_id');\n\n        if (!accountSysId) {\n            result.message = 'Missing required parameter: account_sys_id';\n            return JSON.stringify(result);\n        }\n\n        var acctGr = new GlideRecord('x_274351_finance_0_accounts');\n        if (!acctGr.get(accountSysId)) {\n            result.message = 'Account not found';\n            return JSON.stringify(result);\n        }\n        if (acctGr.getValue('active') != 'true' && acctGr.getValue('active') != '1') {\n            result.message = 'Account is already inactive';\n            return JSON.stringify(result);\n        }\n\n        acctGr.setValue('active', false);\n        acctGr.update();\n\n        result.success = true;\n        result.message = 'Account has been deactivated successfully';\n        return JSON.stringify(result);\n    },\n\n    processTransfer: function() {\n        var accountSysId = this.getParameter('sysparm_account_sys_id');\n        var amount = this.getParameter('sysparm_amount');\n        var description = this.getParameter('sysparm_description');\n        var webhookKey = this.getParameter('sysparm_webhook_key');\n\n        var result = {\n            success: false,\n            message: '',\n            transaction: null\n        };\n\n        // Validate inputs\n        if (!accountSysId || !amount || !webhookKey) {\n            result.message = 'Missing required parameters: account_sys_id, amount, and webhook_key are required';\n            return JSON.stringify(result);\n        }\n\n        // Verify the account exists\n        var acctGr = new GlideRecord('x_274351_finance_0_accounts');\n        if (!acctGr.get(accountSysId)) {\n            result.message = 'Account not found with sys_id: ' + accountSysId;\n            return JSON.stringify(result);\n        }\n\n        // Create the transaction record\n        var txnGr = new GlideRecord('x_274351_finance_0_txn');\n        txnGr.initialize();\n        txnGr.setValue('account', accountSysId);\n        txnGr.setValue('type', 'ach_transfer');\n        txnGr.setValue('amount', amount);\n        txnGr.setValue('status', 'completed');\n        var txnSysId = txnGr.insert();\n\n        if (!txnSysId) {\n            result.message = 'Failed to create transaction record';\n            return JSON.stringify(result);\n        }\n\n        // Send webhook notification\n        try {\n            var restMessage = new sn_ws.RESTMessageV2();\n            restMessage.setEndpoint('https://webhook.site/' + webhookKey);\n            restMessage.setHttpMethod('POST');\n            restMessage.setRequestHeader('Content-Type', 'application/json');\n\n            var payload = {\n                transaction_id: txnSysId,\n                account_number: acctGr.getValue('number'),\n                account_holder: acctGr.getDisplayValue('holder'),\n                type: 'ach_transfer',\n                amount: amount,\n                description: description || '',\n                timestamp: new GlideDateTime().getDisplayValue()\n            };\n\n            restMessage.setRequestBody(JSON.stringify(payload));\n            var response = restMessage.execute();\n            var httpStatus = response.getStatusCode();\n\n            result.success = true;\n            result.message = 'ACH transfer processed successfully. Webhook status: ' + httpStatus;\n            result.transaction = {\n                sys_id: txnSysId,\n                account_number: acctGr.getValue('number'),\n                amount: amount,\n                type: 'ach_transfer',\n                status: 'completed',\n                webhook_status: httpStatus\n            };\n        } catch (e) {\n            // Transaction was created, but webhook failed\n            result.success = true;\n            result.message = 'Transaction created but webhook notification failed: ' + e.getMessage();\n            result.transaction = {\n                sys_id: txnSysId,\n                account_number: acctGr.getValue('number'),\n                amount: amount,\n                type: 'ach_transfer',\n                status: 'completed',\n                webhook_status: 'failed'\n            };\n        }\n\n        return JSON.stringify(result);\n    },\n\n    type: 'AchTransferHandler'\n});\n"]]></script>
+        <script><![CDATA[var AchTransferHandler = Class.create();
+
+AchTransferHandler.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+    getAccounts: function() {
+        var accounts = [];
+        var isManager = gs.hasRole('x_274351_finance_0.manager') && !gs.hasRole('x_274351_finance_0.administrator');
+        var gr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!isManager) {
+            gr.addQuery('holder', gs.getUserID());
+        }
+        gr.addQuery('active', true);
+        gr.orderBy('number');
+        gr.query();
+        while (gr.next()) {
+            accounts.push({
+                sys_id: gr.getUniqueValue(),
+                number: gr.getValue('number'),
+                account_type: gr.getValue('account_type'),
+                balance: gr.getValue('balance')
+            });
+        }
+        return JSON.stringify(accounts);
+    },
+
+    deposit: function() {
+        var result = { success: false, message: '' };
+
+        if (!gs.hasRole('x_274351_finance_0.manager')) {
+            result.message = 'Only managers can perform deposits.';
+            return JSON.stringify(result);
+        }
+
+        var accountSysId = this.getParameter('sysparm_account_sys_id');
+        var amount = parseFloat(this.getParameter('sysparm_amount'));
+
+        if (!accountSysId) {
+            result.message = 'Missing required parameter: account_sys_id';
+            return JSON.stringify(result);
+        }
+        if (isNaN(amount) || amount <= 0) {
+            result.message = 'Amount must be a valid number greater than 0';
+            return JSON.stringify(result);
+        }
+
+        var acctGr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!acctGr.get(accountSysId)) {
+            result.message = 'Account not found';
+            return JSON.stringify(result);
+        }
+        if (acctGr.getValue('active') != 'true' && acctGr.getValue('active') != '1') {
+            result.message = 'Account is not active';
+            return JSON.stringify(result);
+        }
+
+        var txnGr = new GlideRecord('x_274351_finance_0_txn');
+        txnGr.initialize();
+        txnGr.setValue('account', accountSysId);
+        txnGr.setValue('type', 'deposit');
+        txnGr.setValue('amount', amount);
+        txnGr.setValue('status', 'completed');
+        var txnSysId = txnGr.insert();
+
+        if (!txnSysId) {
+            result.message = 'Failed to create deposit transaction';
+            return JSON.stringify(result);
+        }
+
+        result.success = true;
+        result.message = 'Deposit of $' + amount.toFixed(2) + ' completed successfully';
+        return JSON.stringify(result);
+    },
+
+    withdraw: function() {
+        var result = { success: false, message: '' };
+
+        if (!gs.hasRole('x_274351_finance_0.manager')) {
+            result.message = 'Only managers can perform withdrawals.';
+            return JSON.stringify(result);
+        }
+
+        var accountSysId = this.getParameter('sysparm_account_sys_id');
+        var amount = parseFloat(this.getParameter('sysparm_amount'));
+
+        if (!accountSysId) {
+            result.message = 'Missing required parameter: account_sys_id';
+            return JSON.stringify(result);
+        }
+        if (isNaN(amount) || amount <= 0) {
+            result.message = 'Amount must be a valid number greater than 0';
+            return JSON.stringify(result);
+        }
+
+        var acctGr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!acctGr.get(accountSysId)) {
+            result.message = 'Account not found';
+            return JSON.stringify(result);
+        }
+        if (acctGr.getValue('active') != 'true' && acctGr.getValue('active') != '1') {
+            result.message = 'Account is not active';
+            return JSON.stringify(result);
+        }
+
+        var currentBalance = parseFloat(acctGr.getValue('balance'));
+        if (currentBalance < amount) {
+            result.message = 'Insufficient funds. Current balance: $' + currentBalance.toFixed(2);
+            return JSON.stringify(result);
+        }
+
+        var txnGr = new GlideRecord('x_274351_finance_0_txn');
+        txnGr.initialize();
+        txnGr.setValue('account', accountSysId);
+        txnGr.setValue('type', 'withdrawal');
+        txnGr.setValue('amount', amount);
+        txnGr.setValue('status', 'completed');
+        var txnSysId = txnGr.insert();
+
+        if (!txnSysId) {
+            result.message = 'Failed to create withdrawal transaction';
+            return JSON.stringify(result);
+        }
+
+        result.success = true;
+        result.message = 'Withdrawal of $' + amount.toFixed(2) + ' completed successfully';
+        return JSON.stringify(result);
+    },
+
+    deactivateAccount: function() {
+        var result = { success: false, message: '' };
+
+        if (!gs.hasRole('x_274351_finance_0.administrator')) {
+            result.message = 'Only administrators can deactivate accounts.';
+            return JSON.stringify(result);
+        }
+
+        var accountSysId = this.getParameter('sysparm_account_sys_id');
+
+        if (!accountSysId) {
+            result.message = 'Missing required parameter: account_sys_id';
+            return JSON.stringify(result);
+        }
+
+        var acctGr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!acctGr.get(accountSysId)) {
+            result.message = 'Account not found';
+            return JSON.stringify(result);
+        }
+        if (acctGr.getValue('active') != 'true' && acctGr.getValue('active') != '1') {
+            result.message = 'Account is already inactive';
+            return JSON.stringify(result);
+        }
+
+        acctGr.setValue('active', false);
+        acctGr.update();
+
+        result.success = true;
+        result.message = 'Account has been deactivated successfully';
+        return JSON.stringify(result);
+    },
+
+    reactivateAccount: function() {
+        var result = { success: false, message: '' };
+
+        if (!gs.hasRole('x_274351_finance_0.administrator')) {
+            result.message = 'Only administrators can reactivate accounts.';
+            return JSON.stringify(result);
+        }
+
+        var accountSysId = this.getParameter('sysparm_account_sys_id');
+
+        if (!accountSysId) {
+            result.message = 'Missing required parameter: account_sys_id';
+            return JSON.stringify(result);
+        }
+
+        var acctGr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!acctGr.get(accountSysId)) {
+            result.message = 'Account not found';
+            return JSON.stringify(result);
+        }
+        if (acctGr.getValue('active') == 'true' || acctGr.getValue('active') == '1') {
+            result.message = 'Account is already active';
+            return JSON.stringify(result);
+        }
+
+        acctGr.setValue('active', true);
+        acctGr.update();
+
+        result.success = true;
+        result.message = 'Account has been reactivated successfully';
+        return JSON.stringify(result);
+    },
+
+    processTransfer: function() {
+        var accountSysId = this.getParameter('sysparm_account_sys_id');
+        var amount = this.getParameter('sysparm_amount');
+        var description = this.getParameter('sysparm_description');
+        var webhookKey = this.getParameter('sysparm_webhook_key');
+
+        var result = {
+            success: false,
+            message: '',
+            transaction: null
+        };
+
+        // Validate inputs
+        if (!accountSysId || !amount || !webhookKey) {
+            result.message = 'Missing required parameters: account_sys_id, amount, and webhook_key are required';
+            return JSON.stringify(result);
+        }
+
+        // Verify the account exists
+        var acctGr = new GlideRecord('x_274351_finance_0_accounts');
+        if (!acctGr.get(accountSysId)) {
+            result.message = 'Account not found with sys_id: ' + accountSysId;
+            return JSON.stringify(result);
+        }
+
+        // Create the transaction record
+        var txnGr = new GlideRecord('x_274351_finance_0_txn');
+        txnGr.initialize();
+        txnGr.setValue('account', accountSysId);
+        txnGr.setValue('type', 'ach_transfer');
+        txnGr.setValue('amount', amount);
+        txnGr.setValue('status', 'completed');
+        var txnSysId = txnGr.insert();
+
+        if (!txnSysId) {
+            result.message = 'Failed to create transaction record';
+            return JSON.stringify(result);
+        }
+
+        // Send webhook notification
+        try {
+            var restMessage = new sn_ws.RESTMessageV2();
+            restMessage.setEndpoint('https://webhook.site/' + webhookKey);
+            restMessage.setHttpMethod('POST');
+            restMessage.setRequestHeader('Content-Type', 'application/json');
+
+            var payload = {
+                transaction_id: txnSysId,
+                account_number: acctGr.getValue('number'),
+                account_holder: acctGr.getDisplayValue('holder'),
+                type: 'ach_transfer',
+                amount: amount,
+                description: description || '',
+                timestamp: new GlideDateTime().getDisplayValue()
+            };
+
+            restMessage.setRequestBody(JSON.stringify(payload));
+            var response = restMessage.execute();
+            var httpStatus = response.getStatusCode();
+
+            result.success = true;
+            result.message = 'ACH transfer processed successfully. Webhook status: ' + httpStatus;
+            result.transaction = {
+                sys_id: txnSysId,
+                account_number: acctGr.getValue('number'),
+                amount: amount,
+                type: 'ach_transfer',
+                status: 'completed',
+                webhook_status: httpStatus
+            };
+        } catch (e) {
+            // Transaction was created, but webhook failed
+            result.success = true;
+            result.message = 'Transaction created but webhook notification failed: ' + e.getMessage();
+            result.transaction = {
+                sys_id: txnSysId,
+                account_number: acctGr.getValue('number'),
+                amount: amount,
+                type: 'ach_transfer',
+                status: 'completed',
+                webhook_status: 'failed'
+            };
+        }
+
+        return JSON.stringify(result);
+    },
+
+    type: 'AchTransferHandler'
+});
+]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-10 13:44:45</sys_created_on>
